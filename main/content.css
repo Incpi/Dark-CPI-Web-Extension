@@ -7,7 +7,9 @@
  * It also defines styles for various UI elements such as text, selected elements, participants, subprocesses, sequence flows, events, activities, gateways, and error/warning indicators.
  * Additionally, it includes font-face declarations for the SAPBPMN and SAP-icons-TNT font families.
  */
+
 :root {
+    /* cpi-theme-no-color-outside-root: "No color declaration outside of root is allowed"; */
     --cpidarkErrorColor: #ff5656;
     --cpidarkWarningColor: #ff882d;
     --cpidarkSuccessColor: #30b856;
@@ -35,6 +37,10 @@
 #shellcontent[data-cpi-dark="sap_horizon_dark"] {
     text {
         fill: var(--cpidarkTextColor);
+    }
+
+    rect[fill-opacity="0.01"],path[opacity="0.01"] {
+        fill-opacity: 0;opacity: 0;
     }
 
     .sapGalileiSelected:focus {
@@ -125,7 +131,21 @@
         fill: var(--cpidarkTextColor);
     }
 
-    .cpides-iflowPropMain .cpides-iflowPropSheetHeader {
+    .cpides-iflowPropMain .cpides-iflowPropSheetHeader,
+    .sapUiLoSplitterContent .sapMPageHeader>div {
         background-color: var(--cpidarkBaseColor) !important;
+    }
+
+    .sapUiLoSplitterContent .cpides-webuiEECanvasWrapper svg {
+
+        rect:not([fill="#9fcdeb"], [fill='#009de0']),
+        circle,
+        path:not([fill="#f5c346"], [stroke="#9fcdeb"], [fill="#9fcdeb"], [class], [stroke-linejoin="round"], :not([fill='#ffffff'][stroke="none"])) {
+            fill: var(--cpidarkContent_Illustrative) !important;
+        }
+
+        path[stroke-linejoin="round"] {
+            stroke: var(--cpidarkTextColor)
+        }
     }
 }
