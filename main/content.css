@@ -1,0 +1,131 @@
+/**
+ * This CSS file defines the styles for the dark theme of the CPI (Cloud Platform Integration) application.
+ * It sets various CSS variables for colors and styles used throughout the application, including:
+ * - Error, warning, and success colors
+ * - Text and base colors
+ * - Border and selection colors
+ * It also defines styles for various UI elements such as text, selected elements, participants, subprocesses, sequence flows, events, activities, gateways, and error/warning indicators.
+ * Additionally, it includes font-face declarations for the SAPBPMN and SAP-icons-TNT font families.
+ */
+:root {
+    --cpidarkErrorColor: #ff5656;
+    --cpidarkWarningColor: #ff882d;
+    --cpidarkSuccessColor: #30b856;
+    --cpidarkContent_Illustrative: #2a4259;
+    --cpidarkTextColor: #fff;
+    --cpidarkBaseColor: #1d2d3e;
+    --cpidarkMessage_InformationBorderColor: #6bb3ff;
+    --cpidarkList_SelectionBackgroundColor: #1d2d3e;
+}
+
+@font-face {
+    font-family: 'SAPBPMN';
+    src: url('./SAPBPMNRegular.eot');
+    src: url(chrome-extension://__MSG_@@extension_id__/main/SAPBPMNRegular.woff) format('woff'), url('./SAPBPMNRegular.svg#SAPBPMNRegular') format('svg');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'SAP-icons-TNT';
+    src: url('./SAP-icons-TNT.ttf') format('truetype');
+}
+
+#shellcontent[data-cpi-dark="sap_horizon_dark"] {
+    text {
+        fill: var(--cpidarkTextColor);
+    }
+
+    .sapGalileiSelected:focus {
+        outline: none;
+    }
+
+    .participant {
+        stroke: var(--cpidarkContent_Illustrative);
+        fill: var(--cpidarkBaseColor);
+    }
+
+    .participantHeaderText {
+        fill: var(--cpidarkTextColor);
+    }
+
+    .participantHeader {
+        stroke: var(--cpidarkContent_Illustrative);
+        fill: var(--cpidarkBaseColor);
+    }
+
+    .subProcess {
+        stroke: var(--cpidarkContent_Illustrative);
+        fill: var(--cpidarkBaseColor);
+        stroke-width: 1;
+    }
+
+    .sequenceFlow {
+        stroke-width: 1;
+        fill: transparent;
+    }
+
+    .messageFlow {
+        stroke-width: 2;
+        fill: transparent;
+    }
+
+    .event {
+        stroke: var(--cpidarkContent_Illustrative);
+        fill: var(--cpidarkBaseColor);
+    }
+
+    .endMessage {
+        fill: var(--cpidarkTextColor);
+    }
+
+    .startEvent {
+        stroke: var(--cpidarkTextColor);
+        fill: var(--cpidarkTextColor);
+    }
+
+    .endEvent {
+        stroke: var(--cpidarkTextColor);
+        fill: var(--cpidarkTextColor);
+    }
+
+    .activity {
+        stroke: var(--cpidarkMessage_InformationBorderColor);
+        fill: var(--cpidarkList_SelectionBackgroundColor);
+        stroke-width: 1;
+    }
+
+    .activityMarker {
+        stroke: var(--cpidarkTextColor);
+    }
+
+    .gateway {
+        stroke: var(--cpidarkContent_Illustrative);
+        fill: var(--cpidarkBaseColor);
+        stroke-width: 1;
+        width: 48px;
+        height: 48px;
+    }
+
+    .parallelGateway {
+        stroke: var(--cpidarkTextColor);
+    }
+
+    .error {
+        fill: var(--cpidarkErrorColor);
+    }
+
+    .warning {
+        fill: var(--cpidarkWarningColor);
+    }
+
+    .shapeText {
+        font: 12px Arial, Helvetica, sans-serif;
+        fill: var(--cpidarkTextColor);
+    }
+
+    .cpides-iflowPropMain .cpides-iflowPropSheetHeader {
+        background-color: var(--cpidarkBaseColor) !important;
+    }
+}

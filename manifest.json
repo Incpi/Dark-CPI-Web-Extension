@@ -1,0 +1,51 @@
+{
+    "manifest_version": 3,
+    "name": "Dark SAP CPI",
+    "version": "1.0.1",
+    "description": "This extension will convert your CPI to dark mode as well as previous theme",
+    "author": "Omkar Patel",
+    "homepage_url": "https://incpi.github.io",
+    "icons": {
+        "16": "images/icons/icon16.png",
+        "32": "images/icons/icon32.png",
+        "48": "images/icons/icon48.png",
+        "128": "images/icons/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.hana.ondemand.com/itspaces/*",
+                "https://*.hana.ondemand.com/shell/*",
+                "https://*.platform.sapcloud.cn/itspaces/*",
+                "https://*.platform.sapcloud.cn/shell/*"
+            ],
+            "js": [
+                "lib/logger.js",
+                "main/content.js"
+            ],
+            "css": [
+                "main/content.css"
+            ],
+            "run_at": "document_idle",
+            "world": "MAIN"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "main/*",
+                "lib/*"
+            ],
+            "matches": [
+                "https://*.hana.ondemand.com/*",
+                "https://*.platform.sapcloud.cn/*"
+            ]
+        }
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "DarkSAPCPI@incpi",
+            "strict_min_version": "109.0"
+        }
+    }
+}
