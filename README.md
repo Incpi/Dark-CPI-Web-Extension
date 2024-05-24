@@ -40,8 +40,8 @@ The SAP CPI Dark Mode Extension allows you to customize the theme by specifying 
 
 ### Using the URL Parameter
 
-To select a specific theme, append the `darksapcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page,
-`https://your-sap-cpi-environment.ondamand.com/shell/design?darksapcpi=theme-value`
+To select a specific theme, append the `darkcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page,
+`https://your-sap-cpi-environment.ondamand.com/shell/design?darkcpi=theme-value`
 
 Replace `theme-value` with one of the valid keys from the `themeMap` object.
 

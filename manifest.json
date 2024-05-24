@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Dark SAP CPI",
+    "name": "Dark CPI",
     "version": "1.1.1",
     "description": "This extension will convert your CPI to dark mode as well as previous theme",
     "author": "Omkar Patel",
@@ -11,6 +11,20 @@
         "48": "images/icons/icon48.png",
         "128": "images/icons/icon128.png"
     },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": {
+            "16": "images/icons/icon16.png",
+            "32": "images/icons/icon32.png",
+            "48": "images/icons/icon48.png",
+            "128": "images/icons/icon128.png"
+        }
+    },
     "content_scripts": [
         {
             "matches": [
@@ -20,21 +34,31 @@
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
             "js": [
-                "lib/logger.js",
-                "main/content.js"
+                "Main/logger.js",
+                "Main/content.js"
             ],
             "css": [
-                "main/content.css"
+                "Main/content.css"
             ],
             "run_at": "document_idle",
             "world": "MAIN"
+        },
+        {
+            "matches": [
+                "https://*.hana.ondemand.com/itspaces/*",
+                "https://*.hana.ondemand.com/shell/*",
+                "https://*.platform.sapcloud.cn/itspaces/*",
+                "https://*.platform.sapcloud.cn/shell/*"
+            ],
+            "js": [
+                "Content/datastore.js"
+            ]
         }
     ],
     "web_accessible_resources": [
         {
             "resources": [
-                "main/*",
-                "lib/*"
+                "Main/*.woff"
             ],
             "matches": [
                 "https://*.hana.ondemand.com/*",
@@ -44,7 +68,7 @@
     ],
     "browser_specific_settings": {
         "gecko": {
-            "id": "DarkSAPCPI@incpi",
+            "id": "DarkCPI@incpi",
             "strict_min_version": "109.0"
         }
     }
