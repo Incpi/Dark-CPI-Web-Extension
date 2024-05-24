@@ -21,7 +21,7 @@ To install the SAP CPI Dark Mode Extension, please follow these steps:
    - Click "Add to Chrome" to install the extension.
 
 2. **Manual Installation:**
-   - Download the latest release from our [GitHub repository](https://github.com/incpi/Dark-CPI-Web-Extension).
+   - Download the latest release from our [GitHub repository](https://github.com/incpi/Dark-CPI-Web-Extension) then go to bin folder.
    - Extract the downloaded archive.
    - Open Google Chrome and navigate to `chrome://extensions/`.
    - Enable "Developer mode" by toggling the switch in the top-right corner.
@@ -40,8 +40,8 @@ The SAP CPI Dark Mode Extension allows you to customize the theme by specifying 
 
 ### Using the URL Parameter
 
-To select a specific theme, append the `darksapcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page,
-`https://your-sap-cpi-environment.ondamand.com/shell/design?darksapcpi=theme-value`
+To select a specific theme, append the `darkcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page,
+`https://your-sap-cpi-environment.ondamand.com/shell/design?darkcpi=theme-value`
 
 Replace `theme-value` with one of the valid keys from the `themeMap` object.
 
@@ -59,6 +59,10 @@ The extension comes with the following predefined themes:
 If you want to create your own custom theme, you can modify the `themeMap` object in the source code. Add a new key-value pair, where the key represents the theme name (to be used in the URL parameter), and the value is an object containing the CSS styles for your custom theme.
 
 ## Changelog
+
+### v1.1.0
+- [BugFix] Added support for Mapping pages.
+- [Feature] Change theme from Popup page.
 
 ### v1.0.0
 - Dark theme for SAP CPI. Initial public version.
