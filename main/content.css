@@ -23,7 +23,7 @@
 @font-face {
     font-family: 'SAPBPMN';
     src: url('./SAPBPMNRegular.eot');
-    src: url(chrome-extension://__MSG_@@extension_id__/main/SAPBPMNRegular.woff) format('woff'), url('./SAPBPMNRegular.svg#SAPBPMNRegular') format('svg');
+    src: url(chrome-extension://__MSG_@@extension_id__/Main/SAPBPMNRegular.woff) format('woff'), url('./SAPBPMNRegular.svg#SAPBPMNRegular') format('svg');
     font-style: normal;
     font-weight: normal;
     text-rendering: optimizeLegibility;
@@ -34,13 +34,19 @@
     src: url('./SAP-icons-TNT.ttf') format('truetype');
 }
 
+.event {
+    stroke-width: 1;
+}
+
 #shellcontent[data-cpi-dark="sap_horizon_dark"] {
     text {
         fill: var(--cpidarkTextColor);
     }
 
-    rect[fill-opacity="0.01"],path[opacity="0.01"] {
-        fill-opacity: 0;opacity: 0;
+    rect[fill-opacity="0.01"],
+    path[opacity="0.01"] {
+        fill-opacity: 0;
+        opacity: 0;
     }
 
     .sapGalileiSelected:focus {
