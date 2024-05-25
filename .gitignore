@@ -1,1 +1,7 @@
 .trash
+package*.json
+s*.json
+node_modules
+node_modules/*
+semantic
+semantic/*

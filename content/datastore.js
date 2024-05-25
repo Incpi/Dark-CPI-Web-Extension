@@ -7,22 +7,19 @@ async function getSyncValue(key) {
                 resolve(data[key]);
             }
         });
-    });
+    }).catch(error => console.error('Error getting sync value:', error));
 }
 
-async function setSyncValue(key, value) {
+async function setSyncValue(key,value) {
     return new Promise((resolve, reject) => {
-        const data = {};
-        data[key] = value;
-        chrome.storage.sync.set(data, () => {
+        chrome.storage.sync.set(key, (data) => {
             if (chrome.runtime.lastError) {
                 reject(chrome.runtime.lastError);
             } else {
-                syncTheme();
-                resolve();
+                resolve(data[key]);
             }
         });
-    });
+    }).catch(error => console.error('Error getting sync value:', error));
 }
 
 function tagCreate(value = 0) {
@@ -32,7 +29,12 @@ function tagCreate(value = 0) {
     document.head.appendChild(metaTag);
 }
 
-tagCreate(async ()=> await getSyncValue('SapDarkCPITheme'));
+setInterval(() => {
+    let metaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
+    if (!metaTag) {
+        getSyncValue('SapDarkCPITheme').then(value => tagCreate(value));
+    }
+}, 3000);
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
     for (let key in changes) {
@@ -40,10 +42,14 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
             const storageChange = changes[key];
             console.log('Value of SapDarkCPITheme has changed:', storageChange.newValue);
             let metaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
-            if (!metaTag) {
-                tagCreate(storageChange.newValue);
-            } else {
-                metaTag.content = storageChange.newValue;
+            try {
+                if (!metaTag) {
+                    tagCreate(storageChange.newValue);
+                } else {
+                    metaTag.content = storageChange.newValue;
+                }
+            } catch (error) {
+                console.error('Error updating meta tag:', error);
             }
         }
     }

@@ -32,11 +32,8 @@
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
             "js": [
-                "Main/logger.js",
-                "Main/content.js"
-            ],
-            "css": [
-                "Main/content.css"
+                "script/logger.js",
+                "script/heart-beat.js"
             ],
             "run_at": "document_idle",
             "world": "MAIN"
@@ -50,13 +47,15 @@
             ],
             "js": [
                 "content/datastore.js"
+            ],"css": [
+                "content/content.css"
             ]
         }
     ],
     "web_accessible_resources": [
         {
             "resources": [
-                "Main/*.woff"
+                "script/*.woff"
             ],
             "matches": [
                 "https://*.hana.ondemand.com/*",
