@@ -33,10 +33,7 @@
             ],
             "js": [
                 "script/logger.js",
-                "script/content.js"
-            ],
-            "css": [
-                "script/content.css"
+                "script/heart-beat.js"
             ],
             "run_at": "document_idle",
             "world": "MAIN"
@@ -50,6 +47,8 @@
             ],
             "js": [
                 "content/datastore.js"
+            ],"css": [
+                "content/content.css"
             ]
         }
     ],

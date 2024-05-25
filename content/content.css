@@ -8,8 +8,8 @@
  * Additionally, it includes font-face declarations for the SAPBPMN and SAP-icons-TNT font families.
  */
 
+/* "No color declaration outside of root" */
 :root {
-    /* cpi-theme-no-color-outside-root: "No color declaration outside of root is allowed"; */
     --cpidarkErrorColor: #ff5656;
     --cpidarkWarningColor: #ff882d;
     --cpidarkSuccessColor: #30b856;
@@ -36,6 +36,11 @@
 
 .event {
     stroke-width: 1;
+}
+
+#shellcontent:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer .sapUxAPObjectPageSubSection .sapUxAPBlockContainer {
+    margin-left: .5rem;
+    margin-right: .5rem;
 }
 
 #shellcontent[data-cpi-dark="sap_horizon_dark"] {
