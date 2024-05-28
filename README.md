@@ -60,6 +60,9 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 
 ## Changelog
 
+### v1.2.0
+- [Feature] Automatically closes the navigation bar on startup.
+
 ### v1.1.0
 - [BugFix] Added support for Mapping pages.
 - [Feature] Change theme from Popup page.

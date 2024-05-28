@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Popup</title>
     <link rel="stylesheet" href="popup.css">
 </head>
-<body>
-<div class="dropdown-container">
-    <label for="options">SAP CPI Dark Mode</label>
-    <select id="options" class="dropdown">
-        <option value="0">Raising Horizon</option>
-        <option value="1">Evening Horizon</option>
-        <option value="2">Quartz Light</option>
-    </select>
-</div>
 
-<script type="module" src="popup.js"></script>
+<body>
+    <div class="dropdown-container">
+        <label for="options">Dark CPI Version: <span class="version"></span></label>
+        <select id="options" class="dropdown">
+            <option value="0">Raising Horizon (New Default)</option>
+            <option value="1">Evening Horizon (Dark theme)</option>
+            <option value="2">Quartz Light (Old theme)</option>
+        </select>
+    </div>
+
+    <script type="module" src="popup.js"></script>
 
 </body>
+
 </html>

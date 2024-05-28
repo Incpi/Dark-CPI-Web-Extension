@@ -13,6 +13,7 @@ const themeConfig = {
 // URL parameters
 const urlParams = new URLSearchParams(window.location.search);
 const darkCPIParam = urlParams.get('DarkCPI');
+let retryCount = 0;
 
 // Initialize variables
 logger.log("Initializing...");
@@ -61,6 +62,25 @@ function getLocalTheme() {
 function setLocalTheme(themeKey) {
   localStorage.setItem("SapDarkCPITheme", themeKey);
 }
+
+function retryAutocloseNavButton() {
+  try {
+    const navigationList = sap.ui.getCore().byId('shell--navigationList');
+    if (navigationList && navigationList.mProperties.expanded) {
+      sap.ui.getCore().byId("__button0").firePress();
+      logger.info("Navigation button closed");
+    }
+  } catch (e) {
+    logger.error(`Failed to execute retryAutocloseNavButton on attempt ${retryCount + 1}: ${e.message}`);
+  } finally {
+    retryCount++;
+    if (retryCount <= 5) {
+      setTimeout(retryAutocloseNavButton, 500);
+    }
+  }
+}
+
+retryAutocloseNavButton();
 
 // Apply the selected theme
 async function applyTheme(themeKey) {

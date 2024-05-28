@@ -12,3 +12,5 @@ document.getElementById('options').addEventListener('change', function () {
 chrome.storage.sync.get(["SapDarkCPITheme"], (result) => {
     document.getElementById('options').value = result["SapDarkCPITheme"] || 0;
 });
+
+document.querySelectorAll('.version').forEach((e)=>e.innerHTML =chrome.runtime.getManifest().version)
