@@ -18,6 +18,7 @@
     --cpidarkBaseColor: #1d2d3e;
     --cpidarkMessage_InformationBorderColor: #6bb3ff;
     --cpidarkList_SelectionBackgroundColor: #1d2d3e;
+    --cpidarkdashboard_BackgroundColor: #1d232a;
 }
 
 @font-face {
@@ -145,6 +146,10 @@
     .cpides-iflowPropMain .cpides-iflowPropSheetHeader,
     .sapUiLoSplitterContent .sapMPageHeader>div {
         background-color: var(--cpidarkBaseColor) !important;
+    }
+
+    .itopweb-background-white {
+        background-color: var(--cpidarkdashboard_BackgroundColor);
     }
 
     .sapUiLoSplitterContent .cpides-webuiEECanvasWrapper svg {
