@@ -40,8 +40,8 @@
                 "https://*.platform.sapcloud.cn/itspaces/*",
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
-            "js": ["lib/Daisyui.min.js", "content/data.js", "content/whatsnew.js", "content/content.js"],
-            "css": ["lib/Daisyui.min.css", "content/content.css"]
+            "js": ["lib/Daisyui.min.js", "Whatsnew/data.js", "Whatsnew/whatsnew.js", "content/content.js"],
+            "css": ["lib/Daisyui.min.css", "content/content.css", "Whatsnew/whatsnew.css"]
         }
     ],
     "web_accessible_resources": [

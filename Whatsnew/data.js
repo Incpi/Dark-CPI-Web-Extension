@@ -4,7 +4,7 @@
     samples: {features: [ { description: "Feature 1", author: "Omkar" },]}
 */
 const data_updates = {
-    features: [{ description: "Auto-Close side bar navigation on start up" }],
+    features: [{ description: "Auto-Close side bar navigation on start up" },{ description: "Added in <a href='https://microsoftedge.microsoft.com/addons/detail/gpafgeambljleonppfbeieehlmdiffop' class='link link-hover link-secondary'>Edge Store</a>" },],
     improvements: [{ description: "UI improvement: select theme from extension icon" }],
     bugFixes: [{ description: "Bug Fix: SAP Theme fixes for horizon (both)" }],
 };
