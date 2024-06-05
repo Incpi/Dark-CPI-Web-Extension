@@ -62,6 +62,8 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 
 ### v1.2.0
 - [Feature] Automatically closes the navigation bar on startup.
+- [Bugfix] SAP UI theme Horizon fix
+- [Improvement] UI improvement: select theme from extension icon
 
 ### v1.1.0
 - [BugFix] Added support for Mapping pages.

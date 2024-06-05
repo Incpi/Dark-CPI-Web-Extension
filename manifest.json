@@ -11,9 +11,7 @@
         "48": "images/icons/icon48.png",
         "128": "images/icons/icon128.png"
     },
-    "permissions": [
-        "storage"
-    ],
+    "permissions": ["storage", "activeTab"],
     "action": {
         "default_popup": "popup/popup.html",
         "default_icon": {
@@ -31,10 +29,7 @@
                 "https://*.platform.sapcloud.cn/itspaces/*",
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
-            "js": [
-                "script/logger.js",
-                "script/heart-beat.js"
-            ],
+            "js": ["script/logger.js", "script/heart-beat.js"],
             "run_at": "document_idle",
             "world": "MAIN"
         },
@@ -45,22 +40,14 @@
                 "https://*.platform.sapcloud.cn/itspaces/*",
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
-            "js": [
-                "content/datastore.js"
-            ],"css": [
-                "content/content.css"
-            ]
+            "js": ["lib/Daisyui.min.js", "content/data.js", "content/whatsnew.js", "content/content.js"],
+            "css": ["lib/Daisyui.min.css", "content/content.css"]
         }
     ],
     "web_accessible_resources": [
         {
-            "resources": [
-                "script/*.woff"
-            ],
-            "matches": [
-                "https://*.hana.ondemand.com/*",
-                "https://*.platform.sapcloud.cn/*"
-            ]
+            "resources": ["script/*.woff"],
+            "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"]
         }
     ],
     "browser_specific_settings": {

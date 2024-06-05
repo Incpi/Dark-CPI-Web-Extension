@@ -10,6 +10,30 @@
     --btn-active-color: #00941e;
 }
 
+.dark-theme {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --btn-bg-color: #1e2a38;
+    --btn-border-color: #1e2a38;
+    --btn-hover-bg-color: #314b62;
+    --btn-hover-border-color: #314b62;
+    --btn-active-bg-color: #3e607e;
+    --btn-active-border-color: #3e607e;
+    --btn-active-color: #4c7fa2;
+}
+
+.old-theme {
+    --bg-color: #ffffff;
+    --text-color: #1e2a38;
+    --btn-bg-color: #1a1c32;
+    --btn-border-color: #1e2a38;
+    --btn-hover-bg-color: #314b62;
+    --btn-hover-border-color: #314b62;
+    --btn-active-bg-color: #3e607e;
+    --btn-active-border-color: #3e607e;
+    --btn-active-color: #6ba0c3;
+}
+
 h2.header {
     text-align: left;
     display: flex;
@@ -72,16 +96,4 @@ body {
 .btn.active {
     background-color: var(--btn-active-color);
     border-color: var(--btn-active-border-color);
-}
-
-.dark-theme {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --btn-bg-color: #1e2a38;
-    --btn-border-color: #1e2a38;
-    --btn-hover-bg-color: #314b62;
-    --btn-hover-border-color: #314b62;
-    --btn-active-bg-color: #3e607e;
-    --btn-active-border-color: #3e607e;
-    --btn-active-color: #4c7fa2;
 }
