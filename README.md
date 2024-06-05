@@ -17,7 +17,7 @@ We guarantee:
 To install the SAP CPI Dark Mode Extension, please follow these steps:
 
 1. **Download the Extension:**
-   - Visit the [Chrome Web Store](https://chromewebstore.google.com/detail/dark-sap-cpi/lmegddleeigeddljmdkonofmppbefneo) and search for "SAP CPI Dark Mode."
+   - Visit the [Chrome Web Store](https://chromewebstore.google.com/detail/dark-sap-cpi/lmegddleeigeddljmdkonofmppbefneo) or [EDGE store](https://microsoftedge.microsoft.com/addons/detail/gpafgeambljleonppfbeieehlmdiffop) or search for "Dark CPI" in web-stores.
    - Click "Add to Chrome" to install the extension.
 
 2. **Manual Installation:**
@@ -59,6 +59,12 @@ The extension comes with the following predefined themes:
 If you want to create your own custom theme, you can modify the `themeMap` object in the source code. Add a new key-value pair, where the key represents the theme name (to be used in the URL parameter), and the value is an object containing the CSS styles for your custom theme.
 
 ## Changelog
+
+### v1.2.0
+- [Feature] Automatically closes the navigation bar on startup.
+- [Feature] Added in **Edge Store**
+- [Bugfix] SAP UI theme Horizon fix
+- [Improvement] UI improvement: select theme from extension icon
 
 ### v1.1.0
 - [BugFix] Added support for Mapping pages.

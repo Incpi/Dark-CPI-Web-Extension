@@ -12,7 +12,8 @@ const themeConfig = {
 
 // URL parameters
 const urlParams = new URLSearchParams(window.location.search);
-const darkCPIParam = urlParams.get('DarkCPI');
+const darkCPIParam = urlParams.get('darkcpi');
+let retryCount = 0;
 
 // Initialize variables
 logger.log("Initializing...");
@@ -62,6 +63,25 @@ function setLocalTheme(themeKey) {
   localStorage.setItem("SapDarkCPITheme", themeKey);
 }
 
+function retryAutocloseNavButton() {
+  try {
+    const navigationList = sap.ui.getCore().byId('shell--navigationList');
+    if (navigationList && navigationList.mProperties.expanded) {
+      sap.ui.getCore().byId("__button0").firePress();
+      logger.info("Navigation button closed");
+    }
+  } catch (e) {
+    logger.error(`Failed to execute retryAutocloseNavButton on attempt ${retryCount + 1}: ${e.message}`);
+  } finally {
+    retryCount++;
+    if (retryCount <= 5) {
+      setTimeout(retryAutocloseNavButton, 500);
+    }
+  }
+}
+
+retryAutocloseNavButton();
+
 // Apply the selected theme
 async function applyTheme(themeKey) {
   try {
@@ -72,13 +92,31 @@ async function applyTheme(themeKey) {
       document.querySelector('#shellcontent').setAttribute('data-cpi-dark', themeConfig[themeKey].name);
       sap.ui.getCore().attachInit(() => sap.ui.getCore().applyTheme(themeConfig[themeKey].name));
       setLocalTheme(themeKey);
+      sap.ui.getCore().attachInit(() => {
+        if (!sap.ui.getCore().byId('DarkCPI_Navbutton')) {
+          var oButton = new sap.m.Button("DarkCPI_Navbutton", {
+            text: "DARK CPI",
+            press: () => { document.querySelector('#darkcpiglobal').setAttribute('data-condition', true); },
+          });
+          var oContainer = sap.ui.getCore().byId("shell--toolHeader"); // Replace with your container's ID
+          oContainer && (typeof oContainer.insertContent === 'function') ? oContainer.insertContent(oButton, 4) : console.error("The container does not support adding items or content.");
+          oContainer.attachEvent("_change", function (oEvent) {
+            var sReason = oEvent.getParameter("reason");
+            var oChild = oEvent.getParameter("child");
+            if (sReason === "remove" && oChild && oChild.getId() === "DarkCPI_Navbutton") {
+              setTimeout(function () {
+                (typeof oContainer.insertContent === 'function') ? oContainer.insertContent(oButton, 4) : console.error("The container does not support adding items or content.");
+              }, 10);
+            }
+          });
+        }
+      });
       logger.log("Current theme:", themeConfig[getThemeKeyByName(getCurrentSAPTheme())].label);
     }
   } catch (error) {
     logger.error("Error in applyTheme:", error);
   }
 }
-
 // Execute the main function to apply the theme
 const executeMainFunction = async () => {
   try {

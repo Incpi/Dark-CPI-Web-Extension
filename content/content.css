@@ -18,29 +18,53 @@
     --cpidarkBaseColor: #1d2d3e;
     --cpidarkMessage_InformationBorderColor: #6bb3ff;
     --cpidarkList_SelectionBackgroundColor: #1d2d3e;
+    --cpidarkdashboard_BackgroundColor: #1d232a;
 }
 
 @font-face {
-    font-family: 'SAPBPMN';
-    src: url('./SAPBPMNRegular.eot');
-    src: url(chrome-extension://__MSG_@@extension_id__/script/SAPBPMNRegular.woff) format('woff'), url('./SAPBPMNRegular.svg#SAPBPMNRegular') format('svg');
+    font-family: "SAPBPMN";
+    src: url("./SAPBPMNRegular.eot");
+    src: url(chrome-extension://__MSG_@@extension_id__/script/SAPBPMNRegular.woff) format("woff"),
+        url("./SAPBPMNRegular.svg#SAPBPMNRegular") format("svg");
     font-style: normal;
     font-weight: normal;
     text-rendering: optimizeLegibility;
 }
 
 @font-face {
-    font-family: 'SAP-icons-TNT';
-    src: url('./SAP-icons-TNT.ttf') format('truetype');
+    font-family: "SAP-icons-TNT";
+    src: url("./SAP-icons-TNT.ttf") format("truetype");
 }
 
 .event {
     stroke-width: 1;
 }
+.sapUiLocalBusyIndicatorAnimation {
+   min-width: 7em !important;
+}
 
-#shellcontent:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer .sapUxAPObjectPageSubSection .sapUxAPBlockContainer {
-    margin-left: .5rem;
-    margin-right: .5rem;
+#shellcontent:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"])
+    .sapUxAPObjectPageSection
+    .sapUxAPObjectPageSectionContainer
+    .sapUxAPObjectPageSubSection
+    .sapUxAPBlockContainer {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.cpiBadgeIndicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    line-height: 1em;
+    font-size: 0.75em;
+    z-index: 10;
 }
 
 #shellcontent[data-cpi-dark="sap_horizon_dark"] {
@@ -143,20 +167,30 @@
     }
 
     .cpides-iflowPropMain .cpides-iflowPropSheetHeader,
-    .sapUiLoSplitterContent .sapMPageHeader>div {
+    .sapUiLoSplitterContent .sapMPageHeader > div {
         background-color: var(--cpidarkBaseColor) !important;
     }
 
-    .sapUiLoSplitterContent .cpides-webuiEECanvasWrapper svg {
+    .itopweb-background-white {
+        background-color: var(--cpidarkdashboard_BackgroundColor);
+    }
 
-        rect:not([fill="#9fcdeb"], [fill='#009de0']),
+    .sapUiLoSplitterContent .cpides-webuiEECanvasWrapper svg {
+        rect:not([fill="#9fcdeb"], [fill="#009de0"]),
         circle,
-        path:not([fill="#f5c346"], [stroke="#9fcdeb"], [fill="#9fcdeb"], [class], [stroke-linejoin="round"], :not([fill='#ffffff'][stroke="none"])) {
+        path:not(
+                [fill="#f5c346"],
+                [stroke="#9fcdeb"],
+                [fill="#9fcdeb"],
+                [class],
+                [stroke-linejoin="round"],
+                :not([fill="#ffffff"][stroke="none"])
+            ) {
             fill: var(--cpidarkContent_Illustrative) !important;
         }
 
         path[stroke-linejoin="round"] {
-            stroke: var(--cpidarkTextColor)
+            stroke: var(--cpidarkTextColor);
         }
     }
 }
