@@ -1,4 +1,4 @@
-<img src="./images/Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP CPI </h1>
+<img src="./assets/images/Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP CPI </h1>
 
 Welcome to the Dark SAP CPI Web Extension for SAP CPI repository! This open-source project provides a sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
 
