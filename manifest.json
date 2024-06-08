@@ -1,24 +1,27 @@
 {
     "manifest_version": 3,
     "name": "Dark CPI",
-    "version": "1.2.0",
-    "description": "This extension will convert your CPI to dark mode as well as previous theme",
+    "version": "1.3.0",
+    "description": "This extension fix UI in SAP and extends the dark theme",
     "author": "Omkar Patel",
     "homepage_url": "https://incpi.github.io",
     "icons": {
-        "16": "images/icons/icon16.png",
-        "32": "images/icons/icon32.png",
-        "48": "images/icons/icon48.png",
-        "128": "images/icons/icon128.png"
+        "16": "assets/images/icons/icon16.png",
+        "32": "assets/images/icons/icon32.png",
+        "48": "assets/images/icons/icon48.png",
+        "128": "assets/images/icons/icon128.png"
     },
-    "permissions": ["storage", "activeTab"],
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
     "action": {
         "default_popup": "popup/popup.html",
         "default_icon": {
-            "16": "images/icons/icon16.png",
-            "32": "images/icons/icon32.png",
-            "48": "images/icons/icon48.png",
-            "128": "images/icons/icon128.png"
+            "16": "assets/images/icons/icon16.png",
+            "32": "assets/images/icons/icon32.png",
+            "48": "assets/images/icons/icon48.png",
+            "128": "assets/images/icons/icon128.png"
         }
     },
     "content_scripts": [
@@ -29,7 +32,10 @@
                 "https://*.platform.sapcloud.cn/itspaces/*",
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
-            "js": ["script/logger.js", "script/heart-beat.js"],
+            "js": [
+                "common/main/logger.js",
+                "host/CPI/main/heart-beat.js"
+            ],
             "run_at": "document_idle",
             "world": "MAIN"
         },
@@ -40,20 +46,59 @@
                 "https://*.platform.sapcloud.cn/itspaces/*",
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
-            "js": ["lib/Daisyui.min.js", "Whatsnew/data.js", "Whatsnew/whatsnew.js", "content/content.js"],
-            "css": ["lib/Daisyui.min.css", "content/content.css", "Whatsnew/whatsnew.css"]
+            "js": [
+                "lib/Daisyui.min.js",
+                "common/content/tool.js",
+                "Whatsnew/data.js",
+                "Whatsnew/whatsnew.js",
+                "host/CPI/content/content.js"
+            ],
+            "css": [
+                "lib/Daisyui.min.css",
+                "host/CPI/content/content.css",
+                "Whatsnew/whatsnew.css"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.hana.ondemand.com/sites",
+                "https://*.hana.ondemand.com/comsapuitheming.themedesigner"
+            ],
+            "js": [
+                "common/main/logger.js",
+                "host/buildWZ/main/lauchpad.js"
+            ],
+            "run_at": "document_idle",
+            "world": "MAIN"
+        },
+        {
+            "matches": [
+                "https://*.hana.ondemand.com/sites",
+                "https://*.hana.ondemand.com/comsapuitheming.themedesigner/*"
+            ],
+            "js": [
+                "lib/Daisyui.min.js",
+                "common/content/tool.js",
+                "Whatsnew/data.js",
+                "Whatsnew/whatsnew.js",
+                "host/buildWZ/content/content.js"
+            ],
+            "css": [
+                "lib/Daisyui.min.css",
+                "host/buildWZ/content/content.css",
+                "Whatsnew/whatsnew.css"
+            ]
         }
     ],
     "web_accessible_resources": [
         {
-            "resources": ["script/*.woff"],
-            "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"]
+            "resources": [
+                "assets/*.woff"
+            ],
+            "matches": [
+                "https://*.hana.ondemand.com/*",
+                "https://*.platform.sapcloud.cn/*"
+            ]
         }
-    ],
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "DarkCPI@incpi",
-            "strict_min_version": "109.0"
-        }
-    }
+    ]
 }

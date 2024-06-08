@@ -24,7 +24,7 @@
 @font-face {
     font-family: "SAPBPMN";
     src: url("./SAPBPMNRegular.eot");
-    src: url(chrome-extension://__MSG_@@extension_id__/script/SAPBPMNRegular.woff) format("woff"),
+    src: url(chrome-extension://__MSG_@@extension_id__/assets/SAPBPMNRegular.woff) format("woff"),
         url("./SAPBPMNRegular.svg#SAPBPMNRegular") format("svg");
     font-style: normal;
     font-weight: normal;

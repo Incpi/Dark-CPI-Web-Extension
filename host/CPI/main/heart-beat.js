@@ -1,14 +1,47 @@
 'use strict';
+const lunchpadtheme = {
+  1: { name: "sap_fiori_3_dark", label: "Quartz Dark" },
+  0: { name: "sap_fiori_3", label: "Quartz Light" },
+};
+
+const cpithemes = {
+  0: { name: "sap_horizon", label: "Morning Horizon" },
+  1: { name: "sap_horizon_dark", label: "Evening Horizon" },
+  2: { name: "sap_fiori_3", label: "Quartz Light" },
+};
+
+const hostmap = [
+  [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
+  [/(.*)(\integrationsuite(-trial)?.*)/, "cpi"]
+];
 
 // Logger instance for logging messages
 const logger = new Logger("CPI_Dark_mode");
 
-// Theme configuration
-const themeConfig = {
-  "0": { name: "sap_horizon", label: "Morning Horizon" },
-  "1": { name: "sap_horizon_dark", label: "Evening Horizon" },
-  "2": { name: "sap_fiori_3", label: "Quartz Light" }
+const application = () => {
+  groups = "";
+  let artifactType = "";
+  const url = location.hostname;
+  for (const dataRegexp of hostmap) {
+    if (dataRegexp[0].test(url) === true) {
+      var groups = url.match(dataRegexp[0]);
+      artifactType = dataRegexp[1];
+    }
+  }
+  return artifactType || undefined;
 };
+
+function getThemeConfig(key) {
+  if (key === "launchpad") {
+    return lunchpadtheme
+  } else if (key === "cpi") {
+    return cpithemes
+  } else {
+    return undefined
+  }
+}
+// Theme configuration
+const themeConfig = getThemeConfig(application());
 
 // URL parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -50,18 +83,6 @@ function getCurrentSAPTheme() {
   return sap.ui.getCore().getConfiguration().getTheme();
 }
 
-function getLocalTheme() {
-  const storedTheme = localStorage.getItem("SapDarkCPITheme");
-  if (storedTheme && themeConfig[storedTheme]) {
-    return storedTheme;
-  } else {
-    return '0'; // default theme
-  }
-}
-
-function setLocalTheme(themeKey) {
-  localStorage.setItem("SapDarkCPITheme", themeKey);
-}
 
 function retryAutocloseNavButton() {
   try {
@@ -117,19 +138,3 @@ async function applyTheme(themeKey) {
     logger.error("Error in applyTheme:", error);
   }
 }
-// Execute the main function to apply the theme
-const executeMainFunction = async () => {
-  try {
-    logger.log("Executing main function...");
-    const metaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
-    if (metaTag) {
-      selectedTheme = metaTag.content;
-    }
-    await applyTheme(selectedTheme);
-  } catch (error) {
-    logger.error("Error in executeMainFunction:", error);
-  }
-};
-
-// Set interval to repeatedly execute the main function
-const intervalId = setInterval(executeMainFunction, executionInterval);

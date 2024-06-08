@@ -1,20 +1,42 @@
 "use strict";
-async function getHost() {
+const hostmap = [
+    [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
+    [/(.*)(\integrationsuite(-trial)?.*)/, "cpi"]
+]
+
+const application = async () => {
+    groups = "";
+    let artifactType = "";
+    const url = await getActiveTabURL();
+    for (const dataRegexp of hostmap) {
+        if (dataRegexp[0].test(url) === true) {
+            var groups = url.match(dataRegexp[0]);
+            artifactType = dataRegexp[1];
+        }
+    }
+    return artifactType || undefined;
+};
+
+var getActiveTabURL = async () => {
     return new Promise((resolve, reject) => {
         var query = { active: true, currentWindow: true };
         function callback(tabs) {
-            var currentTab = tabs[0]; // there will be only one in this array
-            console.log(currentTab); // also has properties like currentTab.id
-            let core = currentTab.url
-                .split("/")[2]
-                .match(/.*(\.integrationsuite(-trial)?.*)/);
-            let tempHost = String(core[0]).replaceAll(String(core[1]), "");
-            console.log("Temp Host:", tempHost);
-            resolve(tempHost);
+            var currentTab = tabs[0];
+            resolve(currentTab.url);
         }
         chrome.tabs.query(query, callback);
     });
-}
+};
+
+var getHost = async () => {
+    var url = await getActiveTabURL();
+    var app = await application();
+    let core = url.match(/\/\/([A-z0-9_-]+)?./);
+    let tempHost = String(core[1])+ "_" + app;
+    console.log("Temp Host:", tempHost);
+    return tempHost;
+};
+
 const internalHostname = await getHost();
 async function getStorageData() {
     return new Promise((resolve, reject) => {
@@ -65,47 +87,51 @@ async function setProperty(property, value) {
 }
 
 async function main() {
-    console.log("Host:", internalHostname);
-    const buttons = document.querySelectorAll(".btn");
-    const versionElements = document.querySelectorAll(".version");
-    const activetheme = document.querySelector(".activetheme");
-    let theme = (await getProperty("SapDarkCPITheme")) || 1;
-    console.log("Theme:", theme);
-    const selectedButton = document.querySelector(
-        `.btn[data-value="${theme}"]`
-    );
+    console.log(await application());
+    if (await application() === undefined) {
+        document.querySelector("body>div").innerHTML = `<h2 class="header"> Dark CPI</h2>
+        <h3 style="color:red">We don't support this tab</h3>`;
+    } else {
+        console.log("Host:", internalHostname);
+        const buttons = document.querySelectorAll(".btn");
+        const versionElements = document.querySelectorAll(".version");
+        const activetheme = document.querySelector(".activetheme");
+        let theme = (await getProperty("SapDarkCPITheme")) || 1;
+        console.log("Theme:", theme);
+        const selectedButton = document.querySelector(`.btn[data-value="${theme}"]`);
 
-    if (selectedButton) {
-        selectedButton.classList.add("active");
-        activetheme.textContent = selectedButton.textContent;
-        document.body.className = "";
-        if (theme === "1") {
-            document.body.classList.add("dark-theme");
-        } else if (theme === "2") {
-            document.body.classList.add("old-theme");
-        }
-    }
-    // Set the version in all elements with class 'version'
-    versionElements.forEach((e) => {
-        e.innerHTML = chrome.runtime.getManifest().version;
-    });
-
-    // Event listener for button clicks
-    buttons.forEach((button) => {
-        button.addEventListener("click", async () => {
-            buttons.forEach((btn) => btn.classList.remove("active"));
-            button.classList.add("active");
-            activetheme.textContent = button.textContent;
-            const selectedValue = button.getAttribute("data-value");
-            await setProperty("SapDarkCPITheme", selectedValue);
-            document.body.classList = "";
-            if (selectedValue === "1") {
+        if (selectedButton) {
+            selectedButton.classList.add("active");
+            activetheme.textContent = selectedButton.textContent;
+            document.body.className = "";
+            if (theme === "1") {
                 document.body.classList.add("dark-theme");
-            } else if (selectedValue === "2") {
+            } else if (theme === "2") {
                 document.body.classList.add("old-theme");
             }
+        }
+        // Set the version in all elements with class 'version'
+        versionElements.forEach((e) => {
+            e.innerHTML = chrome.runtime.getManifest().version;
         });
-    });
+
+        // Event listener for button clicks
+        buttons.forEach((button) => {
+            button.addEventListener("click", async () => {
+                buttons.forEach((btn) => btn.classList.remove("active"));
+                button.classList.add("active");
+                activetheme.textContent = button.textContent;
+                const selectedValue = button.getAttribute("data-value");
+                await setProperty("SapDarkCPITheme", selectedValue);
+                document.body.classList = "";
+                if (selectedValue === "1") {
+                    document.body.classList.add("dark-theme");
+                } else if (selectedValue === "2") {
+                    document.body.classList.add("old-theme");
+                }
+            });
+        });
+    }
 }
 
 main().catch((err) => console.error(err));
