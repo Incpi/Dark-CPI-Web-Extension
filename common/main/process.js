@@ -1,3 +1,4 @@
+const executionInterval = 3000;
 
 function getLocalTheme() {
   const storedTheme = localStorage.getItem("SapDarkCPITheme");

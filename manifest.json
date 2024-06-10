@@ -11,10 +11,7 @@
         "48": "assets/images/icons/icon48.png",
         "128": "assets/images/icons/icon128.png"
     },
-    "permissions": [
-        "storage",
-        "activeTab"
-    ],
+    "permissions": ["storage", "activeTab"],
     "action": {
         "default_popup": "popup/popup.html",
         "default_icon": {
@@ -32,10 +29,7 @@
                 "https://*.platform.sapcloud.cn/itspaces/*",
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
-            "js": [
-                "common/main/logger.js",
-                "host/CPI/main/heart-beat.js"
-            ],
+            "js": ["common/main/logger.js", "common/main/process.js", "host/CPI/main/heart-beat.js"],
             "run_at": "document_idle",
             "world": "MAIN"
         },
@@ -53,21 +47,14 @@
                 "Whatsnew/whatsnew.js",
                 "host/CPI/content/content.js"
             ],
-            "css": [
-                "lib/Daisyui.min.css",
-                "host/CPI/content/content.css",
-                "Whatsnew/whatsnew.css"
-            ]
+            "css": ["lib/Daisyui.min.css", "host/CPI/content/content.css", "Whatsnew/whatsnew.css"]
         },
         {
             "matches": [
                 "https://*.hana.ondemand.com/sites",
                 "https://*.hana.ondemand.com/comsapuitheming.themedesigner"
             ],
-            "js": [
-                "common/main/logger.js",
-                "host/buildWZ/main/lauchpad.js"
-            ],
+            "js": ["common/main/logger.js","common/main/process.js", "host/buildWZ/main/lauchpad.js"],
             "run_at": "document_idle",
             "world": "MAIN"
         },
@@ -83,22 +70,13 @@
                 "Whatsnew/whatsnew.js",
                 "host/buildWZ/content/content.js"
             ],
-            "css": [
-                "lib/Daisyui.min.css",
-                "host/buildWZ/content/content.css",
-                "Whatsnew/whatsnew.css"
-            ]
+            "css": ["lib/Daisyui.min.css", "host/buildWZ/content/content.css", "Whatsnew/whatsnew.css"]
         }
     ],
     "web_accessible_resources": [
         {
-            "resources": [
-                "assets/*.woff"
-            ],
-            "matches": [
-                "https://*.hana.ondemand.com/*",
-                "https://*.platform.sapcloud.cn/*"
-            ]
+            "resources": ["assets/*.woff"],
+            "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"]
         }
     ]
 }

@@ -2,30 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Dark CPI</title>
-    <link rel="stylesheet" href="popup.css">
+  <meta charset="UTF-8">
+  <title>Dark CPI</title>
+  <link rel="stylesheet" href="./../lib/Daisyui.min.css">
+  <link rel="stylesheet" href="popup.css">
 </head>
 
-<body>
-    <div>
-        <h2 class="header"><span><img src="./logo.png" width="24" height="24"></span> Dark CPI <span style="color:gray"
-                class="version"></span></h2>
-        Current Theme: <span class="activetheme"></span>
-        <div id="options" class="button-group">
-            <button class="btn" data-value="0">Default UI</button>
-            <button class="btn" data-value="1">Dark UI</button>
-            <button class="btn" data-value="2">Old UI</button>
-        </div>
+<body class="darkcpiglobal">
+  <nav class="navbar shadow-lg">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl" href="#">
+        <img src="logo.png" alt="Logo" class="w-10 mr-2">
+        Dark CPI <span sytle="color:grey" class="version"></span></span></a>
     </div>
-    <a href="https://github.com/incpi/Dark-CPI-Web-Extension" target="_blank" class="logo btn" aria-label="GitHub"><svg
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="var(--bg-color)">
-            <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.799 8.205 11.385.6.11.82-.258.82-.577v-2.165c-3.338.726-4.042-1.417-4.042-1.417-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.084-.729.084-.729 1.204.084 1.837 1.236 1.837 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.774.419-1.305.762-1.605-2.665-.302-5.466-1.334-5.466-5.93 0-1.311.469-2.382 1.236-3.22-.124-.303-.536-1.522.116-3.176 0 0 1.008-.323 3.3 1.23a11.49 11.49 0 013.003-.404c1.02.004 2.048.137 3.003.404 2.29-1.553 3.296-1.23 3.296-1.23.654 1.654.242 2.873.118 3.176.77.838 1.235 1.909 1.235 3.22 0 4.606-2.807 5.625-5.479 5.92.43.372.824 1.102.824 2.222v3.293c0 .322.218.694.824.577C20.565 21.796 24 17.298 24 12 24 5.37 18.63 0 12 0z">
-            </path>
+    <div class="flex-none">
+      <a href="https://github.com/incpi/Dark-CPI-Web-Extension" target="_blank" class="logo btn"
+        aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="var(--bg-color)">
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.799 8.205 11.385.6.11.82-.258.82-.577v-2.165c-3.338.726-4.042-1.417-4.042-1.417-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.084-.729.084-.729 1.204.084 1.837 1.236 1.837 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.774.419-1.305.762-1.605-2.665-.302-5.466-1.334-5.466-5.93 0-1.311.469-2.382 1.236-3.22-.124-.303-.536-1.522.116-3.176 0 0 1.008-.323 3.3 1.23a11.49 11.49 0 013.003-.404c1.02.004 2.048.137 3.003.404 2.29-1.553 3.296-1.23 3.296-1.23.654 1.654.242 2.873.118 3.176.77.838 1.235 1.909 1.235 3.22 0 4.606-2.807 5.625-5.479 5.92.43.372.824 1.102.824 2.222v3.293c0 .322.218.694.824.577C20.565 21.796 24 17.298 24 12 24 5.37 18.63 0 12 0z">
+          </path>
         </svg>
-    </a>
-    <script type="module" src="popup.js"></script>
+      </a>
+    </div>
+  </nav>
+  <main class="py-4">
+    <div>
+      <h1 class="text-xl font-bold mb-4"><span class="activeapp"></span> Application: <span class="activetheme"></span></h1>
+      <div id="options" class="space-x-2"></div>
+    </div>
+  </main>
+  <script src="./../lib/Daisyui.min.js"></script>
+  <script type="module" src="popup.js"></script>
 </body>
 
 </html>

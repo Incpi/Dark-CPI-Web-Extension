@@ -51,7 +51,6 @@ let retryCount = 0;
 // Initialize variables
 logger.log("Initializing...");
 let selectedTheme = getLocalTheme() || "1";
-const executionInterval = 3000;
 
 // Set the default theme based on URL parameter or local theme
 if (themeConfig[darkCPIParam]) {
