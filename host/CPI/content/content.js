@@ -14,29 +14,6 @@ const interval = setInterval(async () => {
     }
 }, 500);
 
-chrome.storage.onChanged.addListener(function (changes, namespace) {
-    for (let key in changes) {
-        if (key === internalHostname) {
-            const storageChange = changes[key].newValue.SapDarkCPITheme;
-            console.log("Value of SapDarkCPITheme has changed:", storageChange);
-            let metaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
-            document
-                .querySelector("#darkcpiglobal")
-                .setAttribute("data-theme", (storageChange === "1" ? "dark" : "light"));
-            try {
-                if (!metaTag) {
-                    console.log("Meta tag not found. Creating meta tag...");
-                    tagCreate(storageChange);
-                } else {
-                    console.log("Updating meta tag content...");
-                    metaTag.content = storageChange;
-                }
-            } catch (error) {
-                console.error("Error updating meta tag:", error);
-            }
-        }
-    }
-});
 
 async function ifupdate() {
     if (await getProperty("readupdates") !== chrome.runtime.getManifest().version.toString()) {
@@ -56,18 +33,3 @@ async function ifupdate() {
 
 const intervalId = setInterval(async () => await ifupdate(), 500);
 setTimeout(() => clearInterval(intervalId), 60000);
-
-async function handleStorageChange(event) {
-    if (event.storageArea === localStorage) {
-        console.log("localStorage changed:", event);
-        if (event.key === "SapDarkCPITheme") {
-            await setProperty("SapDarkCPITheme", event.newValue);
-            console.log("Value of SapDarkCPITheme has changed:", await getProperty("SapDarkCPITheme"));
-        }
-    }
-}
-
-function addStorageEventListener() {
-    window.addEventListener("storage", handleStorageChange);
-}
-addStorageEventListener();

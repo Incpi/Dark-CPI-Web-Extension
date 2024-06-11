@@ -5,8 +5,8 @@ const hostmap = [
 ]
 
 const lunchpadtheme = {
+    2: { name: "sap_fiori_3", label: "Quartz Light", buttonlabel: "Default UI" },
     1: { name: "sap_fiori_3_dark", label: "Quartz Dark", buttonlabel: "Dark UI" },
-    0: { name: "sap_fiori_3", label: "Quartz Light", buttonlabel: "Default UI" },
 };
 
 const cpithemes = {

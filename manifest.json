@@ -29,8 +29,7 @@
                 "https://*.platform.sapcloud.cn/itspaces/*",
                 "https://*.platform.sapcloud.cn/shell/*"
             ],
-            "js": ["common/main/logger.js", "common/main/process.js", "host/CPI/main/heart-beat.js"],
-            "run_at": "document_idle",
+            "js": ["common/main/logger.js", "common/main/process-Engine.js", "host/cpi/main/heart-beat.js"],
             "world": "MAIN"
         },
         {
@@ -45,32 +44,34 @@
                 "common/content/tool.js",
                 "Whatsnew/data.js",
                 "Whatsnew/whatsnew.js",
-                "host/CPI/content/content.js"
+                "host/cpi/content/content.js"
             ],
-            "css": ["lib/Daisyui.min.css", "host/CPI/content/content.css", "Whatsnew/whatsnew.css"]
+            "css": ["lib/Daisyui.min.css", "host/cpi/content/content.css", "Whatsnew/whatsnew.css"]
         },
         {
             "matches": [
                 "https://*.hana.ondemand.com/sites",
-                "https://*.hana.ondemand.com/comsapuitheming.themedesigner"
+                "https://*.hana.ondemand.com/sites/*",
+                "https://*.hana.ondemand.com/comsapuitheming.themedesigner",
+                "https://*.hana.ondemand.com/comsapuitheming.themedesigner/*"
             ],
-            "js": ["common/main/logger.js","common/main/process.js", "host/buildWZ/main/lauchpad.js"],
-            "run_at": "document_idle",
+            "js": ["common/main/logger.js", "common/main/process-Engine.js", "host/workzone/main/lauchpad.js"],
             "world": "MAIN"
         },
         {
             "matches": [
                 "https://*.hana.ondemand.com/sites",
+                "https://*.hana.ondemand.com/sites/*",
+                "https://*.hana.ondemand.com/comsapuitheming.themedesigner",
                 "https://*.hana.ondemand.com/comsapuitheming.themedesigner/*"
             ],
             "js": [
                 "lib/Daisyui.min.js",
                 "common/content/tool.js",
                 "Whatsnew/data.js",
-                "Whatsnew/whatsnew.js",
-                "host/buildWZ/content/content.js"
+                "Whatsnew/whatsnew.js"
             ],
-            "css": ["lib/Daisyui.min.css", "host/buildWZ/content/content.css", "Whatsnew/whatsnew.css"]
+            "css": ["lib/Daisyui.min.css", "host/workzone/content/content.css", "Whatsnew/whatsnew.css"]
         }
     ],
     "web_accessible_resources": [

@@ -9,13 +9,15 @@
     --bg-color: #121212;
     --text-color: #e0e0e0;
 }
+
 .old-theme {
     --bg-color: #ffffff;
     --text-color: #1e2a38;
 }
 
-a.logo.btn{
-    background: transparent; border-color: transparent !important;
+a.logo.btn {
+    background: transparent;
+    border-color: transparent !important;
 }
 
 a.logo.btn > * {
@@ -25,7 +27,7 @@ a.logo.btn > * {
 .old-theme nav {
     color: var(--bg-color);
     background-color: var(--text-color);
-    a.logo.btn>* {
+    a.logo.btn > * {
         fill: var(--bg-color) !important;
     }
 }
@@ -40,18 +42,31 @@ body {
     color: var(--text-color);
 }
 
+main:not(:has(div[role="alert"])) {
+    padding: 1em;
+    margin-top: 1em;
+}
+
 .darkcpiglobal {
-    .btn.active,
-    .btn:focus {
+    .btn:not(.btn-ghost).active,
+    .btn:not(.btn-ghost):focus {
         background: var(--btn-active-color);
         background-color: var(--btn-active-color);
         color: var(--text-color);
         border-color: transparent transparent transparent;
     }
-    .btn:hover {
+
+    .btn:not(.btn-ghost):hover {
         background: var(--btn-hover-color);
         background-color: var(--btn-hover-color);
         color: var(--text-color);
         border-color: transparent transparent transparent;
+    }
+
+    .alert {
+        grid-auto-flow: column;
+        grid-template-columns: auto minmax(auto, 1fr);
+        justify-items: start;
+        text-align: start;
     }
 }

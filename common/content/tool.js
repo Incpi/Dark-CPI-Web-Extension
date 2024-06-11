@@ -109,3 +109,27 @@ setInterval(async () => {
             .setAttribute("data-theme", (await getProperty("SapDarkCPITheme")) === "1" ? "dark" : "light");
     }
 }, 3000);
+
+chrome.storage.onChanged.addListener(function (changes, namespace) {
+    for (let key in changes) {
+        if (key === internalHostname) {
+            const storageChange = changes[key].newValue.SapDarkCPITheme;
+            console.log("Value of SapDarkCPITheme has changed:", storageChange);
+            let metaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
+            document
+                .querySelector("#darkcpiglobal")
+                .setAttribute("data-theme", (storageChange === "1" ? "dark" : "light"));
+            try {
+                if (!metaTag) {
+                    console.log("Meta tag not found. Creating meta tag...");
+                    tagCreate(storageChange);
+                } else {
+                    console.log("Updating meta tag content...");
+                    metaTag.content = storageChange;
+                }
+            } catch (error) {
+                console.error("Error updating meta tag:", error);
+            }
+        }
+    }
+});
