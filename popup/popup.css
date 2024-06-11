@@ -31,22 +31,38 @@ a.logo.btn > * {
         fill: var(--bg-color) !important;
     }
 }
+main h1 {
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    justify-content: center !important;
+    margin-bottom: 1rem !important;
+}
 
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     width: 400px;
     max-height: 800px;
-    margin-top: 20px;
+    margin:0;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
-
+.darkcpiglobal .navbar{
+    justify-content: space-between;
+}
 main:not(:has(div[role="alert"])) {
     padding: 1em;
-    margin-top: 1em;
 }
-
+#options{
+    display: inline-flex;
+    gap: 1em;
+    .btn{
+        width:7em;
+    }
+}
 .darkcpiglobal {
     .btn:not(.btn-ghost).active,
     .btn:not(.btn-ghost):focus {

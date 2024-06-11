@@ -5,12 +5,12 @@ const hostmap = [
 ]
 
 const lunchpadtheme = {
-    2: { name: "sap_fiori_3", label: "Quartz Light", buttonlabel: "Default UI" },
+    2: { name: "sap_fiori_3", label: "Quartz Light", buttonlabel: "Default" },
     1: { name: "sap_fiori_3_dark", label: "Quartz Dark", buttonlabel: "Dark UI" },
 };
 
 const cpithemes = {
-    0: { name: "sap_horizon", label: "Morning Horizon", buttonlabel: "Default UI" },
+    0: { name: "sap_horizon", label: "Morning Horizon", buttonlabel: "Default" },
     1: { name: "sap_horizon_dark", label: "Evening Horizon", buttonlabel: "Dark UI" },
     2: { name: "sap_fiori_3", label: "Quartz Light", buttonlabel: "Old UI" },
 };
@@ -103,6 +103,12 @@ async function setProperty(property, value) {
 }
 
 async function main() {
+    // Set the version in all elements with class 'version'
+    const versionElements = document.querySelectorAll(".version");
+    versionElements.forEach((e) => {
+        e.innerHTML = " Version: " + chrome.runtime.getManifest().version;
+    });
+
     const app = await application()
     if (app === undefined) {
         document.querySelector("main").innerHTML = `<div role="alert" class="alert alert-error">
@@ -119,7 +125,6 @@ async function main() {
     } else { };
     console.log("Host:", internalHostname);
     const buttons = document.querySelectorAll(".btn");
-    const versionElements = document.querySelectorAll(".version");
     const activetheme = document.querySelector(".activetheme");
     const activeapp = document.querySelector(".activeapp");
     let theme = (await getProperty("SapDarkCPITheme")) || 1;
@@ -137,11 +142,6 @@ async function main() {
             document.body.classList.add("old-theme");
         }
     }
-    // Set the version in all elements with class 'version'
-    versionElements.forEach((e) => {
-        e.innerHTML = "Version: " + chrome.runtime.getManifest().version;
-    });
-
     // Event listener for button clicks
     buttons.forEach((button) => {
         button.addEventListener("click", async () => {

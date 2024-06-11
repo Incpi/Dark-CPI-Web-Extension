@@ -46,7 +46,12 @@
                 "Whatsnew/whatsnew.js",
                 "host/cpi/content/content.js"
             ],
-            "css": ["lib/Daisyui.min.css", "host/cpi/content/content.css", "Whatsnew/whatsnew.css"]
+            "css": [
+                "lib/Daisyui.min.css",
+                "common/content/global.css",
+                "host/cpi/content/content.css",
+                "Whatsnew/whatsnew.css"
+            ]
         },
         {
             "matches": [
@@ -65,13 +70,13 @@
                 "https://*.hana.ondemand.com/comsapuitheming.themedesigner",
                 "https://*.hana.ondemand.com/comsapuitheming.themedesigner/*"
             ],
-            "js": [
-                "lib/Daisyui.min.js",
-                "common/content/tool.js",
-                "Whatsnew/data.js",
-                "Whatsnew/whatsnew.js"
-            ],
-            "css": ["lib/Daisyui.min.css", "host/workzone/content/content.css", "Whatsnew/whatsnew.css"]
+            "js": ["lib/Daisyui.min.js", "common/content/tool.js", "Whatsnew/data.js", "Whatsnew/whatsnew.js"],
+            "css": [
+                "lib/Daisyui.min.css",
+                "common/content/global.css",
+                "host/workzone/content/content.css",
+                "Whatsnew/whatsnew.css"
+            ]
         }
     ],
     "web_accessible_resources": [
