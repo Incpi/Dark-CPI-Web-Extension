@@ -1,3 +1,4 @@
+"use strict";
 const lunchpadtheme = {
     1: { name: "sap_fiori_3_dark", label: "Quartz Dark" },
     2: { name: "sap_fiori_3", label: "Quartz Light" },
@@ -11,8 +12,8 @@ const cpithemes = {
 
 const hostmap = [
     [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
-    [/(.*)(\integrationsuite(-trial)?.*)/, "cpi"],
-];
+    [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"]
+]
 
 const executionInterval = 3000;
 

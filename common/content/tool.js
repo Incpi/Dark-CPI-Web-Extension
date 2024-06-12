@@ -1,7 +1,9 @@
+"use strict";
 const hostmap = [
     [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
-    [/(.*)(\integrationsuite(-trial)?.*)/, "cpi"]
-];
+    [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"]
+]
+
 
 function application() {
     let artifactType = undefined
