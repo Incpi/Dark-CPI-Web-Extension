@@ -69,7 +69,7 @@ The options available are:
    ![Dark mode design page](wiki/CPI%20design.png)
 
    Rollback Theme (Old):
-   ![After Theme for Cloud Platform](wiki/cpi_Old.png)
+   ![After Theme for Cloud Platform](wiki/cpi_old.png)
 
    - By default, the right-side navigation (home, monitor design, etc.) is open. Dark CPI will close it by default to avoid clutter.
    - Navigation Open:
