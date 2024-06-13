@@ -1,7 +1,10 @@
-<img src="./images/Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP CPI </h1>
+<img src="./assets/images/Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP CPI </h1>
 
-Welcome to the Dark SAP CPI Web Extension for SAP CPI repository! This open-source project provides a sleek, dark interface for your SAP Cloud Platform Integration (CPI) environment, enhancing visual comfort and overall user experience.
- 
+Welcome to the Dark CPI Web Extension for SAP CPI and Build-workzone repository! This open-source project provides a sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
+
+## Our Vision of this Project
+It addresses the common need for a cohesive and comfortable visual interface by extending the dark theme across various UI elements.Moreover, the ability to personalize and extend SAP applications allows for a more tailored user experience, aligning with individual preferences and working conditions.
+
 ## Privacy and data protection
 The plugin does not collect personal data. Nevertheless the stores like Chrome Web Store collect some anonymous data like how many users have the plugin installed. We do not trust 3rd party library & tools so we implemented our own solution instead of library to ensure security for logging in browser but nothing is stored or sent to any server by this plugin.
 
@@ -12,9 +15,9 @@ We guarantee:
 ## Installation
 
 > [!WARNING]  
-> No Firefox browser support yet.
+> No Firefox browser support.
 
-To install the SAP CPI Dark Mode Extension, please follow these steps:
+To install the Dark CPI Extension, please follow these steps:
 
 1. **Download the Extension:**
    - Visit the [Chrome Web Store](https://chromewebstore.google.com/detail/dark-sap-cpi/lmegddleeigeddljmdkonofmppbefneo) or [EDGE store](https://microsoftedge.microsoft.com/addons/detail/gpafgeambljleonppfbeieehlmdiffop) or search for "Dark CPI" in web-stores.
@@ -29,16 +32,18 @@ To install the SAP CPI Dark Mode Extension, please follow these steps:
 
 ## Usage
 
-Using the SAP CPI Dark Mode Extension is straightforward:
+Using the Dark CPI Extension is straightforward:
 
 1. Open your SAP CPI environment.
-2. The extension will automatically apply the dark theme to your interface.
+2. The extension will automatically apply the dark theme to your interface or select from extension icon on top in browser besides URL if pin it.
+
+Addtionally we support SAP BUILD and Theme Designer
 
 ## Theme Customization
 
-The SAP CPI Dark Mode Extension allows you to customize the theme by specifying a URL parameter. This feature enables you to choose from a variety of predefined themes or create your own custom theme.
+The Dark CPI Extension allows you to customize the theme by specifying a URL parameter. This feature enables you to choose from a variety of predefined themes.
 
-### Using the URL Parameter
+### Using the URL Parameter for only SAP CPI (not for SAP BUILD)
 
 To select a specific theme, append the `darkcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page,
 `https://your-sap-cpi-environment.ondamand.com/shell/design?darkcpi=theme-value`
@@ -58,7 +63,11 @@ The extension comes with the following predefined themes:
 
 If you want to create your own custom theme, you can modify the `themeMap` object in the source code. Add a new key-value pair, where the key represents the theme name (to be used in the URL parameter), and the value is an object containing the CSS styles for your custom theme.
 
-## Changelog
+## 
+
+### v1.3.0
+- [feature] Now supports addtional application such as **SAP Builds workzone** and it's theme designer.
+- [improvement] UI changes for popup.
 
 ### v1.2.0
 - [Feature] Automatically closes the navigation bar on startup.
@@ -92,7 +101,7 @@ We welcome contributions from the community! To contribute, please follow these 
 > [!IMPORTANT]  
 > No 3rd party lib is allowed in minified version. If you want to include then it should be uncompressed version So that we can review / set other environment as `ISOLATED` for security reasons.
 
-Please refer to our [Contribution Guidelines](#) for more detailed information.
+Please refer to our [Contribution Guidelines]() for more detailed information.
 
 ## Code Review Guidelines
 
@@ -104,4 +113,4 @@ We appreciate your patience and cooperation during the review process.
 ## Support
 If you have any questions, issues, or suggestions, please feel free to [open an issue](https://github.com/incpi/Dark-CPI-Web-Extension/issues) on GitHub.
 
-Thank you for using the SAP CPI Dark Mode Extension! We hope it enhances your SAP CPI experience.
+Thank you for using the Dark CPI Extension! We hope it enhances your SAP experience.
