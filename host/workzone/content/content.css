@@ -1,0 +1,12 @@
+.assignment-panel .panel-content {
+    background-color: var(--sapIllus_BackgroundColor);
+    margin-left: 1.25rem;
+    margin-right: 1.56rem;
+}
+
+.previewView .sapUiFixFlexFlexible {
+    background-color: unset;
+}
+.sapUiLocalBusyIndicatorAnimation {
+    min-width: 7em !important;
+}

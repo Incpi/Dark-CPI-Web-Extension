@@ -1,6 +1,27 @@
-// Internal hostname
-let core = location.href.split("/")[2].match(/.*(\.integrationsuite(-trial)?.*)/);
-const internalHostname = String(core[0]).replaceAll(String(core[1]), "");
+"use strict";
+const hostmap = [
+    [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
+    [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"]
+]
+
+
+function application() {
+    let artifactType = undefined
+    const url = location.href;
+    for (const dataRegexp of hostmap) {
+        if (dataRegexp[0].test(url) === true) {
+            artifactType = dataRegexp[1];
+        }
+    }
+    return artifactType;
+};
+
+function getHost() {
+    let tempHost = location.href.match(/\/\/([A-z0-9_-]+)?./)[1]+ "_" + application();
+    console.log("Temp Host:", tempHost);
+    return tempHost;
+};
+const internalHostname = getHost();
 // Storage-related functions
 async function getStorageData() {
     return new Promise((resolve, reject) => {
@@ -48,14 +69,13 @@ async function setProperty(property, value) {
         console.error("Error setting property:", error);
     }
 }
-
-// Helper functions
 function tagCreate(value = 0) {
     const metaTag = document.createElement("meta");
     metaTag.name = "SapDarkCPITheme";
     metaTag.content = value;
     document.head.appendChild(metaTag);
 }
+
 function insertElementWithId(id, classname = "") {
     const newElement = document.createElement("div");
     newElement.id = id;
@@ -74,21 +94,6 @@ function insertElementWithId(id, classname = "") {
     document.body.appendChild(newElement);
 }
 
-async function modal() {
-    loadDynamicContent();
-    updates.showModal();
-    document.getElementById("darkcpiglobal").setAttribute("data-condition", "false");
-    document.querySelector("#DarkCPI_Navbutton .cpiBadgeIndicator")?.classList.remove("cpiBadgeIndicator");
-    await setProperty("readupdates", chrome.runtime.getManifest().version.toString());
-}
-
-const interval = setInterval(async () => {
-    const element = document.getElementById("darkcpiglobal");
-    if (element && element.getAttribute("data-condition") === "true") {
-        await modal();
-    }
-}, 500);
-
 setInterval(async () => {
     let metaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
     let global = document.querySelector("#darkcpiglobal");
@@ -101,7 +106,9 @@ setInterval(async () => {
     if (!global) {
         console.log("Global element not found. Inserting element...");
         insertElementWithId("darkcpiglobal", "darkcpiglobal");
-        document.querySelector("#darkcpiglobal").setAttribute("data-theme", (await getProperty("SapDarkCPITheme")) === "1" ? "dark" : "light");
+        document
+            .querySelector("#darkcpiglobal")
+            .setAttribute("data-theme", (await getProperty("SapDarkCPITheme")) === "1" ? "dark" : "light");
     }
 }, 3000);
 
@@ -128,37 +135,3 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
         }
     }
 });
-
-async function ifupdate() {
-    if (await getProperty("readupdates") !== chrome.runtime.getManifest().version.toString()) {
-        const btn = document.querySelector("#DarkCPI_Navbutton");
-        if (btn && document.querySelectorAll("#DarkCPI_Navbutton .cpiBadgeIndicator").length === 0) {
-            const badge = document.createElement("span");
-            badge.className = "cpiBadgeIndicator";
-            btn.appendChild(badge);
-            await modal();
-        }
-    } else {
-        if (document.querySelectorAll("#DarkCPI_Navbutton .cpiBadgeIndicator").length !== 0) {
-            document.querySelector("#DarkCPI_Navbutton .cpiBadgeIndicator").classList.remove("cpiBadgeIndicator");
-        }
-    }
-}
-
-const intervalId = setInterval(async () => await ifupdate(), 100);
-setTimeout(() => clearInterval(intervalId), 60000);
-
-async function handleStorageChange(event) {
-    if (event.storageArea === localStorage) {
-        console.log("localStorage changed:", event);
-        if (event.key === "SapDarkCPITheme") {
-            await setProperty("SapDarkCPITheme", event.newValue);
-            console.log("Value of SapDarkCPITheme has changed:", await getProperty("SapDarkCPITheme"));
-        }
-    }
-}
-
-function addStorageEventListener() {
-    window.addEventListener("storage", handleStorageChange);
-}
-addStorageEventListener();

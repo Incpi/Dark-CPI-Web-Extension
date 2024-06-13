@@ -24,7 +24,7 @@
 @font-face {
     font-family: "SAPBPMN";
     src: url("./SAPBPMNRegular.eot");
-    src: url(chrome-extension://__MSG_@@extension_id__/script/SAPBPMNRegular.woff) format("woff"),
+    src: url(chrome-extension://__MSG_@@extension_id__/assets/SAPBPMNRegular.woff) format("woff"),
         url("./SAPBPMNRegular.svg#SAPBPMNRegular") format("svg");
     font-style: normal;
     font-weight: normal;
@@ -33,14 +33,14 @@
 
 @font-face {
     font-family: "SAP-icons-TNT";
-    src: url("./SAP-icons-TNT.ttf") format("truetype");
+    src: url("./SAP-icons-TNT.ttf") format("truetype");   
 }
 
 .event {
     stroke-width: 1;
 }
 .sapUiLocalBusyIndicatorAnimation {
-   min-width: 7em !important;
+    min-width: 3em !important;
 }
 
 #shellcontent:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"])

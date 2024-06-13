@@ -1,45 +1,44 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
-    --btn-bg-color: #007bff;
-    --btn-border-color: #007bff;
-    --btn-hover-bg-color: #0056b3;
-    --btn-hover-border-color: #0056b3;
-    --btn-active-bg-color: #003f7f;
-    --btn-active-border-color: #003f7f;
     --btn-active-color: #00941e;
+    --btn-hover-color: #007bff;
 }
 
 .dark-theme {
     --bg-color: #121212;
     --text-color: #e0e0e0;
-    --btn-bg-color: #1e2a38;
-    --btn-border-color: #1e2a38;
-    --btn-hover-bg-color: #314b62;
-    --btn-hover-border-color: #314b62;
-    --btn-active-bg-color: #3e607e;
-    --btn-active-border-color: #3e607e;
-    --btn-active-color: #4c7fa2;
 }
 
 .old-theme {
     --bg-color: #ffffff;
     --text-color: #1e2a38;
-    --btn-bg-color: #1a1c32;
-    --btn-border-color: #1e2a38;
-    --btn-hover-bg-color: #314b62;
-    --btn-hover-border-color: #314b62;
-    --btn-active-bg-color: #3e607e;
-    --btn-active-border-color: #3e607e;
-    --btn-active-color: #6ba0c3;
 }
 
-h2.header {
-    text-align: left;
+a.logo.btn {
+    background: transparent;
+    border-color: transparent !important;
+}
+
+a.logo.btn > * {
+    fill: var(--text-color);
+}
+
+.old-theme nav {
+    color: var(--bg-color);
+    background-color: var(--text-color);
+    a.logo.btn > * {
+        fill: var(--bg-color) !important;
+    }
+}
+main h1 {
+    font-size: 1rem;
+    font-weight: bold;
     display: flex;
     align-items: center;
-    justify-content: center;
-    column-gap: .5rem;
+    gap: 0.5em;
+    justify-content: center !important;
+    margin-bottom: 1rem !important;
 }
 
 body {
@@ -47,53 +46,43 @@ body {
     text-align: center;
     width: 400px;
     max-height: 800px;
-    margin-top: 20px;
+    margin:0;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
-
-.button-group {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+.darkcpiglobal .navbar{
+    justify-content: space-between;
 }
-
-.btn {
-    padding: 10px 20px;
-    margin: 0 5px;
-    border: 1px solid var(--btn-border-color);
-    background-color: var(--btn-bg-color);
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s, border-color 0.3s;
+main:not(:has(div[role="alert"])) {
+    padding: 1em;
 }
-
-.logo {
-    padding: .2rem;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 36px;
-    height: 36px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    background: var(--text-color);
+#options{
+    display: inline-flex;
+    gap: 1em;
+    .btn{
+        width:7em;
+    }
 }
+.darkcpiglobal {
+    .btn:not(.btn-ghost).active,
+    .btn:not(.btn-ghost):focus {
+        background: var(--btn-active-color);
+        background-color: var(--btn-active-color);
+        color: var(--text-color);
+        border-color: transparent transparent transparent;
+    }
 
-.btn:hover {
-    background-color: var(--btn-hover-bg-color);
-    border-color: var(--btn-hover-border-color);
-}
+    .btn:not(.btn-ghost):hover {
+        background: var(--btn-hover-color);
+        background-color: var(--btn-hover-color);
+        color: var(--text-color);
+        border-color: transparent transparent transparent;
+    }
 
-.btn:active {
-    background-color: var(--btn-active-bg-color);
-    border-color: var(--btn-active-border-color);
-}
-
-.btn.active {
-    background-color: var(--btn-active-color);
-    border-color: var(--btn-active-border-color);
+    .alert {
+        grid-auto-flow: column;
+        grid-template-columns: auto minmax(auto, 1fr);
+        justify-items: start;
+        text-align: start;
+    }
 }
