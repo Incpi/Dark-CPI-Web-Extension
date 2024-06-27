@@ -12,6 +12,9 @@ We guarantee:
 - No personal data / tenant information is collected. 
 - It is open source so feel free to check the source code or your network console.
 
+## Blog post
+[SAP Blog Post in community](https://community.sap.com/t5/technology-blogs-by-members/introducing-dark-cpi-web-extension-for-sap-applications/ba-p/13728785)
+
 ## Installation
 
 > [!WARNING]  
