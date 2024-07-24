@@ -16,13 +16,16 @@ const interval = setInterval(async () => {
 
 
 async function ifupdate() {
+    const silentversions = ['1.3.2'];
     if (await getProperty("readupdates") !== chrome.runtime.getManifest().version.toString()) {
         const btn = document.querySelector("#DarkCPI_Navbutton");
         if (btn && document.querySelectorAll("#DarkCPI_Navbutton .cpiBadgeIndicator").length === 0) {
             const badge = document.createElement("span");
             badge.className = "cpiBadgeIndicator";
             btn.appendChild(badge);
-            await modal();
+            if (!silentversions.includes(chrome.runtime.getManifest().version.toString())) {
+                await modal();
+            }
         }
     } else {
         if (document.querySelectorAll("#DarkCPI_Navbutton .cpiBadgeIndicator").length !== 0) {

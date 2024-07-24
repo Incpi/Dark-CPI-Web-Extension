@@ -48,7 +48,7 @@ function extrathings(themeKey) {
         sap.ui.getCore().applyTheme(themeConfig[themeKey].name);
         if (!sap.ui.getCore().byId("DarkCPI_Navbutton")) {
             var oButton = new sap.m.Button("DarkCPI_Navbutton", {
-                text: "DARK CPI",
+                text: "DC",
                 press: () => {
                     document.querySelector("#darkcpiglobal").setAttribute("data-condition", true);
                 },

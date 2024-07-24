@@ -1,8 +1,8 @@
 
 function loadDynamicContent() {
     const contentDiv = document.getElementById('dynamicContent');
-    contentDiv.innerHTML = '';
-    
+    contentDiv.innerHTML = '<br>';
+
     for (const [key, title] of Object.entries(data_sections)) {
         if (data_updates[key] && data_updates[key].length > 0) {
             const section = document.createElement('div');
@@ -27,10 +27,11 @@ function loadDynamicContent() {
 
                 list.appendChild(listItem);
             });
-
             section.appendChild(sectionTitle);
             section.appendChild(list);
+            section.appendChild(document.createElement("br"));
             contentDiv.appendChild(section);
+
         }
     }
 }
