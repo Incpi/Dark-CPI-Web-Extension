@@ -66,9 +66,12 @@ The extension comes with the following predefined themes:
 
 If you want to create your own custom theme, you can modify the `themeMap` object in the source code. Add a new key-value pair, where the key represents the theme name (to be used in the URL parameter), and the value is an object containing the CSS styles for your custom theme.
 
-## 
+## Changelogs
 
-### v1.3.0
+### v1.3.2
+- [Bugfix] SAP UI theme Horizon dark fix (Trace half screnn non visible)
+- [Bugfix] Mapping fields are invisible in mmap Files.
+- [Bugfix] Simulation error color is not correct.
 - [feature] Now supports addtional application such as **SAP Builds workzone** and it's theme designer.
 - [improvement] UI changes for popup.
 
