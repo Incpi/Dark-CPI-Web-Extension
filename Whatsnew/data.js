@@ -4,21 +4,37 @@
     samples: {features: [ { description: "Feature 1", author: "Omkar" },]}
 */
 const data_updates = {
-    features: [{ description: "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer." }],
-    improvements: [{ description: "UI improvement:  UI changes for popup." }],
+  bugFixes: [
+    {
+      description:
+        "SAP UI theme Horizon dark fix (Trace half screnn non visible)",
+      author: "Omkar",
+    },
+    { description: "Mapping fields are invisible in mmap Files." },
+    { description: "Simulation error color is not correct." },
+  ],
+  features: [
+    {
+      description:
+        "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.",
+    },
+  ],
+  improvements: [{ description: "UI improvement:  UI changes for popup." }],
 };
 
 /* 
     @type: @label for type
+
+    Note: above section are orderd by below data order
 */
 const data_sections = {
-    features: "Features",
-    improvements: "Improvements",
-    bugFixes: "Bug Fixes",
+  bugFixes: "Bug Fixes",
+  features: "Features",
+  improvements: "Improvements",
 };
 /* 
     @name: @developer link
 */
 const data_authors = {
-    "Omkar": "https://github.com/incpi",
+  Omkar: "https://github.com/incpi",
 };
