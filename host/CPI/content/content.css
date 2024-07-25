@@ -209,7 +209,9 @@
     background-color: var(--cpidarkBaseColor) !important;
   }
 
-  .itopweb-background-white {
+  .itopweb-background-white,
+  .itopweb-MessageDetailsTextArea,
+  .itopweb-HTMLControlInScrollableContainer {
     background-color: var(--cpidarkdashboard_BackgroundColor);
   }
 

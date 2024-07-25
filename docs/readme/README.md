@@ -68,7 +68,7 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 
 ## Changelogs
 
-### v1.3.2
+### v1.3.3
 - [Bugfix] SAP UI theme Horizon dark fix (Trace half screnn non visible)
 - [Bugfix] Mapping fields are invisible in mmap Files.
 - [Bugfix] Simulation error color is not correct.
