@@ -12,7 +12,8 @@ const cpithemes = {
 
 const hostmap = [
     [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
-    [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"]
+    [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"],
+    [/.*(pimas|intas)*.cfapps.*.hana.ondemand.com/, "cpi"]
 ]
 
 const executionInterval = 3000;

@@ -18,6 +18,10 @@ const data_updates = {
       description:
         "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.",
     },
+    {
+      description:
+        "Dark theme supports CPI capablities like <b>Integration Assessment & Migration Assessment</b>",
+    },
   ],
   improvements: [{ description: "UI improvement:  UI changes for popup." }],
 };

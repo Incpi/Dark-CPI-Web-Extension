@@ -13,7 +13,7 @@
 */
 'use strict'
 class Logger {
-  constructor(name = "", log = 1) {
+  constructor(name = "", log = 0) {
     this.name = name;
     this.LOG_LEVELS = {
       LOG: { level: 0, color: '\x1b[32m' }, // Green

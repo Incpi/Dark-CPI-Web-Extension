@@ -46,7 +46,7 @@ Addtionally we support SAP BUILD and Theme Designer
 
 The Dark CPI Extension allows you to customize the theme by specifying a URL parameter. This feature enables you to choose from a variety of predefined themes.
 
-### Using the URL Parameter for only SAP CPI (not for SAP BUILD)
+### Using the URL Parameter for only SAP CPI (not for SAP BUILD) (Update: Temporary debug purpose , Replaced with UI)
 
 To select a specific theme, append the `darkcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page,
 `https://your-sap-cpi-environment.ondamand.com/shell/design?darkcpi=theme-value`
@@ -73,6 +73,7 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 - [Bugfix] Mapping fields are invisible in mmap Files.
 - [Bugfix] Simulation error color is not correct.
 - [feature] Now supports addtional application such as **SAP Builds workzone** and it's theme designer.
+- [feature] Dark theme supports CPI capablities like Integration Assessment & Migration Assessment.
 - [improvement] UI changes for popup.
 
 ### v1.2.0
