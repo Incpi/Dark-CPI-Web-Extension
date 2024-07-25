@@ -78,6 +78,11 @@
         fill: var(--cpidarkMessage_InformationBorderColor)
     }
 
+    .cpides-toolbarButton span {
+        border: 0;
+        color: var(--cpidarkTextColor)
+    }
+
     .cpides-tracedWithError,
     .cpides-failure {
         fill: var(--cpidarkErrorColor)
