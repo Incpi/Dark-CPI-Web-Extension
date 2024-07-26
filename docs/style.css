@@ -1,153 +1,153 @@
 :root {
-    --main-color: #ccc;
-    --bg-color: #1e1e1e;
-    --heading-color: #fff;
-    --link-color: #1e90ff;
-    --warning-bg: #ffcc00;
-    --warning-color: #000;
-    --note-bg: #444;
-    --note-color: #fff;
-    --important-bg: #ff4444;
-    --important-color: #fff;
-    --aside-bg: #333;
+  --main-color: #ccc;
+  --bg-color: #1e1e1e;
+  --heading-color: #fff;
+  --link-color: #1e90ff;
+  --warning-bg: #ffcc00;
+  --warning-color: #000;
+  --note-bg: #444;
+  --note-color: #fff;
+  --important-bg: #ff4444;
+  --important-color: #fff;
+  --aside-bg: #333;
 }
 
 @media (prefers-color-scheme: light) {
-    :root {
-        --main-color: #333;
-        --bg-color: #fff;
-        --heading-color: #000;
-        --link-color: #0000ee;
-        --warning-bg: #ffffa0;
-        --warning-color: #000;
-        --note-bg: #e0e0e0;
-        --note-color: #000;
-        --important-bg: #ffb0b0;
-        --important-color: #000;
-        --aside-bg: #f0f0f0;
-    }
+  :root {
+    --main-color: #333;
+    --bg-color: #fff;
+    --heading-color: #000;
+    --link-color: #0000ee;
+    --warning-bg: #ffffa0;
+    --warning-color: #000;
+    --note-bg: #e0e0e0;
+    --note-color: #000;
+    --important-bg: #ffb0b0;
+    --important-color: #000;
+    --aside-bg: #f0f0f0;
+  }
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--main-color);
-    line-height: 1.6;
-    padding: 20px;
-    padding-block-end: 0px;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--main-color);
+  line-height: 1.6;
+  padding: 20px;
+  padding-block-end: 0px;
+  margin: 0;
 }
 
 h1,
 h2,
 h3,
 h4 {
-    color: var(--heading-color);
+  color: var(--heading-color);
 }
 
 a {
-    color: var(--link-color);
-    text-decoration: none;
+  color: var(--link-color);
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .warning {
-    background-color: var(--warning-bg);
-    color: var(--warning-color);
-    padding: 10px;
-    border-radius: 5px;
+  background-color: var(--warning-bg);
+  color: var(--warning-color);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .note {
-    background-color: var(--note-bg);
-    color: var(--note-color);
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  background-color: var(--note-bg);
+  color: var(--note-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .important {
-    background-color: var(--important-bg);
-    color: var(--important-color);
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  background-color: var(--important-bg);
+  color: var(--important-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .container {
-    display: flex;
-    overflow: hidden;
+  display: flex;
+  overflow: hidden;
 }
 
 aside {
-    width: 250px;
-    background-color: var(--aside-bg);
-    padding: 10px;
-    border-radius: 5px;
-    margin-right: 20px;
-    overflow-y: auto;
-    height: calc(100vh - 58px);
-    z-index: 1;
-    position: fixed;
+  width: 250px;
+  background-color: var(--aside-bg);
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 20px;
+  overflow-y: auto;
+  height: calc(100vh - 58px);
+  z-index: 1;
+  position: fixed;
 }
 
 aside ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 aside ul li {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 aside ul li a {
-    color: var(--main-color);
-    text-decoration: none;
+  color: var(--main-color);
+  text-decoration: none;
 }
 
 aside ul li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 #content {
-    flex: 1;
+  flex: 1;
 }
 
 #content {
-    flex: 1;
-    margin-left: 300px;
-    overflow-y: auto;
-    padding-bottom: 20px;
+  flex: 1;
+  margin-left: 300px;
+  overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 #content h1,
 .h1 {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 #content h2,
 .h2 {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 #content h3,
 .h3 {
-    margin-left: 40px;
+  margin-left: 40px;
 }
 
 #content h4,
 .h4 {
-    margin-left: 60px;
+  margin-left: 60px;
 }
