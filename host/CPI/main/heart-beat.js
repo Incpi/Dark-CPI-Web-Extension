@@ -43,7 +43,7 @@ function retryAutocloseNavButton() {
     logger.error(
       `Failed to execute retryAutocloseNavButton on attempt ${
         retryCount + 1
-      }: ${e.message}`
+      }: ${error.message}`
     );
   } finally {
     retryCount++;
