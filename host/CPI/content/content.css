@@ -45,10 +45,7 @@
   min-width: 3em !important;
 }
 
-#shellcontent:is(
-    [data-cpi-dark="sap_horizon_dark"],
-    [data-cpi-dark="sap_horizon"]
-  )
+html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"])
   .sapUxAPObjectPageSection
   .sapUxAPObjectPageSectionContainer
   .sapUxAPObjectPageSubSection
@@ -83,6 +80,17 @@
 }
 
 [data-cpi-dark="sap_horizon_dark"] {
+  .sapMITH:not(.sapMITBTextOnly)
+    .sapMITBSelected
+    .sapUiIcon:is(
+      .sapMITBFilterNegative,
+      .sapMITBFilterPositive,
+      .sapMITBFilterDefault,
+      .sapMITBFilterNeutral,
+      .sapMITBFilterCritical
+    ) {
+    color: var(--cpidarkBaseColor) !important;
+  }
   .cpides-traced {
     fill: var(--cpidarkMessage_InformationBorderColor);
   }

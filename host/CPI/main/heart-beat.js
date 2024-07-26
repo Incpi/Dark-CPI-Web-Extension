@@ -30,11 +30,14 @@ function retryAutocloseNavButton() {
     if (navigationList && navigationList.mProperties.expanded) {
       sap.ui.getCore().byId("__button0").firePress();
       logger.info("Navigation button closed");
-    } else {
+    } else if (sap.ui.getCore().byId("__navigation0").mProperties.expanded) {
       sap.ui
         .getCore()
         .byId("container-app---app--sideNavigationToggleButton")
         .firePress();
+      logger.info("Navigation button closed");
+    } else {
+      logger.info("Navigation button closure Failed");
     }
   } catch (error) {
     logger.error(
@@ -77,6 +80,7 @@ function extrathings(themeKey) {
         typeof appcpiContainer.insertContent === "function"
       ) {
         appcpiContainer.insertContent(oButton, 5);
+        oContainer = appcpiContainer;
       } else {
         console.error(
           "The container does not support adding items or content."
