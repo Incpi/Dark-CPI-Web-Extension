@@ -15,19 +15,19 @@
   --text-color: #1e2a38;
 }
 
-a.logo.btn {
+a.logo.btn-sm {
   background: transparent;
   border-color: transparent !important;
 }
 
-a.logo.btn > * {
+a.logo.btn-sm > * {
   fill: var(--text-color);
 }
 
 .old-theme nav {
   color: var(--bg-color);
   background-color: var(--text-color);
-  a.logo.btn > * {
+  a.logo.btn-sm > * {
     fill: var(--bg-color) !important;
   }
 }
@@ -44,7 +44,7 @@ main h1 {
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  width: 400px;
+  width: max-content;
   max-height: 800px;
   margin: 0;
   background-color: var(--bg-color);
@@ -59,20 +59,20 @@ main:not(:has(div[role="alert"])) {
 #options {
   display: inline-flex;
   gap: 1em;
-  .btn {
+  .btn-sm {
     width: 7em;
   }
 }
 .darkcpiglobal {
-  .btn:not(.btn-ghost).active,
-  .btn:not(.btn-ghost):focus {
+  .btn-sm:not(.btn-sm-ghost).active,
+  .btn-sm:not(.btn-sm-ghost):focus {
     background: var(--btn-active-color);
     background-color: var(--btn-active-color);
     color: var(--text-color);
     border-color: transparent transparent transparent;
   }
 
-  .btn:not(.btn-ghost):hover {
+  .btn-sm:not(.btn-sm-ghost):hover {
     background: var(--btn-hover-color);
     background-color: var(--btn-hover-color);
     color: var(--text-color);

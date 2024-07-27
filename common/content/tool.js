@@ -1,8 +1,8 @@
 "use strict";
 const hostmap = [
   [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
-  [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"],
-  [/.*(pimas|intas)*.cfapps.*.hana.ondemand.com/, "cpi"],
+  [/(.*)\.(hci|integrationsuite(-trial)?.*)shell/, "cpi"],
+  [/.*(pimas|intas){1}.*.cfapps.*.hana.ondemand.com/, "cpi_app"],
 ];
 
 function application() {
