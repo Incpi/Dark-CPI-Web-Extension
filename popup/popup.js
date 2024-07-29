@@ -138,7 +138,7 @@ async function main() {
   const buttons = document.querySelectorAll(".btn-sm")
   const activetheme = document.querySelector(".activetheme")
   const activeapp = document.querySelector(".activeapp")
-  let theme = (await getProperty("SapDarkCPITheme")) || 1
+  let theme = (await getProperty("SapDarkCPITheme")) || 0
   console.log("Theme:", theme)
   const selectedButton = document.querySelector(
     `.btn-sm[data-value="${theme}"]`
