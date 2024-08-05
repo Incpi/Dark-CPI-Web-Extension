@@ -17,11 +17,7 @@ function loadDynamicContent() {
         listItem.innerHTML = item.description;
 
         if (item.author) {
-          const authorLink = document.createElement("a");
-          authorLink.href = data_authors[item.author] || "#";
-          authorLink.innerHTML = `By (${item.author})`;
-          authorLink.className = "link link-primary";
-          listItem.appendChild(authorLink);
+          listItem.insertAdjacentHTML('beforeend', ` by <a class="link link-primary" href="${data_authors[item.author] || "#"}">(${item.author})</a>`);
         }
 
         list.appendChild(listItem);

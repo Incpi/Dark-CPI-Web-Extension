@@ -1,7 +1,7 @@
 "use strict"
 const hostmap = [
   [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
-  [/(.*)\.(hci|integrationsuite(-trial)?.*)shell/, "cpi"],
+  [/(.*)\.(hci|integrationsuite(-trial)?).*shell/, "cpi"],
   [/.*(pimas|intas){1}.*.cfapps.*.hana.ondemand.com/, "cpi_app"],
 ]
 
@@ -138,7 +138,7 @@ async function main() {
   const buttons = document.querySelectorAll(".btn-sm")
   const activetheme = document.querySelector(".activetheme")
   const activeapp = document.querySelector(".activeapp")
-  let theme = (await getProperty("SapDarkCPITheme")) || 1
+  let theme = (await getProperty("SapDarkCPITheme")) || 0
   console.log("Theme:", theme)
   const selectedButton = document.querySelector(
     `.btn-sm[data-value="${theme}"]`
