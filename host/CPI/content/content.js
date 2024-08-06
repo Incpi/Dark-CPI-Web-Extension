@@ -23,9 +23,13 @@ const interval = setInterval(async () => {
 
 async function ifupdate() {
   const silentversions = ["1.3.4"];
+  const totalsilentversion = ["1.3.4"];
   if (
     (await getProperty("readupdates")) !==
-    chrome.runtime.getManifest().version.toString()
+    chrome.runtime.getManifest().version.toString() &&
+    !totalsilentversion.includes(
+      chrome.runtime.getManifest().version.toString()
+    )
   ) {
     const btn = document.querySelector("#DarkCPI_Navbutton");
     if (
