@@ -5,19 +5,14 @@
 */
 const data_updates = {
   bugFixes: [
-    {
-      description:
-        "SAP UI theme Horizon dark fix (Trace half screnn non visible)",
-      author: "Omkar",
-    },
+    { description: "SAP UI theme Horizon dark fix (Trace half screnn non visible)", author: "Omkar", },
     { description: "Mapping fields are invisible in mmap Files." },
     { description: "Simulation error color is not correct." },
   ],
   features: [
-    {
-      description:
-        "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.",
-    },
+    { description: "Added support for addtional <b>SAP CPI - fka HCI / old Tenents<b>", },
+    { description: "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.", },
+    { description: "Dark theme supports CPI capablities like <b>Integration Assessment & Migration Assessment</b>", },
   ],
   improvements: [{ description: "UI improvement:  UI changes for popup." }],
 };

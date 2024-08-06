@@ -1,88 +1,104 @@
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --btn-active-color: #00941e;
-    --btn-hover-color: #007bff;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --btn-active-color: #00941e;
+  --btn-hover-color: #007bff;
 }
 
 .dark-theme {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
 }
 
 .old-theme {
-    --bg-color: #ffffff;
-    --text-color: #1e2a38;
+  --bg-color: #ffffff;
+  --text-color: #1e2a38;
 }
 
-a.logo.btn {
-    background: transparent;
-    border-color: transparent !important;
+a.logo.btn-sm {
+  background: transparent;
+  border-color: transparent !important;
 }
 
-a.logo.btn > * {
-    fill: var(--text-color);
+a.logo.btn-sm>* {
+  fill: var(--text-color);
 }
 
 .old-theme nav {
-    color: var(--bg-color);
-    background-color: var(--text-color);
-    a.logo.btn > * {
-        fill: var(--bg-color) !important;
-    }
+  color: var(--bg-color);
+  background-color: var(--text-color);
+
+  a.logo.btn-sm>* {
+    fill: var(--bg-color) !important;
+  }
 }
+
 main h1 {
-    font-size: 1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    justify-content: center !important;
-    margin-bottom: 1rem !important;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  justify-content: center !important;
+  margin-bottom: 1rem !important;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    width: 400px;
-    max-height: 800px;
-    margin:0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  width: max-content;
+  max-height: 800px;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
-.darkcpiglobal .navbar{
-    justify-content: space-between;
+
+.darkcpiglobal .navbar {
+  justify-content: space-between;
 }
+
 main:not(:has(div[role="alert"])) {
-    padding: 1em;
+  padding: 1em;
 }
-#options{
-    display: inline-flex;
-    gap: 1em;
-    .btn{
-        width:7em;
-    }
+
+#options {
+  display: inline-flex;
+  gap: 1em;
+
+  .btn-sm {
+    width: 7em;
+  }
 }
+
+.alert.alert-error {
+  border-radius: 0px;
+  font-size: medium;
+  font-weight: bolder;
+  font-family: sans-serif;
+  padding: 0.75rem;
+}
+
 .darkcpiglobal {
-    .btn:not(.btn-ghost).active,
-    .btn:not(.btn-ghost):focus {
-        background: var(--btn-active-color);
-        background-color: var(--btn-active-color);
-        color: var(--text-color);
-        border-color: transparent transparent transparent;
-    }
 
-    .btn:not(.btn-ghost):hover {
-        background: var(--btn-hover-color);
-        background-color: var(--btn-hover-color);
-        color: var(--text-color);
-        border-color: transparent transparent transparent;
-    }
+  .btn-sm:not(.btn-sm-ghost).active,
+  .btn-sm:not(.btn-sm-ghost):focus {
+    background: var(--btn-active-color);
+    background-color: var(--btn-active-color);
+    color: var(--text-color);
+    border-color: transparent transparent transparent;
+  }
 
-    .alert {
-        grid-auto-flow: column;
-        grid-template-columns: auto minmax(auto, 1fr);
-        justify-items: start;
-        text-align: start;
-    }
+  .btn-sm:not(.btn-sm-ghost):hover {
+    background: var(--btn-hover-color);
+    background-color: var(--btn-hover-color);
+    color: var(--text-color);
+    border-color: transparent transparent transparent;
+  }
+
+  .alert {
+    grid-auto-flow: column;
+    grid-template-columns: auto minmax(auto, 1fr);
+    justify-items: start;
+    text-align: start;
+  }
 }

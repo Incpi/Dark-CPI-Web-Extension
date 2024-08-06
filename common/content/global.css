@@ -51,11 +51,6 @@ h6 {
   font-weight: inherit;
 }
 
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
 b,
 strong {
   font-weight: bolder;
@@ -390,6 +385,17 @@ video {
 }
 
 /* End overwrite of default UI */
-div#darkcpiglobal a {
-  padding-inline: 0.5rem;
+
+#darkcpiglobal {
+  li {
+    list-style: inside;
+  }
+
+  a {
+    padding-inline: 0.5rem;
+  }
+
+  b {
+    color: var(--cpi-custom-color);
+  }
 }
