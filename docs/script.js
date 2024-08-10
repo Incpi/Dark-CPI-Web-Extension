@@ -1,7 +1,6 @@
 $(document).ready(function () {
-  const url = document.location.href + "readme/blog.md";
+  const url1 = document.location.href + "readme/blog.md";
   const url = document.location.href + "readme/README.md";
-  
   $.get(url, function (markdown) {
     const htmlContent = marked.parse(
       markdown
