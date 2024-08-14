@@ -383,7 +383,10 @@ video {
 .font-semibold {
   font-weight: 600;
 }
-
+textarea{
+line-height:normal;
+white-space-collapse:preserve !important
+}
 /* End overwrite of default UI */
 
 #darkcpiglobal {
