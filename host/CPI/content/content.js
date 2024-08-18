@@ -22,8 +22,8 @@ const interval = setInterval(async () => {
 }, 500);
 
 async function ifupdate() {
-  const silentversions = ["1.3.4"];
-  const totalsilentversion = ["1.3.4"];
+  const silentversions = ["1.3.4.1"];
+  const totalsilentversion = ["1.3.4.1"];
   if (
     (await getProperty("readupdates")) !==
     chrome.runtime.getManifest().version.toString() &&

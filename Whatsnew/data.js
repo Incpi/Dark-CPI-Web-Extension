@@ -5,7 +5,7 @@
 */
 const data_updates = {
   bugFixes: [
-    { description: "SAP UI theme Horizon dark fix (Trace half screnn non visible)", author: "Omkar", },
+    { description: 'SAP UI theme Horizon dark fix (Trace half screnn non visible) if any issue found. <a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a>', },
     { description: "Mapping fields are invisible in mmap Files." },
     { description: "Simulation error color is not correct." },
   ],

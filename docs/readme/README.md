@@ -67,7 +67,7 @@ The extension comes with the following predefined themes:
 If you want to create your own custom theme, you can modify the `themeMap` object in the source code. Add a new key-value pair, where the key represents the theme name (to be used in the URL parameter), and the value is an object containing the CSS styles for your custom theme.
 
 ## Changelogs
-### v1.3.4
+### v1.3.4.1
 - [feature] Added support for addtional **SAP CPI - fka HCI / old Tenents**
 - [Bugfix] UI changes fixes.
 
