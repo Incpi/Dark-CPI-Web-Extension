@@ -1,0 +1,46 @@
+name: Create Release from Manifest
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "bin/**"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write 
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Extract version from manifest.json
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' manifest.json)
+          echo "Extracted version: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
+          body: "Release created with version ${{ env.VERSION }}"
+
+      - name: Upload bin folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: bin-folder
+          path: ./bin/
