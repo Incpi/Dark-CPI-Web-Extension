@@ -1,9 +1,11 @@
-name: Create Release
+name: Create Release from Manifest
 
 on:
   push:
-    tags:
-      - 'v*.*.*'  # Trigger only on version tags like v1.0.0
+    branches:
+      - Master
+    paths:
+      - 'bin/**'
 
 jobs:
   release:
@@ -18,10 +20,21 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Extract version from manifest.json
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' manifest.json)
+          echo "Extracted version: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV  # Save the version for later steps
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically provides this token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.VERSION }} 
+          name: Release ${{ env.VERSION }} 
+          body: "Release created from bin updates in main branch with version ${{ env.VERSION }}"
 
       - name: Upload bin folder
         uses: actions/upload-artifact@v3
