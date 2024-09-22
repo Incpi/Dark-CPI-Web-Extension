@@ -24,7 +24,8 @@
 @font-face {
   font-family: "SAPBPMN";
   src: url("./SAPBPMNRegular.eot");
-  src: url(chrome-extension://__MSG_@@extension_id__/assets/SAPBPMNRegular.woff) format("woff"),
+  src: url(chrome-extension://__MSG_@@extension_id__/assets/SAPBPMNRegular.woff)
+      format("woff"),
     url("./SAPBPMNRegular.svg#SAPBPMNRegular") format("svg");
   font-style: normal;
   font-weight: normal;
@@ -44,7 +45,11 @@
   min-width: 3em !important;
 }
 
-html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer .sapUxAPObjectPageSubSection .sapUxAPBlockContainer {
+html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"])
+  .sapUxAPObjectPageSection
+  .sapUxAPObjectPageSectionContainer
+  .sapUxAPObjectPageSubSection
+  .sapUxAPBlockContainer {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
@@ -64,7 +69,7 @@ html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapU
   z-index: 10;
 }
 
-.iflowDiagramLayout>.sapUiVltCell:last-child,
+.iflowDiagramLayout > .sapUiVltCell:last-child,
 .iflowDiagramLayout:has(.sapUiVltCell:last-child) {
   height: 100%;
   width: 100%;
@@ -74,17 +79,23 @@ html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapU
   white-space-collapse: collapse !important;
 }
 
+.cpides-allFlowStepScrollableContainer {
+  background-color: transparent !important;
+}
 .cpides-customMultiInput .sapMMultiInputBorder {
   width: 100%;
 }
 
 [data-cpi-dark="sap_horizon_dark"] {
-
-  .sapMITH:not(.sapMITBTextOnly) .sapMITBSelected .sapUiIcon:is(.sapMITBFilterNegative,
-    .sapMITBFilterPositive,
-    .sapMITBFilterDefault,
-    .sapMITBFilterNeutral,
-    .sapMITBFilterCritical) {
+  .sapMITH:not(.sapMITBTextOnly)
+    .sapMITBSelected
+    .sapUiIcon:is(
+      .sapMITBFilterNegative,
+      .sapMITBFilterPositive,
+      .sapMITBFilterDefault,
+      .sapMITBFilterNeutral,
+      .sapMITBFilterCritical
+    ) {
     color: var(--cpidarkBaseColor) !important;
   }
 
@@ -98,7 +109,7 @@ html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapU
   }
 
   div[id$="iflowPropNavigationBar"] .sapMITBContainerContent,
-  div[id$="iflowPropNavigationBar"] .sapMITBContainerContent>* {
+  div[id$="iflowPropNavigationBar"] .sapMITBContainerContent > * {
     padding-block: 0;
   }
 
@@ -210,7 +221,7 @@ html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapU
   }
 
   .cpides-iflowPropMain .cpides-iflowPropSheetHeader,
-  .sapUiLoSplitterContent .sapMPageHeader>div {
+  .sapUiLoSplitterContent .sapMPageHeader > div {
     background-color: var(--cpidarkBaseColor) !important;
   }
 
@@ -221,15 +232,16 @@ html:is([data-cpi-dark="sap_horizon_dark"], [data-cpi-dark="sap_horizon"]) .sapU
   }
 
   .sapUiLoSplitterContent .cpides-webuiEECanvasWrapper svg {
-
     rect:not([fill="#9fcdeb"], [fill="#009de0"]),
     circle,
-    path:not([fill="#f5c346"],
-      [stroke="#9fcdeb"],
-      [fill="#9fcdeb"],
-      [class],
-      [stroke-linejoin="round"],
-      :not([fill="#ffffff"][stroke="#f0ab00"])) {
+    path:not(
+        [fill="#f5c346"],
+        [stroke="#9fcdeb"],
+        [fill="#9fcdeb"],
+        [class],
+        [stroke-linejoin="round"],
+        :not([fill="#ffffff"][stroke="#f0ab00"])
+      ) {
       fill: var(--cpidarkContent_Illustrative) !important;
     }
 
