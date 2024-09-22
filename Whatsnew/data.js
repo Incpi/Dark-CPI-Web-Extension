@@ -5,16 +5,27 @@
 */
 const data_updates = {
   bugFixes: [
-    { description: 'SAP UI theme Horizon dark fix (Trace half screnn non visible) if any issue found. <a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a>', },
-    { description: "Mapping fields are invisible in mmap Files." },
-    { description: "Simulation error color is not correct." },
+    {
+      description: "CPI panel display on serach fix",
+    },
+    {
+      description:
+        'SAP UI theme Horizon dark fix (Trace half screnn non visible) if any issue found. <a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a>',
+    },
   ],
   features: [
-    { description: "Added support for addtional <b>SAP CPI - fka HCI / old Tenents<b>", },
-    { description: "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.", },
-    { description: "Dark theme supports CPI capablities like <b>Integration Assessment & Migration Assessment</b>", },
+    {
+      description:
+        "Added support for addtional <b>SAP CPI - fka HCI / old Tenents<b>",
+    },
+    {
+      description:
+        "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.",
+    },
   ],
-  improvements: [{ description: "UI improvement:  UI changes for popup." }],
+  improvements: [
+    { description: "Reduce Extension size From 2 Mb to Approx. 350Kb" },
+  ],
 };
 
 /* 
@@ -23,9 +34,9 @@ const data_updates = {
     Note: above section are orderd by below data order
 */
 const data_sections = {
+  improvements: "Improvements",
   bugFixes: "Bug Fixes",
   features: "Features",
-  improvements: "Improvements",
 };
 /* 
     @name: @developer link
