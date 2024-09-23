@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write 
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -34,8 +34,10 @@ jobs:
         id: find_zip
         run: |
           ZIP_FILE=$(find ./bin -type f -name "*.zip")
+          ZIP_BASENAME=$(basename "$ZIP_FILE")
           echo "Found zip file: $ZIP_FILE"
-          echo "ZIP_FILE=$ZIP_FILE" >> $GITHUB_ENV  # Save the path to the zip file
+          echo "ZIP_FILE=$ZIP_FILE" >> $GITHUB_ENV
+          echo "ZIP_BASENAME=$ZIP_BASENAME" >> $GITHUB_ENV  # Save the zip file's name without the path
 
       - name: Create GitHub Release
         id: create_release
@@ -44,15 +46,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.VERSION }}
-          name: Release ${{ env.VERSION }}
+          name: Extension @${{ env.VERSION }} # release name
           body: "Release created with version ${{ env.VERSION }}"
 
-      - name: Attach dynamically found zip file to release
+      - name: Attach zip file with clean name to release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.ZIP_FILE }}  # Use the dynamically found zip file
-          asset_name: $(basename ${{ env.ZIP_FILE }})  # Dynamically set the zip file name
+          asset_path: ${{ env.ZIP_FILE }} # Full path zip file
+          asset_name: ${{ env.ZIP_BASENAME }} # Clean zip file name without the path
           asset_content_type: application/zip
