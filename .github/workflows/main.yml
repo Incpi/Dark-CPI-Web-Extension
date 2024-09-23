@@ -3,7 +3,7 @@ name: Create Release from Manifest
 on:
   push:
     branches:
-      - main
+      - Master
     paths:
       - "bin/**"
 
