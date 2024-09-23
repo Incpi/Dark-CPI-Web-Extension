@@ -1,8 +1,8 @@
 "use strict"
 const hostmap = [
-  [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
+  [/(.*)launchpad.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
   [/(.*)\.(hci|integrationsuite(-trial)?).*shell/, "cpi"],
-  [/.*(pimas|intas){1}.*.cfapps.*.hana.ondemand.com/, "cpi_app"],
+  [/.*(pimas|intas){1}.*\.cfapps.*\.hana\.ondemand\.com/, "cpi_app"],
 ]
 
 const lunchpadtheme = {

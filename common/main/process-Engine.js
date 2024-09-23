@@ -11,10 +11,10 @@ const cpithemes = {
 };
 
 const hostmap = [
-  [/(.*)launchpad.cfapps.*.hana.ondemand.com/, "launchpad"],
-  [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"],
-  [/.*(pimas|intas)*.cfapps.*.hana.ondemand.com/, "cpi"],
-];
+  [/(.*)launchpad.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
+  [/(.*)\.(hci|integrationsuite(-trial)?).*shell/, "cpi"],
+  [/.*(pimas|intas){1}.*\.cfapps.*\.hana\.ondemand\.com/, "cpi_app"],
+]
 
 const executionInterval = 4000;
 
