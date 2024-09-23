@@ -1,6 +1,6 @@
 "use strict"
 const hostmap = [
-  [/(.*)launchpad.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
+  [/(.*)launchpad\.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
   [/(.*)\.(hci|integrationsuite(-trial)?).*shell/, "cpi"],
   [/.*(pimas|intas){1}.*\.cfapps.*\.hana\.ondemand\.com/, "cpi_app"],
 ]
@@ -55,7 +55,7 @@ var getActiveTabURL = async () => {
 var getHost = async () => {
   var url = await getActiveTabURL()
   var app = await application()
-  let core = url.match(/\/\/([A-z0-9_-]+)?./)
+  let core = url.match(/\/\/([A-Za-z0-9_-]+)?./)
   console.log(core, app)
   let tempHost = String(core[1]) + "_" + app
   console.log("Temp Host:", tempHost)
