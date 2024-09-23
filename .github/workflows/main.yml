@@ -30,7 +30,15 @@ jobs:
           echo "Extracted version: $VERSION"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+      - name: Find the zip file in bin
+        id: find_zip
+        run: |
+          ZIP_FILE=$(find ./bin -type f -name "*.zip")
+          echo "Found zip file: $ZIP_FILE"
+          echo "ZIP_FILE=$ZIP_FILE" >> $GITHUB_ENV  # Save the path to the zip file
+
       - name: Create GitHub Release
+        id: create_release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,8 +47,12 @@ jobs:
           name: Release ${{ env.VERSION }}
           body: "Release created with version ${{ env.VERSION }}"
 
-      - name: Upload bin folder
-        uses: actions/upload-artifact@v3
+      - name: Attach dynamically found zip file to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: bin-folder
-          path: ./bin/
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ env.ZIP_FILE }}  # Use the dynamically found zip file
+          asset_name: $(basename ${{ env.ZIP_FILE }})  # Dynamically set the zip file name
+          asset_content_type: application/zip
