@@ -1,6 +1,6 @@
 "use strict";
 const hostmap = [
-  [/(.*)launchpad.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
+  [/(.*)launchpad\.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
   [/(.*)\.(hci|integrationsuite(-trial)?).*shell/, "cpi"],
   [/.*(pimas|intas){1}.*\.cfapps.*\.hana\.ondemand\.com/, "cpi_app"],
 ]
@@ -18,7 +18,7 @@ function application() {
 
 function getHost() {
   let tempHost =
-    location.href.match(/\/\/([A-z0-9_-]+)?./)[1] + "_" + application();
+    location.href.match(/\/\/([A-Za-z0-9_-]+)?./)[1] + "_" + application();
   console.log("Temp Host:", tempHost);
   return tempHost;
 }
