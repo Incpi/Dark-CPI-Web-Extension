@@ -1,5 +1,8 @@
 <img src="docs\Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP Apps like CPI, Workzone </h1>
 
+> [!NOTE]
+> [![Release from Manifest](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml/badge.svg?branch=Master)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml)[![page-deployment](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment)
+
 Welcome to the Dark CPI Web Extension for SAP CPI and Build-workzone repository! This open-source project provides a sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
 
 ## Our Vision of this Project
