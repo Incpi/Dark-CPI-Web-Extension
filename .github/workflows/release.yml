@@ -39,17 +39,33 @@ jobs:
           echo "ZIP_FILE=$ZIP_FILE" >> $GITHUB_ENV
           echo "ZIP_BASENAME=$ZIP_BASENAME" >> $GITHUB_ENV  # Save the zip file's name without the path
 
+      - name: Check for existing release
+        id: check_release
+        run: |
+          RELEASE=$(gh release view "v${{ env.VERSION }}" --json name --jq '.name' || echo "")
+          if [ -n "$RELEASE" ]; then
+            echo "Existing release found: $RELEASE"
+            echo "RELEASE_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "No existing release found."
+            echo "RELEASE_EXISTS=false" >> $GITHUB_ENV
+          fi
+
       - name: Create GitHub Release
         id: create_release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: Version_${{ env.VERSION }}
-          name: Extension @${{ env.VERSION }} # release name
-          body: "Release created with version ${{ env.VERSION }}"
+          tag_name: ${{ env.VERSION }}
+          name: Extension @${{ env.VERSION }}
+          body: "Release created/updated with version ${{ env.VERSION }}"
+          draft: false
+          prerelease: false
+          overwrite: true
 
       - name: Attach zip file with clean name to release
+        if: env.RELEASE_EXISTS == 'false' || steps.create_or_update_release.outputs.upload_url
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
