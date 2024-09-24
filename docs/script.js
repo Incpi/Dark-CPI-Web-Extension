@@ -30,7 +30,7 @@ $(document).ready(function () {
           header.prop("tagName").toLowerCase()
         );
         const link = $("<a></a>")
-          .attr("href", "#" + id)
+          .attr("href", "#" + encodeURIComponent(id))
           .text(header.text());
         link.on("click", function (event) {
           event.preventDefault();
