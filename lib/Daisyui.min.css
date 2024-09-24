@@ -2651,7 +2651,7 @@
 @media (hover: hover) {
 
   .darkcpiglobal .breadcrumbs>ol>li>a:hover,
-  .darkcpiglobal .darkcpiglobal .breadcrumbs>ul>li>a:hover {
+  .darkcpiglobal.breadcrumbs>ul>li>a:hover {
     text-decoration-line: underline;
   }
 
@@ -2704,8 +2704,8 @@
   }
 
   .darkcpiglobal .menu li> :not(ul, .menu-title, details, .btn).active,
-  .darkcpiglobal .darkcpiglobal .menu li> :not(ul, .menu-title, details, .btn):active,
-  .darkcpiglobal .darkcpiglobal .menu li>details>summary:active {
+  .darkcpiglobal.menu li> :not(ul, .menu-title, details, .btn):active,
+  .darkcpiglobal.menu li>details>summary:active {
     --tw-bg-opacity: 1;
     background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
     --tw-text-opacity: 1;
@@ -2756,20 +2756,20 @@
   }
 
   .darkcpiglobal .tabs-boxed :is(.tab-active, [aria-selected="true"]):not(.tab-disabled):not([disabled]):hover,
-  .darkcpiglobal .darkcpiglobal .tabs-boxed :is(input:checked):hover {
+  .darkcpiglobal.tabs-boxed :is(input:checked):hover {
     --tw-text-opacity: 1;
     color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
   }
 
   .darkcpiglobal .table tr.hover:hover,
-  .darkcpiglobal .darkcpiglobal .table tr.hover:nth-child(2n):hover {
+  .darkcpiglobal.table tr.hover:nth-child(2n):hover {
     --tw-bg-opacity: 1;
     background-color: var(--fallback-b2,
         oklch(var(--b2) / var(--tw-bg-opacity)));
   }
 
   .darkcpiglobal .table-zebra tr.hover:hover,
-  .darkcpiglobal .darkcpiglobal .table-zebra tr.hover:nth-child(2n):hover {
+  .darkcpiglobal.table-zebra tr.hover:nth-child(2n):hover {
     --tw-bg-opacity: 1;
     background-color: var(--fallback-b3,
         oklch(var(--b3) / var(--tw-bg-opacity)));
@@ -3701,7 +3701,7 @@
   }
 
   .darkcpiglobal .tab[disabled],
-  .darkcpiglobal .darkcpiglobal .tab[disabled]:hover {
+  .darkcpiglobal.tab[disabled]:hover {
     cursor: not-allowed;
     color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
     --tw-text-opacity: 0.2;
@@ -84056,7 +84056,7 @@
   }
 
   .darkcpiglobal .sm\:menu-sm :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .sm\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.sm\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -84074,7 +84074,7 @@
   }
 
   .darkcpiglobal .sm\:menu-md :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .sm\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.sm\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1rem;
     padding-right: 1rem;
@@ -84092,7 +84092,7 @@
   }
 
   .darkcpiglobal .sm\:menu-lg :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .sm\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.sm\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -84839,7 +84839,7 @@
   }
 
   .darkcpiglobal .md\:menu-sm :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .md\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.md\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -84857,7 +84857,7 @@
   }
 
   .darkcpiglobal .md\:menu-md :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .md\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.md\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1rem;
     padding-right: 1rem;
@@ -84875,7 +84875,7 @@
   }
 
   .darkcpiglobal .md\:menu-lg :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .md\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.md\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -85622,7 +85622,7 @@
   }
 
   .darkcpiglobal .lg\:menu-sm :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .lg\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.lg\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -85640,7 +85640,7 @@
   }
 
   .darkcpiglobal .lg\:menu-md :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .lg\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.lg\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1rem;
     padding-right: 1rem;
@@ -85658,7 +85658,7 @@
   }
 
   .darkcpiglobal .lg\:menu-lg :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .lg\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.lg\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -86405,7 +86405,7 @@
   }
 
   .darkcpiglobal .xl\:menu-sm :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .xl\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.xl\:menu-sm :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -86423,7 +86423,7 @@
   }
 
   .darkcpiglobal .xl\:menu-md :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .xl\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.xl\:menu-md :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1rem;
     padding-right: 1rem;
@@ -86441,7 +86441,7 @@
   }
 
   .darkcpiglobal .xl\:menu-lg :where(li:not(.menu-title) > :not(ul, details, .menu-title)),
-  .darkcpiglobal .darkcpiglobal .xl\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  .darkcpiglobal.xl\:menu-lg :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     border-radius: var(--rounded-btn, 0.5rem);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
