@@ -36,7 +36,7 @@ $(document).ready(function () {
           event.preventDefault();
           $("html, body").animate(
             {
-              scrollTop: $("#" + id).offset().top,
+              scrollTop: $("#" + encodeURIComponent(id)).offset().top,
             },
             500
           );
