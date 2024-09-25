@@ -1,7 +1,6 @@
 <img src="/docs/Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP Apps like CPI, Workzone </h1>
 
-> [!NOTE]
-> [![Release from Manifest](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml/badge.svg?branch=Master)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml)[![page-deployment](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment)
+> [!NOTE] > [![Release from Manifest](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml/badge.svg?branch=Master)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml)[![page-deployment](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment)
 
 Welcome to the Dark CPI Web Extension for SAP CPI and Build-workzone repository! This open-source project provides a sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
 
@@ -76,6 +75,14 @@ The extension comes with the following predefined themes:
 If you want to create your own custom theme, you can modify the `themeMap` object in the source code. Add a new key-value pair, where the key represents the theme name (to be used in the URL parameter), and the value is an object containing the CSS styles for your custom theme.
 
 ## Changelogs
+
+### Versioning Scheme
+
+- **Format**: `Major.Minor.Maintenance.Build`
+  - **Major**: Significant changes or new features.
+  - **Minor**: Small features or improvements.
+  - **Maintenance**: Bug fixes or minor updates.
+  - **Build** (optional): Used for internal purposes such as build numbers or source control revisions. This number will not appear in the changelog and is only included in maintenance versions.
 
 ### v1.3.5
 

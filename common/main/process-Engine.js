@@ -12,7 +12,7 @@ const cpithemes = {
 
 const hostmap = [
   [/(.*)launchpad\.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
-  [/(.*)\.(hci|integrationsuite(-trial)?).*shell/, "cpi"],
+  [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"],
   [/.*(pimas|intas){1}.*\.cfapps.*\.hana\.ondemand\.com/, "cpi_app"],
 ];
 
@@ -33,7 +33,16 @@ const application = () => {
   }
   return artifactType || undefined;
 };
-
+logger.log(application())
+function getThemeConfig(key) {
+  if (key === "launchpad") {
+    return lunchpadtheme;
+  } else if (key.toLowerCase().startsWith("cpi")) {
+    return cpithemes;
+  } else {
+    return undefined;
+  }
+}
 // Theme configuration
 const themeConfig = getThemeConfig(application());
 function setMetaTag(themeKey) {
@@ -66,15 +75,7 @@ function getLocalTheme() {
 function setLocalTheme(themeKey) {
   localStorage.setItem("SapDarkCPITheme", themeKey);
 }
-function getThemeConfig(key) {
-  if (key === "launchpad") {
-    return lunchpadtheme;
-  } else if (key.toLowerCase().startsWith("cpi")) {
-    return cpithemes;
-  } else {
-    return undefined;
-  }
-}
+
 
 // Apply the selected theme
 async function applyTheme(themeKey) {
