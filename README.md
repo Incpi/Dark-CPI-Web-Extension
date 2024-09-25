@@ -74,6 +74,14 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 
 ## Changelogs
 
+### Versioning Scheme
+
+- **Format**: `Major.Minor.Maintenance.Build`
+  - **Major**: Significant changes or new features.
+  - **Minor**: Small features or improvements.
+  - **Maintenance**: Bug fixes or minor updates.
+  - **Build** (optional): Used for internal purposes such as build numbers or source control revisions. This number will not appear in the changelog and is only included in maintenance versions.
+
 ### v1.3.5
 - [Bugfix] Corrected the CPI panel display issue on search.
 - [Improvement] Optimized the extension size, reducing it from 2 MB to approximately 350 KB.
