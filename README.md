@@ -75,8 +75,9 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 ## Changelogs
 
 ### v1.3.5
-- [Bugfix] CPI panel display on serach fix
-- [Improvement] Reduce Extension size From 2 Mb to Approx. 350Kb
+- [Bugfix] Corrected the CPI panel display issue on search.
+- [Improvement] Optimized the extension size, reducing it from 2 MB to approximately 350 KB.
+- [Improvement] Limited CSS overwrites to ensure a seamless native experience.
 
 ### v1.3.4.1
 
@@ -89,7 +90,7 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 - [Bugfix] Mapping fields are invisible in mmap Files.
 - [Bugfix] Simulation error color is not correct.
 - [Feature] Now supports addtional application such as **SAP Builds workzone** and it's theme designer.
-- [improvement] UI changes for popup.
+- [Improvement] UI changes for popup.
 
 ### v1.2.0
 
