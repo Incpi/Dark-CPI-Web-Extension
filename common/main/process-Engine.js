@@ -88,7 +88,7 @@ async function applyTheme(themeKey) {
     const currentSAPTheme = getCurrentSAPTheme(); // this is needed for application to get the currenttheme from site
     if (
       currentSAPTheme !== themeConfig[themeKey].name ||
-      themeKey !== getLocalTheme()
+      themeKey !== getLocalTheme() || !document.getElementById("DarkCPI_Navbutton")
     ) {
       extrathings(themeKey); // This need to implement what you want application to add and behave differently.
       setLocalTheme(themeKey);
