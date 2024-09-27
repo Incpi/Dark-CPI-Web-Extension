@@ -53,7 +53,7 @@ create_zip() {
     name="${name//,/}"
     name="${name// /_}"
 
-    exclusions=("./docs/*" "./node_modules" "./images/v[1-3]/*" "*.sh" "./bin/*" "*.json_*" "./.*")
+    exclusions=("./docs/*" "./node_modules" "*.sh" "./bin/*" "*.md" "./.*")
 
     exclude_args=()
     for pattern in "${exclusions[@]}"; do
