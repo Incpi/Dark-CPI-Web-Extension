@@ -49,11 +49,12 @@ function retryAutocloseNavButton() {
     retryCount++;
     if (retryCount <= 5) {
       setTimeout(retryAutocloseNavButton, 500);
+    }else{
+      clearTimeout(retryAutocloseNavButton)
     }
   }
 }
 
-retryAutocloseNavButton();
 function extrathings(themeKey) {
   document
     .querySelector("html")
@@ -106,3 +107,5 @@ function extrathings(themeKey) {
     }
   });
 }
+
+retryAutocloseNavButton();
