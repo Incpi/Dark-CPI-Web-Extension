@@ -63,9 +63,15 @@ jobs:
       - name: Extract version from manifest.json
         id: get_version
         run: |
-            VERSION=$(jq -r '.version' manifest.json)
-            echo "Extracted version: $VERSION"
-            echo "VERSION=$VERSION" >> $GITHUB_ENV
+          VERSION=$(jq -r '.version' manifest.json)
+          echo "Extracted version: $VERSION"
+          if [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            CLEAN_VERSION="$VERSION" 
+          else
+            CLEAN_VERSION=$(echo "$VERSION" | awk -F. '{print $1"."$2"."$3}')
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "CLEAN_VERSION=$CLEAN_VERSION" >> $GITHUB_ENV
   
       - name: Find the zip file in bin
         id: find_zip
@@ -82,8 +88,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: Version_${{ env.VERSION }}
-          name: Extension @${{ env.VERSION }} # release name
+          tag_name: Version_${{ env.CLEAN_VERSION }}
+          name: Extension @${{ env.CLEAN_VERSION }} # release name
           body: "Release created with version ${{ env.VERSION }}"
   
       - name: Attach zip file with clean name to release
