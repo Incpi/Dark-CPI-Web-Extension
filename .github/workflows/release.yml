@@ -80,7 +80,7 @@ jobs:
       - name: Find zip files in bin
         id: find_zips
         run: |
-          ZIP_FILES=$(find ./bin -type f -name "*.zip" | tr '\n' '|')  # Create a pipe-separated list
+          ZIP_FILES=$(find ./bin -type f -name "*.zip" | head -n 1)
           echo "Found zip files: $ZIP_FILES"
           echo "ZIP_FILES=$ZIP_FILES" >> $GITHUB_ENV
 
@@ -100,9 +100,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          IFS='|' read -r -a ZIP_ARRAY <<< "${{ env.ZIP_FILES }}"  # Split the pipe-separated list into an array
-          for ZIP_FILE in "${ZIP_ARRAY[@]}"; do
-            ZIP_BASENAME=$(basename "$ZIP_FILE")  # Get the clean zip file name
-            echo "Attaching $ZIP_BASENAME"
-            gh release upload "Version_${{ env.CLEAN_VERSION }}" "$ZIP_FILE" --clobber 
-          done
+          ZIP_FILE="${{ env.ZIP_FILES }}"
+          ZIP_BASENAME=$(basename "$ZIP_FILE")  # Get the clean zip file name
+          echo "Attaching $ZIP_BASENAME"
+          gh release upload "Version_${{ env.CLEAN_VERSION }}" "$ZIP_FILE" --clobber 
