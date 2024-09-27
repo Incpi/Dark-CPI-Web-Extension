@@ -66,7 +66,8 @@ The extension comes with the following predefined themes:
 - `1`: Evening Horizon - Dark Theme similar to New UI
 - `2`: Quartz Light - Previous UI Theme before Morning Horizon
 
-> [!NOTE] any other theme by SAP is not compatible with this extension.
+> [!NOTE]
+> any other theme by SAP is not compatible with this extension.
 
 ### Custom Themes
 
