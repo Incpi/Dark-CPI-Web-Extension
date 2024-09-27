@@ -5,7 +5,7 @@ set -e
 MANIFEST="manifest.json"
 MANIFEST_V2="manifest.json_v2"
 MANIFEST_V3="manifest.json_v3"
-Extension_NAME="Dark_CPI"
+EXTENSION_NAME="Dark CPI"
 BIN_DIR="./bin"
 
 log_message() {
@@ -21,15 +21,16 @@ cp README.md docs/readme/README.md
 log_message "----------------------"
 log_message "Starting zip creation process"
 
+# Create bin directory if not exists
 if [ ! -d "$BIN_DIR" ]; then
     log_message "Creating bin directory..."
     mkdir -p "$BIN_DIR"
 fi
 
+# Clean bin directory
 if [ -d "$BIN_DIR" ]; then
-  # delete all files and subdirectories in the directory
-  log_message "deleting zip files from bin directory..."
-  rm -rf "$BIN_DIR"/*
+    log_message "Deleting zip files from bin directory..."
+    rm -rf "$BIN_DIR"/*
 fi
 
 create_zip() {
@@ -42,6 +43,7 @@ create_zip() {
     name=""
     version=""
 
+    # Extract name and version from manifest file
     while IFS='' read -r line || [[ -n "$line" ]]; do
         if [[ "$line" == *"\"name\":"* ]]; then
             name=$(echo "$line" | awk -F'"' '{print $4}')
@@ -61,18 +63,18 @@ create_zip() {
     done
     exclude_args=( "${exclude_args[@]:1}" )
 
-    rm -f "./bin/$output_zip"
+    rm -f "$BIN_DIR/$output_zip"
 
     files_to_zip=$(find . -type f ! \( "${exclude_args[@]}" \))
-    
+
     if [ -z "$files_to_zip" ]; then
         log_message "No files found to zip for $version_name. Exiting."
         exit 1
     fi
 
-    echo "$files_to_zip" | zip -@ "bin/$output_zip"
+    echo "$files_to_zip" | zip -@ "$BIN_DIR/$output_zip"
 
-    log_message "ZIP file created: bin/$output_zip"
+    log_message "ZIP file created: $BIN_DIR/$output_zip"
 }
 
 process_manifest() {
@@ -89,21 +91,28 @@ process_manifest() {
 }
 
 log_message "Checking manifest.json for version"
-manifest_version=$(jq -r '.manifest_version' manifest.json)
+version=$(jq -r '.version' "$MANIFEST")
+
+if [ "$version" == "null" ]; then
+    log_message "Could not determine the version from manifest.json. Exiting."
+    exit 1
+fi
+
+manifest_version=$(jq -r '.manifest_version' "$MANIFEST")
 
 if [ "$manifest_version" == "3" ]; then
     log_message "Manifest version 3 detected (Chrome)"
-    create_zip "$MANIFEST" "Chrome" ""$Extension_NAME".zip"
+    create_zip "$MANIFEST" "Chrome" "$EXTENSION_NAME @$version.zip"
 elif [ "$manifest_version" == "2" ]; then
     log_message "Manifest version 2 detected (Firefox)"
-    create_zip "$MANIFEST" "Firefox" ""$Extension_NAME"_v2.zip"
+    create_zip "$MANIFEST" "Firefox" "$EXTENSION_NAME @$version_v2.zip"
 else
     log_message "Unknown or unsupported manifest version in manifest.json!"
     exit 1
 fi
 
 # Process optional manifest.json_v2 and manifest.json_v3 files if they exist
-process_manifest "$MANIFEST_V2" "Firefox" ""$Extension_NAME"_v2.zip"
-process_manifest "$MANIFEST_V3" "Chrome" ""$Extension_NAME".zip"
+process_manifest "$MANIFEST_V2" "Firefox" "$EXTENSION_NAME @$version_v2.zip"
+process_manifest "$MANIFEST_V3" "Chrome" "$EXTENSION_NAME @$version.zip"
 
 log_message "ZIP creation process completed."
