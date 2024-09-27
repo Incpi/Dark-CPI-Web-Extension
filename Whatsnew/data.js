@@ -11,6 +11,10 @@ const data_updates = {
     },
     {
       description:
+        "User prefer schema (Light/dark) will not effect UI with CPI Helper",
+    },
+    {
+      description:
         'SAP UI theme Horizon dark fix (Trace half screnn non visible) if any issue found. <a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a>',
     },
   ],

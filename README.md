@@ -91,6 +91,7 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 ### v1.3.4.1
 
 - [Feature] Added support for addtional **SAP CPI - fka HCI / old Tenents**
+- [BugFix] User prefer schema (Light/dark) will not effect UI with CPI Helper
 - [Bugfix] UI changes fixes.
 
 ### v1.3.3
