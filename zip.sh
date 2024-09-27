@@ -3,6 +3,10 @@
 set -e
 
 MANIFEST="manifest.json"
+MANIFEST_V2="manifest.json_v2"
+MANIFEST_V3="manifest.json_v3"
+
+BIN_DIR="./bin"
 
 log_message() {
     local message="$1"
@@ -11,15 +15,21 @@ log_message() {
     echo "[$timestamp] $message"
 }
 
-log_message "Starting copy readme to docs..."
+log_message "Copy readme to docs. Readme.md"
 cp README.md docs/readme/README.md
 
 log_message "----------------------"
 log_message "Starting zip creation process"
 
-if [ ! -d "./bin" ]; then
+if [ ! -d "$BIN_DIR" ]; then
     log_message "Creating bin directory..."
-    mkdir -p "./bin"
+    mkdir -p "$BIN_DIR"
+fi
+
+if [ -d "$BIN_DIR" ]; then
+  # delete all files and subdirectories in the directory
+  log_message "deleting zip files from bin directory..."
+  rm -rf "$BIN_DIR"/*
 fi
 
 create_zip() {
@@ -43,7 +53,7 @@ create_zip() {
     name="${name//,/}"
     name="${name// /_}"
 
-    exclusions=("./docs/*" "*.md" "./node_modules" "*.sh" "./bin/*" "./.*")
+    exclusions=("./docs/*" "./node_modules" "./images/v[1-3]/*" "*.sh" "./bin/*" "*.json_*" "./.*")
 
     exclude_args=()
     for pattern in "${exclusions[@]}"; do
@@ -65,14 +75,35 @@ create_zip() {
     log_message "ZIP file created: bin/$output_zip"
 }
 
-manifest_version=$(grep -oP '"manifest_version":\s*\K\d+' "$MANIFEST")
+process_manifest() {
+    local manifest_file="$1"
+    local version_name="$2"
+    local output_zip="$3"
+
+    if [ -f "$manifest_file" ]; then
+        log_message "$version_name manifest found."
+        create_zip "$manifest_file" "$version_name" "$output_zip"
+    else
+        log_message "$version_name manifest not found. Skipping."
+    fi
+}
+
+log_message "Checking manifest.json for version"
+manifest_version=$(jq -r '.manifest_version' manifest.json)
 
 if [ "$manifest_version" == "3" ]; then
     log_message "Manifest version 3 detected (Chrome)"
-    create_zip "$MANIFEST" "Chrome" "Dark CPI Extension.zip"
+    create_zip "$MANIFEST" "Chrome" "CPI_Helper_Extension_v3.zip"
+elif [ "$manifest_version" == "2" ]; then
+    log_message "Manifest version 2 detected (Firefox)"
+    create_zip "$MANIFEST" "Firefox" "CPI_Helper_Extension_v2.zip"
 else
-    log_message "Unknown or unsupported manifest version!"
+    log_message "Unknown or unsupported manifest version in manifest.json!"
     exit 1
 fi
 
-log_message "Dark CPI Extension.zip created and moved to bin."
+# Process optional manifest.json_v2 and manifest.json_v3 files if they exist
+process_manifest "$MANIFEST_V2" "Firefox" "CPI_Helper_Extension_v2.zip"
+process_manifest "$MANIFEST_V3" "Chrome" "CPI_Helper_Extension_v3.zip"
+
+log_message "ZIP creation process completed."
