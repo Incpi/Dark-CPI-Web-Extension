@@ -34,7 +34,6 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        color-scheme: dark;
         --in: 72.06% 0.191 231.6;
         --su: 64.8% 0.15 160;
         --wa: 84.71% 0.199 83.87;
@@ -2404,11 +2403,7 @@
     display: none;
 }
 
-:root,
-.darkcpiglobal [data-theme] {
-    background-color: var(--fallback-b1, oklch(var(--b1) / 1));
-    color: var(--fallback-bc, oklch(var(--bc) / 1));
-}
+
 
 @supports not (color: oklch(0% 0 0)) {
     :root {
