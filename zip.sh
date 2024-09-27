@@ -5,7 +5,7 @@ set -e
 MANIFEST="manifest.json"
 MANIFEST_V2="manifest.json_v2"
 MANIFEST_V3="manifest.json_v3"
-EXTENSION_NAME="Dark CPI"
+EXTENSION_NAME="Dark CPI Extension"
 BIN_DIR="./bin"
 
 log_message() {
@@ -102,17 +102,17 @@ manifest_version=$(jq -r '.manifest_version' "$MANIFEST")
 
 if [ "$manifest_version" == "3" ]; then
     log_message "Manifest version 3 detected (Chrome)"
-    create_zip "$MANIFEST" "Chrome" "$EXTENSION_NAME @$version.zip"
+    create_zip "$MANIFEST" "Chrome" "$EXTENSION_NAME.zip"
 elif [ "$manifest_version" == "2" ]; then
     log_message "Manifest version 2 detected (Firefox)"
-    create_zip "$MANIFEST" "Firefox" "$EXTENSION_NAME @$version_v2.zip"
+    create_zip "$MANIFEST" "Firefox" "$EXTENSION_NAME @v2.zip"
 else
     log_message "Unknown or unsupported manifest version in manifest.json!"
     exit 1
 fi
 
 # Process optional manifest.json_v2 and manifest.json_v3 files if they exist
-process_manifest "$MANIFEST_V2" "Firefox" "$EXTENSION_NAME @$version_v2.zip"
-process_manifest "$MANIFEST_V3" "Chrome" "$EXTENSION_NAME @$version.zip"
+process_manifest "$MANIFEST_V2" "Firefox" "$EXTENSION_NAME @v2.zip"
+process_manifest "$MANIFEST_V3" "Chrome" "$EXTENSION_NAME.zip"
 
 log_message "ZIP creation process completed."
