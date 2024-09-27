@@ -34,7 +34,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
           # Add all newly generated files to Git
-          git add bin/*
+          git add *
           git commit -m "Zip are generated on $(date)"
           git push
         env:

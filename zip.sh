@@ -43,7 +43,7 @@ create_zip() {
     name="${name//,/}"
     name="${name// /_}"
 
-    exclusions=("./docs/*" "./node_modules" "*.sh" "./bin/*" "./.*")
+    exclusions=("./docs/*" "*.md" "./node_modules" "*.sh" "./bin/*" "./.*")
 
     exclude_args=()
     for pattern in "${exclusions[@]}"; do
@@ -69,10 +69,10 @@ manifest_version=$(grep -oP '"manifest_version":\s*\K\d+' "$MANIFEST")
 
 if [ "$manifest_version" == "3" ]; then
     log_message "Manifest version 3 detected (Chrome)"
-    create_zip "$MANIFEST" "Chrome" "Dark CPI Extension v3.zip"
+    create_zip "$MANIFEST" "Chrome" "Dark CPI Extension.zip"
 else
     log_message "Unknown or unsupported manifest version!"
     exit 1
 fi
 
-log_message "Dark CPI Extension v3.zip created and moved to bin."
+log_message "Dark CPI Extension.zip created and moved to bin."
