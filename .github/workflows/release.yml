@@ -91,7 +91,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "Version ${{ env.CLEAN_VERSION }}"
+          tag_name: "V_${{ env.CLEAN_VERSION }}"
           name: "Extension @${{ env.CLEAN_VERSION }}" # Release name
           body: "Release created with version ${{ env.VERSION }}"
 
