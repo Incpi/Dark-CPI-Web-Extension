@@ -1,7 +1,4 @@
-<img src="/docs/Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP Apps like CPI, Workzone </h1>
-
-> [!NOTE]
-> [![Release from Manifest](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml/badge.svg?branch=Master)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/main.yml)[![page-deployment](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/incpi/Dark-CPI-Web-Extension/actions/workflows/pages/pages-build-deployment)
+<img src="docs\Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP Apps like CPI, Workzone </h1>
 
 Welcome to the Dark CPI Web Extension for SAP CPI and Build-workzone repository! This open-source project provides a sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
 
@@ -69,7 +66,8 @@ The extension comes with the following predefined themes:
 - `1`: Evening Horizon - Dark Theme similar to New UI
 - `2`: Quartz Light - Previous UI Theme before Morning Horizon
 
-> [!NOTE] any other theme by SAP is not compatible with this extension.
+> [!NOTE]
+> any other theme by SAP is not compatible with this extension.
 
 ### Custom Themes
 
@@ -77,10 +75,18 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 
 ## Changelogs
 
-### v1.3.5
+### Versioning Scheme
 
-- [Bugfix] CPI panel display on serach fix
-- [Improvement] Reduce Extension size From 2 Mb to Approx. 350Kb
+- **Format**: `Major.Minor.Maintenance.Build`
+  - **Major**: Significant changes or new features.
+  - **Minor**: Small features or improvements.
+  - **Maintenance**: Bug fixes or minor updates.
+  - **Build** (optional): Used for internal purposes such as build numbers or source control revisions. This number will not appear in the changelog and is only included in maintenance versions.
+
+### v1.3.5
+- [Bugfix] Corrected the CPI panel display issue on search.
+- [Improvement] Optimized the extension size, reducing it from 2 MB to approximately 350 KB.
+- [Improvement] Limited CSS overwrites to ensure a seamless native experience.
 
 ### v1.3.4.1
 
@@ -93,7 +99,7 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 - [Bugfix] Mapping fields are invisible in mmap Files.
 - [Bugfix] Simulation error color is not correct.
 - [Feature] Now supports addtional application such as **SAP Builds workzone** and it's theme designer.
-- [improvement] UI changes for popup.
+- [Improvement] UI changes for popup.
 
 ### v1.2.0
 

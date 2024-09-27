@@ -25,6 +25,10 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+html.sapUiTheme-sap_horizon_dark{
+  color-scheme: dark;
+}
+
 body {
   margin: 0;
   line-height: inherit;

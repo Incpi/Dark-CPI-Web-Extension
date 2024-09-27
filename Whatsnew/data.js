@@ -3,10 +3,11 @@
     @type:{@description, @author(should be in the data_authors list)}
     samples: {features: [ { description: "Feature 1", author: "Omkar" },]}
 */
+
 const data_updates = {
   bugFixes: [
     {
-      description: "CPI panel display on serach fix",
+      description: "Corrected the CPI panel display issue on search",
     },
     {
       description:
@@ -24,7 +25,14 @@ const data_updates = {
     },
   ],
   improvements: [
-    { description: "Reduce Extension size From 2 Mb to Approx. 350Kb" },
+    {
+      description:
+        "Limited CSS overwrites to ensure a seamless native experience.",
+    },
+    {
+      description:
+        "Optimized the extension size, reducing it from 2 MB to approximately 350 KB.",
+    },
   ],
 };
 
