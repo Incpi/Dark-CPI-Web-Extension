@@ -146,6 +146,8 @@ To ensure the highest quality of code and maintain the project's integrity, we h
 
 We appreciate your patience and cooperation during the review process.
 
+## [![Stargazers](https://reporoster.com/stars/dark/notext/Incpi/Dark-CPI-Web-Extension)](https://github.com/Incpi/Dark-CPI-Web-Extension/stargazers)
+
 ## Support
 
 If you have any questions, issues, or suggestions, please feel free to [open an issue](https://github.com/incpi/Dark-CPI-Web-Extension/issues) on GitHub.
