@@ -1,4 +1,4 @@
-<img src="docs\Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP Apps like CPI, Workzone </h1>
+<img src="\docs\Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP Apps like CPI, Workzone </h1>
 
 Welcome to the Dark CPI Web Extension for SAP CPI and Build-workzone repository! This open-source project provides a sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
 
@@ -146,7 +146,7 @@ To ensure the highest quality of code and maintain the project's integrity, we h
 
 We appreciate your patience and cooperation during the review process.
 
-## [![Stargazers](https://reporoster.com/stars/dark/notext/Incpi/Dark-CPI-Web-Extension)](https://github.com/Incpi/Dark-CPI-Web-Extension/stargazers)
+## Stargazers [![Stargazers](https://reporoster.com/stars/dark/notext/Incpi/Dark-CPI-Web-Extension)](https://github.com/Incpi/Dark-CPI-Web-Extension/stargazers)
 
 ## Support
 
