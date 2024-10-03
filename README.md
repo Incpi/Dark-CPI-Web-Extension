@@ -83,7 +83,9 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
 
 ### v1.3.6
 
-- [Improvement] Optimized the extension runtime to reduce load time.
+- [Improvement] load time was decreased by optimizing the extension runtime.
+- [BugFix] Events includes further minor UI tweaks and consistent bit order
+- [Release] Adding Release on github to quickly get binary via github.
 
 ### v1.3.5
 

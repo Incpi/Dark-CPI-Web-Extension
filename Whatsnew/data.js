@@ -7,29 +7,29 @@
 const data_updates = {
   bugFixes: [
     {
-      description: "Corrected the CPI panel display issue on search",
+      description: "Events includes further minor UI tweaks and consistent bit order",
     },
     {
       description: "User prefer schema (Light/dark) will not effect UI with CPI Helper",
     },
     {
-      description: 'SAP UI theme Horizon dark fix (Trace half screnn non visible) if any issue found. <a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a>',
+      description: 'SAP UI theme Horizon dark fix, <br> if any issue found. <strong><a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a></strong>',
     },
   ],
   features: [
     {
-      description: "Added support for addtional <b>SAP CPI - fka HCI / old Tenents<b>",
+      description: "Adding Release on github to quickly get binary via github.",
     },
     {
-      description: "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.",
+      description: "Added support for addtional <b>SAP CPI - fka HCI / old Tenents<b>",
     },
   ],
   improvements: [
     {
-      description: "Limited CSS overwrites to ensure a seamless native experience.",
+      description: "load time was decreased by optimizing the extension runtime",
     },
     {
-      description: "Optimized the extension size, reducing it from 2 MB to approximately 350 KB.",
+      description: "Limited CSS overwrites to ensure a seamless native experience.",
     },
   ],
 };
@@ -40,8 +40,8 @@ const data_updates = {
     Note: above section are orderd by below data order
 */
 const data_sections = {
-  improvements: "Improvements",
   bugFixes: "Bug Fixes",
+  improvements: "Improvements",
   features: "Features",
 };
 /* 
