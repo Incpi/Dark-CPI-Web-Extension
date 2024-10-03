@@ -23,34 +23,32 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://*.hana.ondemand.com/*",
-        "https://*.platform.sapcloud.cn/*"
-      ],
+      "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"],
       "js": [
-        "common/main/logger.js",
-        "common/main/process-Engine.js",
-        "host/cpi/main/heart-beat.js"
+        "/common/main/logger.js",
+        "/common/constants.js",
+        "/common/main/process-Engine.js",
+        "/host/cpi/main/heart-beat.js"
       ],
-      "world": "MAIN"
+      "world": "MAIN",
+      "RunAt": "document_end"
     },
     {
-      "matches": [
-        "https://*.hana.ondemand.com/*",
-        "https://*.platform.sapcloud.cn/*"
-      ],
+      "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"],
       "js": [
-        "lib/Daisyui.min.js",
-        "common/content/tool.js",
-        "Whatsnew/data.js",
-        "Whatsnew/whatsnew.js",
-        "host/cpi/content/content.js"
+        "/lib/Daisyui.min.js",
+        "/common/constants.js",
+        "/common/content/tool.js",
+        "/Whatsnew/data.js",
+        "/Whatsnew/whatsnew.js",
+        "/host/cpi/content/content.js"
       ],
+      "RunAt": "document_end",
       "css": [
-        "lib/Daisyui.min.css",
-        "common/content/global.css",
-        "host/cpi/content/content.css",
-        "Whatsnew/whatsnew.css"
+        "/lib/Daisyui.min.css",
+        "/common/content/global.css",
+        "/host/cpi/content/content.css",
+        "/Whatsnew/whatsnew.css"
       ]
     },
     {
@@ -61,11 +59,13 @@
         "https://*.hana.ondemand.com/comsapuitheming.themedesigner/*"
       ],
       "js": [
-        "common/main/logger.js",
-        "common/main/process-Engine.js",
-        "host/workzone/main/lauchpad.js"
+        "/common/main/logger.js",
+        "/common/constants.js",
+        "/common/main/process-Engine.js",
+        "/host/workzone/main/lauchpad.js"
       ],
-      "world": "MAIN"
+      "world": "MAIN",
+      "RunAt": "document_end"
     },
     {
       "matches": [
@@ -75,26 +75,25 @@
         "https://*.hana.ondemand.com/comsapuitheming.themedesigner/*"
       ],
       "js": [
-        "lib/Daisyui.min.js",
-        "common/content/tool.js",
-        "Whatsnew/data.js",
-        "Whatsnew/whatsnew.js"
+        "/lib/Daisyui.min.js",
+        "/common/constants.js",
+        "/common/content/tool.js",
+        "/Whatsnew/data.js",
+        "/Whatsnew/whatsnew.js"
       ],
+      "RunAt": "document_end",
       "css": [
-        "lib/Daisyui.min.css",
-        "common/content/global.css",
-        "host/workzone/content/content.css",
-        "Whatsnew/whatsnew.css"
+        "/lib/Daisyui.min.css",
+        "/common/content/global.css",
+        "/host/workzone/content/content.css",
+        "/Whatsnew/whatsnew.css"
       ]
     }
   ],
   "web_accessible_resources": [
     {
       "resources": ["assets/*.woff"],
-      "matches": [
-        "https://*.hana.ondemand.com/*",
-        "https://*.platform.sapcloud.cn/*"
-      ]
+      "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"]
     }
   ]
 }

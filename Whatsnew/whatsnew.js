@@ -17,7 +17,7 @@ function loadDynamicContent() {
         listItem.innerHTML = item.description;
 
         if (item.author) {
-          listItem.insertAdjacentHTML('beforeend', ` by <a class="link link-primary" href="${data_authors[item.author] || "#"}">(${item.author})</a>`);
+          listItem.insertAdjacentHTML("beforeend", ` by <a class="link link-primary" href="${data_authors[item.author] || "#"}">(${item.author})</a>`);
         }
 
         list.appendChild(listItem);
@@ -25,9 +25,7 @@ function loadDynamicContent() {
       section.appendChild(sectionTitle);
       section.appendChild(document.createElement("br"));
       section.appendChild(list);
-      section
-        .appendChild(document.createElement("div"))
-        .classList.add("divider");
+      section.appendChild(document.createElement("div")).classList.add("divider");
       contentDiv.appendChild(section);
     }
   }

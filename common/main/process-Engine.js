@@ -1,21 +1,4 @@
 "use strict";
-const lunchpadtheme = {
-  1: { name: "sap_fiori_3_dark", label: "Quartz Dark" },
-  2: { name: "sap_fiori_3", label: "Quartz Light" },
-};
-
-const cpithemes = {
-  0: { name: "sap_horizon", label: "Morning Horizon" },
-  1: { name: "sap_horizon_dark", label: "Evening Horizon" },
-  2: { name: "sap_fiori_3", label: "Quartz Light" },
-};
-
-const hostmap = [
-  [/(.*)launchpad\.cfapps.*\.hana\.ondemand\.com/, "launchpad"],
-  [/(.*)\.(hci|integrationsuite(-trial)?.*)/, "cpi"],
-  [/.*(pimas|intas){1}.*\.cfapps.*\.hana\.ondemand\.com/, "cpi_app"],
-];
-
 const executionInterval = 4000;
 
 // Logger instance for logging messages
@@ -33,7 +16,7 @@ const application = () => {
   }
   return artifactType || undefined;
 };
-logger.log(application())
+logger.log(application());
 function getThemeConfig(key) {
   if (key === "launchpad") {
     return lunchpadtheme;
@@ -46,9 +29,7 @@ function getThemeConfig(key) {
 // Theme configuration
 const themeConfig = getThemeConfig(application());
 function setMetaTag(themeKey) {
-  const existingMetaTag = document.querySelector(
-    'meta[name="SapDarkCPITheme"]'
-  );
+  const existingMetaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
   if (!existingMetaTag) {
     const newMetaTag = document.createElement("meta");
     newMetaTag.name = "SapDarkCPITheme";
@@ -58,9 +39,7 @@ function setMetaTag(themeKey) {
 }
 
 function getThemeKeyByName(themeName) {
-  return Object.keys(themeConfig).find(
-    (key) => themeConfig[key].name === themeName
-  );
+  return Object.keys(themeConfig).find((key) => themeConfig[key].name === themeName);
 }
 
 function getLocalTheme() {
@@ -76,20 +55,13 @@ function setLocalTheme(themeKey) {
   localStorage.setItem("SapDarkCPITheme", themeKey);
 }
 
-
 // Apply the selected theme
 async function applyTheme(themeKey) {
   try {
     setMetaTag(themeKey);
-    logger.log(
-      "Setting theme:",
-      themeConfig[getThemeKeyByName(themeConfig[themeKey].name)].label
-    );
+    logger.log("Setting theme:", themeConfig[getThemeKeyByName(themeConfig[themeKey].name)].label);
     const currentSAPTheme = getCurrentSAPTheme(); // this is needed for application to get the currenttheme from site
-    if (
-      currentSAPTheme !== themeConfig[themeKey].name ||
-      themeKey !== getLocalTheme() || !document.getElementById("DarkCPI_Navbutton")
-    ) {
+    if (currentSAPTheme !== themeConfig[themeKey].name || themeKey !== getLocalTheme() || !document.getElementById("DarkCPI_Navbutton")) {
       extrathings(themeKey); // This need to implement what you want application to add and behave differently.
       setLocalTheme(themeKey);
     }
@@ -120,10 +92,7 @@ async function handleStorageChange(event) {
     console.log("localStorage changed:", event);
     if (event.key === "SapDarkCPITheme") {
       await setProperty("SapDarkCPITheme", event.newValue);
-      console.log(
-        "Value of SapDarkCPITheme has changed:",
-        await getProperty("SapDarkCPITheme")
-      );
+      console.log("Value of SapDarkCPITheme has changed:", await getProperty("SapDarkCPITheme"));
     }
   }
 }
@@ -153,6 +122,4 @@ function waitForFunctions(funcNames) {
   });
 }
 
-waitForFunctions(functionsToCheck).then(() =>
-  setInterval(executeMainFunction, executionInterval)
-);
+waitForFunctions(functionsToCheck).then(() => setInterval(executeMainFunction, executionInterval));

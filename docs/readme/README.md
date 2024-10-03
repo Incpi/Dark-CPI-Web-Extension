@@ -53,8 +53,7 @@ The Dark CPI Extension allows you to customize the theme by specifying a URL par
 
 ### Using the URL Parameter for only SAP CPI (not for SAP BUILD) (Update: Temporary debug purpose , Replaced with UI)
 
-To select a specific theme, append the `darkcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page,
-`https://your-sap-cpi-environment.ondamand.com/shell/design?darkcpi=theme-value`
+To select a specific theme, append the `darkcpi` parameter to the URL of your SAP CPI environment, followed by the desired theme value. For example:from design page, `https://your-sap-cpi-environment.ondamand.com/shell/design?darkcpi=theme-value`
 
 Replace `theme-value` with one of the valid keys from the `themeMap` object.
 
@@ -66,8 +65,7 @@ The extension comes with the following predefined themes:
 - `1`: Evening Horizon - Dark Theme similar to New UI
 - `2`: Quartz Light - Previous UI Theme before Morning Horizon
 
-> [!NOTE]
-> any other theme by SAP is not compatible with this extension.
+> [!NOTE] any other theme by SAP is not compatible with this extension.
 
 ### Custom Themes
 
@@ -83,12 +81,17 @@ If you want to create your own custom theme, you can modify the `themeMap` objec
   - **Maintenance**: Bug fixes or minor updates.
   - **Build** (optional): Used for internal purposes such as build numbers or source control revisions. This number will not appear in the changelog and is only included in maintenance versions.
 
+### v1.3.6
+
+- [Improvement] Optimized the extension runtime to reduce load time.
+
 ### v1.3.5
+
 - [Bugfix] Corrected the CPI panel display issue on search.
 - [Improvement] Optimized the extension size, reducing it from 2 MB to approximately 350 KB.
 - [Improvement] Limited CSS overwrites to ensure a seamless native experience.
 
-### v1.3.4.1
+### v1.3.4
 
 - [Feature] Added support for addtional **SAP CPI - fka HCI / old Tenents**
 - [BugFix] User prefer schema (Light/dark) will not effect UI with CPI Helper

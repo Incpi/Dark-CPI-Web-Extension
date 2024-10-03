@@ -22,8 +22,7 @@ class Logger {
       ERROR: { level: 3, color: "\x1b[31m" }, // Red
       DEBUG: { level: 4, color: "\x1b[34m" }, // Blue
     };
-    this.logLevel =
-      this.LOG_LEVELS[Object.keys(this.LOG_LEVELS)[log]] || this.LOG_LEVELS.LOG;
+    this.logLevel = this.LOG_LEVELS[Object.keys(this.LOG_LEVELS)[log]] || this.LOG_LEVELS.LOG;
   }
 
   setLogLevel(level) {

@@ -10,32 +10,26 @@ const data_updates = {
       description: "Corrected the CPI panel display issue on search",
     },
     {
-      description:
-        "User prefer schema (Light/dark) will not effect UI with CPI Helper",
+      description: "User prefer schema (Light/dark) will not effect UI with CPI Helper",
     },
     {
-      description:
-        'SAP UI theme Horizon dark fix (Trace half screnn non visible) if any issue found. <a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a>',
+      description: 'SAP UI theme Horizon dark fix (Trace half screnn non visible) if any issue found. <a href="https://github.com/incpi/Dark-CPI-Web-Extension/issues" target="_blank">Report here</a>',
     },
   ],
   features: [
     {
-      description:
-        "Added support for addtional <b>SAP CPI - fka HCI / old Tenents<b>",
+      description: "Added support for addtional <b>SAP CPI - fka HCI / old Tenents<b>",
     },
     {
-      description:
-        "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.",
+      description: "Now supports addtional application such as <b>SAP Builds workzone</b> and it's theme designer.",
     },
   ],
   improvements: [
     {
-      description:
-        "Limited CSS overwrites to ensure a seamless native experience.",
+      description: "Limited CSS overwrites to ensure a seamless native experience.",
     },
     {
-      description:
-        "Optimized the extension size, reducing it from 2 MB to approximately 350 KB.",
+      description: "Optimized the extension size, reducing it from 2 MB to approximately 350 KB.",
     },
   ],
 };

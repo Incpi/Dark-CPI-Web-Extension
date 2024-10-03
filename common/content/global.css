@@ -9,7 +9,7 @@
 
 ::after,
 ::before {
-  --tw-content: "";
+  --tw-content: '';
 }
 
 :host,
@@ -18,14 +18,13 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   tab-size: 4;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-feature-settings: normal;
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent;
 }
 
-html.sapUiTheme-sap_horizon_dark{
+html.sapUiTheme-sap_horizon_dark {
   color-scheme: dark;
 }
 
@@ -64,8 +63,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   font-feature-settings: normal;
   font-variation-settings: normal;
   font-size: 1em;
@@ -120,9 +118,9 @@ select {
 }
 
 button,
-input:where([type="button"]),
-input:where([type="reset"]),
-input:where([type="submit"]) {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
   -webkit-appearance: button;
   background-color: transparent;
   background-image: none;
@@ -145,7 +143,7 @@ progress {
   height: auto;
 }
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
@@ -210,7 +208,7 @@ textarea::placeholder {
   color: #9ca3af;
 }
 
-[role="button"],
+[role='button'],
 button {
   cursor: pointer;
 }

@@ -1,11 +1,7 @@
 $(document).ready(function () {
   const url = document.location.href + "readme/README.md";
   $.get(url, function (markdown) {
-    const htmlContent = marked.parse(
-      markdown
-        .replace("[!IMPORTANT]", "<b> IMPORTANT </b>")
-        .replace("[!WARNING]", "<b> WARNING </b>")
-    );
+    const htmlContent = marked.parse(markdown.replace("[!IMPORTANT]", "<b> IMPORTANT </b>").replace("[!WARNING]", "<b> WARNING </b>"));
     $("#content").html(htmlContent);
     $("#content img:first").attr("src", "./res/Black_full.png");
     generateToc();
@@ -19,16 +15,10 @@ $(document).ready(function () {
       .find("h1, h2, h3, h4")
       .each(function () {
         const header = $(this);
-        const id = header
-          .text()
-          .replace(/\s+/g, "-")
-          .replace(/\./g, "-")
-          .toLowerCase();
+        const id = header.text().replace(/\s+/g, "-").replace(/\./g, "-").toLowerCase();
         header.attr("id", id);
 
-        const li = $("<li></li>").addClass(
-          header.prop("tagName").toLowerCase()
-        );
+        const li = $("<li></li>").addClass(header.prop("tagName").toLowerCase());
         const link = $("<a></a>")
           .attr("href", "#" + encodeURIComponent(id))
           .text(header.text());

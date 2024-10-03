@@ -17,11 +17,11 @@ function application() {
 }
 
 function getHost() {
-  let tempHost =
-    location.href.match(/\/\/([A-Za-z0-9_-]+)?./)[1] + "_" + application();
+  let tempHost = location.href.match(/\/\/([A-Za-z0-9_-]+)?./)[1] + "_" + application();
   console.log("Temp Host:", tempHost);
   return tempHost;
 }
+
 const internalHostname = getHost();
 // Storage-related functions
 async function getStorageData() {
@@ -84,9 +84,7 @@ function insertElementWithId(id, classname = "") {
   newElement.innerHTML = `<dialog id="updates" class="modal">
         <div class="modal-box">
             <form method="dialog"><button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button></form>
-            <h2 class="text-2xl font-semibold text-primary mb-4">What's New in Dark CPI v:${chrome.runtime
-              .getManifest()
-              .version.toString()}</h2>
+            <h2 class="text-2xl font-semibold text-primary mb-4">What's New in Dark CPI v:${chrome.runtime.getManifest().version.toString()}</h2>
             <div id="dynamicContent" class="mb-4"></div>
             <div role="alert" class="alert">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -109,12 +107,7 @@ setInterval(async () => {
   if (!global) {
     console.log("Global element not found. Inserting element...");
     insertElementWithId("darkcpiglobal", "darkcpiglobal");
-    document
-      .querySelector("#darkcpiglobal")
-      .setAttribute(
-        "data-theme",
-        (await getProperty("SapDarkCPITheme")) === "1" ? "dark" : "light"
-      );
+    document.querySelector("#darkcpiglobal").setAttribute("data-theme", (await getProperty("SapDarkCPITheme")) === "1" ? "dark" : "light");
   }
 }, 4000);
 
@@ -124,9 +117,7 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       const storageChange = changes[key].newValue.SapDarkCPITheme;
       console.log("Value of SapDarkCPITheme has changed:", storageChange);
       let metaTag = document.querySelector('meta[name="SapDarkCPITheme"]');
-      document
-        .querySelector("#darkcpiglobal")
-        .setAttribute("data-theme", storageChange === "1" ? "dark" : "light");
+      document.querySelector("#darkcpiglobal").setAttribute("data-theme", storageChange === "1" ? "dark" : "light");
       try {
         if (!metaTag) {
           console.log("Meta tag not found. Creating meta tag...");

@@ -20,7 +20,7 @@ a.logo.btn-sm {
   border-color: transparent !important;
 }
 
-a.logo.btn-sm>* {
+a.logo.btn-sm > * {
   fill: var(--text-color);
 }
 
@@ -28,7 +28,7 @@ a.logo.btn-sm>* {
   color: var(--bg-color);
   background-color: var(--text-color);
 
-  a.logo.btn-sm>* {
+  a.logo.btn-sm > * {
     fill: var(--bg-color) !important;
   }
 }
@@ -57,7 +57,7 @@ body {
   justify-content: space-between;
 }
 
-main:not(:has(div[role="alert"])) {
+main:not(:has(div[role='alert'])) {
   padding: 1em;
 }
 
@@ -79,7 +79,6 @@ main:not(:has(div[role="alert"])) {
 }
 
 .darkcpiglobal {
-
   .btn-sm:not(.btn-sm-ghost).active,
   .btn-sm:not(.btn-sm-ghost):focus {
     background: var(--btn-active-color);
