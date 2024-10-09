@@ -7,6 +7,9 @@
 const data_updates = {
   bugFixes: [
     {
+      description: "Toolbar will not be compromised with <strong>Super Easy extension</strong>",
+    },
+    {
       description: "Events includes further minor UI tweaks and consistent bit order",
     },
     {
