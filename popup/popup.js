@@ -3,7 +3,7 @@
 function populateOptions(vartheme) {
   document.getElementById("options").innerHTML = Object.keys(vartheme)
     .map((key) => {
-      return `<button class="btn btn-sm" data-value="${key}">${vartheme[key].buttonlabel}</button>`;
+      return `<button class="btn btn-sm btn-themes" data-value="${key}">${vartheme[key].buttonlabel}</button>`;
     })
     .join("");
 }
@@ -114,13 +114,13 @@ async function main() {
   } else {
   }
   console.log("Host:", internalHostname);
-  const buttons = document.querySelectorAll(".btn-sm");
+  const buttons = document.querySelectorAll(".btn-themes");
   const activetheme = document.querySelector(".activetheme");
   const activeapp = document.querySelector(".activeapp");
   let theme = (await getProperty("SapDarkCPITheme")) || 0;
   console.log("Theme:", theme);
   const selectedButton = document.querySelector(`.btn-sm[data-value="${theme}"]`);
-
+  document.querySelector(".darkcpiglobal").setAttribute("data-theme", (await getProperty("SapDarkCPITheme")) === "1" ? "dark" : "light");
   if (selectedButton) {
     selectedButton.classList.add("active");
     activetheme.textContent = selectedButton.textContent;
@@ -146,6 +146,7 @@ async function main() {
       } else if (selectedValue === "2") {
         document.body.classList.add("old-theme");
       }
+      document.querySelector(".darkcpiglobal").setAttribute("data-theme", (await getProperty("SapDarkCPITheme")) === "1" ? "dark" : "light");
     });
   });
 }

@@ -34,9 +34,41 @@
       <div id="options" class="space-x-2"></div>
     </div>
   </main>
-  <script src="./../lib/Daisyui.min.js"></script>
-  <script src="./../common/constants.js"></script>
-  <script type="module" src="popup.js"></script>
+  <div class="divider divider-info"><span style="font-size: larger;font-weight: bold;">Live Time</span></div>
+  <div class="stats stats-vertical lg:stats-horizontal shadow">
+    <div class="stat">
+      <div class="stat-title">UTC Time</div>
+      <div class="stat-value" id="utc-time"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-title">Local Time</div>
+      <div class="stat-value" id="local-time"></div>
+    </div>
+  </div>
+  <!-- header -->
+  <div class="max-w-lg w-full bg-white rounded-xl shadow-lg p-6 space-y-6">
+    <div class="divider divider-info"><span style="font-size: larger;font-weight: bold;">Time Converter</span></div>
+    <div class="bg-gray-100 rounded-lg p-4 shadow border border-gray-300">
+      <input type="text" id="time-input" class="input input-bordered input-primary" style="width: 90% !important;"
+        placeholder="Enter Unix or ISO timestamp">
+      <div class="stat" id="converted-output">
+        <div class="stat-title" id="time-type"></div>
+        <div class="stat-value" id="output-text"></div>
+        <div id="copy-icon" class="stat-actions">
+          <button class="btn btn-sm">Copy</button>
+        </div>
+      </div>
+    </div>
+    <div id="toast" style="display: none;" class="toast toast-end">
+      <div class="alert" style="padding: 0.5rem;">
+        <span style="font-size: small;"></span>
+      </div>
+    </div>
+
+    <script src="./../lib/Daisyui.min.js"></script>
+    <script src="./../common/constants.js"></script>
+    <script type="module" src="popup.js"></script>
+    <script src="time-convert.js"></script>
 </body>
 
 </html>

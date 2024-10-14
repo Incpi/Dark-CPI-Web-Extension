@@ -49,6 +49,12 @@ html:is([data-cpi-dark='sap_horizon_dark'], [data-cpi-dark='sap_horizon']) .sapU
   margin-right: 0.5rem;
 }
 
+.modToolbar > ul > li {
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  padding-top: 0.5rem;
+}
+
 .cpiBadgeIndicator {
   position: absolute;
   top: 0;

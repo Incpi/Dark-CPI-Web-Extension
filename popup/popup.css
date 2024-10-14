@@ -46,11 +46,16 @@ main h1 {
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  width: max-content;
   max-height: 800px;
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
+}
+
+span#output-text {
+  white-space: pre-wrap;
+  white-space-collapse: break-spaces;
+  text-wrap: pretty;
 }
 
 .darkcpiglobal .navbar {
@@ -68,6 +73,10 @@ main:not(:has(div[role='alert'])) {
   .btn-sm {
     width: 7em;
   }
+}
+
+.stat-value {
+  font-size: large !important;
 }
 
 .alert.alert-error {
@@ -96,8 +105,11 @@ main:not(:has(div[role='alert'])) {
 
   .alert {
     grid-auto-flow: column;
-    grid-template-columns: auto minmax(auto, 1fr);
+    /* grid-template-columns: auto minmax(auto, 1fr); */
     justify-items: start;
     text-align: start;
+    span {
+      color: var(--text-color);
+    }
   }
 }
