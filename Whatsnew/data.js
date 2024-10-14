@@ -21,6 +21,9 @@ const data_updates = {
   ],
   features: [
     {
+      description: "Unix & ISO time stamp converter addedin popup",
+    },
+    {
       description: "Adding Release on github to quickly get binary via github.",
     },
     {
