@@ -4,35 +4,28 @@
   --btn-active-color: #00941e;
   --btn-hover-color: #007bff;
 }
-
 .dark-theme {
   --bg-color: #121212;
   --text-color: #e0e0e0;
 }
-
 .old-theme {
   --bg-color: #ffffff;
   --text-color: #1e2a38;
 }
-
 a.logo.btn-sm {
   background: transparent;
   border-color: transparent !important;
 }
-
 a.logo.btn-sm > * {
   fill: var(--text-color);
 }
-
 .old-theme nav {
   color: var(--bg-color);
   background-color: var(--text-color);
-
   a.logo.btn-sm > * {
     fill: var(--bg-color) !important;
   }
 }
-
 main h1 {
   font-size: 1rem;
   font-weight: bold;
@@ -42,43 +35,36 @@ main h1 {
   justify-content: center !important;
   margin-bottom: 1rem !important;
 }
-
 body {
   font-family: Arial, sans-serif;
   text-align: center;
   max-height: 800px;
+  min-width: 320px;
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
-
 span#output-text {
   white-space: pre-wrap;
   white-space-collapse: break-spaces;
   text-wrap: pretty;
 }
-
 .darkcpiglobal .navbar {
   justify-content: space-between;
 }
-
 main:not(:has(div[role='alert'])) {
   padding: 1em;
 }
-
 #options {
   display: inline-flex;
   gap: 1em;
-
   .btn-sm {
     width: 7em;
   }
 }
-
 .stat-value {
   font-size: large !important;
 }
-
 .alert.alert-error {
   border-radius: 0px;
   font-size: medium;
@@ -86,7 +72,9 @@ main:not(:has(div[role='alert'])) {
   font-family: sans-serif;
   padding: 0.75rem;
 }
-
+.hidden {
+  display: none !important;
+}
 .darkcpiglobal {
   .btn-sm:not(.btn-sm-ghost).active,
   .btn-sm:not(.btn-sm-ghost):focus {
@@ -95,17 +83,14 @@ main:not(:has(div[role='alert'])) {
     color: var(--text-color);
     border-color: transparent transparent transparent;
   }
-
   .btn-sm:not(.btn-sm-ghost):hover {
     background: var(--btn-hover-color);
     background-color: var(--btn-hover-color);
     color: var(--text-color);
     border-color: transparent transparent transparent;
   }
-
   .alert {
-    grid-auto-flow: column;
-    /* grid-template-columns: auto minmax(auto, 1fr); */
+    grid-auto-flow: column; /* grid-template-columns: auto minmax(auto, 1fr); */
     justify-items: start;
     text-align: start;
     span {

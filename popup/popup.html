@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 
-<body class="darkcpiglobal">
+<body class="darkcpiglobal" data-theme="light">
   <nav class="navbar shadow-lg">
     <div class="avatar">
       <div class="rounded" style="width:2em">
@@ -51,7 +51,7 @@
     <div class="bg-gray-100 rounded-lg p-4 shadow border border-gray-300">
       <input type="text" id="time-input" class="input input-bordered input-primary" style="width: 90% !important;"
         placeholder="Enter Unix or ISO timestamp">
-      <div class="stat" id="converted-output">
+      <div class="stat hidden" id="converted-output">
         <div class="stat-title" id="time-type"></div>
         <div class="stat-value" id="output-text"></div>
         <div id="copy-icon" class="stat-actions">
@@ -64,7 +64,14 @@
         <span style="font-size: small;"></span>
       </div>
     </div>
-
+    <div class="max-w-lg w-full bg-white rounded-xl shadow-lg p-6 space-y-6">
+      <div class="divider divider-info"><span style="font-size: larger;font-weight: bold;">About</span></div>
+      <div class="bg-gray-100 rounded-lg p-4 shadow border border-gray-300">
+        <a href="https://github.com/Incpi/Dark-CPI-Web-Extension" target="_blank" class="btn btn-block btn-outline btn-accent">
+          Contribute or Support on GitHub
+        </a>
+      </div>
+    </div>
     <script src="./../lib/Daisyui.min.js"></script>
     <script src="./../common/constants.js"></script>
     <script type="module" src="popup.js"></script>

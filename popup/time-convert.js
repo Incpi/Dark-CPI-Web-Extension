@@ -1,70 +1,94 @@
 "use strict";
 
+// Cache DOM elements for performance
+const localTimeElement = document.getElementById("local-time");
+const utcTimeElement = document.getElementById("utc-time");
+const outputTextElement = document.getElementById("output-text");
+const convertedOutputElement = document.querySelector("#converted-output");
+const timeTypeElement = document.getElementById("time-type");
+const copyIcon = document.getElementById("copy-icon");
+const timeInput = document.getElementById("time-input");
+const toast = document.getElementById("toast");
+
+function formatDate(date) {
+  const options = { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
+  const day = date.getDate();
+  const month = date.toLocaleString("default", { month: "short" });
+  const year = date.getFullYear();
+
+  const suffix = (day) => {
+    if (day > 3 && day < 21) return "th";
+    switch (day % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  };
+
+  return `${day}${suffix(day)} ${month} ${year}, ${date.toLocaleString(undefined, options)}`;
+}
+
 function updateTime() {
   const localTime = new Date();
-  const utcTime = new Date(localTime.toISOString());
-
-  document.getElementById("local-time").innerText = localTime.toLocaleString().toUpperCase();
-  document.getElementById("utc-time").innerText = utcTime.toLocaleString("en-US", { timeZone: "UTC" });
+  localTimeElement.innerText = formatDate(localTime);
+  const utcTime = new Date(localTime.getTime() + localTime.getTimezoneOffset() * 60000);
+  utcTimeElement.innerText = formatDate(utcTime);
 }
 
 function convertTimestamp() {
-  const input = document.getElementById("time-input").value.trim();
-  const outputTextElement = document.getElementById("output-text");
-  const localTimeDisplay = document.getElementById("local-time");
-  const utcTimeDisplay = document.getElementById("utc-time");
+  const input = timeInput.value.trim();
   if (!input) {
-    outputTextElement.innerText = "";
-    updateTime();
+    convertedOutputElement.classList.add("hidden");
     return;
   }
 
   let date;
   let timeType = "Error";
-  // Check if the input is a valid Unix timestamp (e.g., all digits).
+  convertedOutputElement.classList.add("hidden");
+  // Check if the input is a valid Unix timestamp
   if (/^\d+$/.test(input)) {
     const unixTimestamp = parseInt(input, 10);
-    date = new Date(unixTimestamp * 1000); // Convert to milliseconds.
-    outputTextElement.innerText = `${date.toISOString()}`;
+    date = new Date(unixTimestamp * 1000);
+    outputTextElement.innerText = date.toISOString();
     timeType = "ISO";
   }
-  // Check if the input is a valid ISO string.
+  // Check if the input is a valid ISO string
   else if (!isNaN(Date.parse(input))) {
     date = new Date(input);
     const unixTimestamp = Math.floor(date.getTime() / 1000);
+    outputTextElement.innerText = unixTimestamp;
     timeType = "Unix";
-    outputTextElement.innerText = `${unixTimestamp}`;
   } else {
     showToast("Invalid Unix or ISO timestamp", "error");
     return;
   }
-  document.getElementById("time-type").innerHTML = timeType;
-  // Display the local time and UTC time derived from the date.
-  localTimeDisplay.innerText = date.toLocaleString();
-  utcTimeDisplay.innerText = date.toLocaleString("en-US", { timeZone: "UTC" });
+
+  convertedOutputElement.classList.remove("hidden");
+  timeTypeElement.innerHTML = timeType;
 }
 
-// Copy the output to clipboard when the icon is clicked.
-document.getElementById("copy-icon").addEventListener("click", function () {
-  const outputText = document.getElementById("output-text").innerText;
+const copyOutputToClipboard = () => {
+  const outputText = outputTextElement.innerText;
 
   if (outputText) {
     navigator.clipboard
       .writeText(outputText)
-      .then(() => {
-        showToast("Copied Stamp");
-      })
-      .catch(() => {
-        showToast("Failed to Copy", "error");
-      });
+      .then(() => showToast("Copied Stamp"))
+      .catch(() => showToast("Failed to Copy", "error"));
   }
-});
+};
 
-// Function to show the toast message
-function showToast(message, type = "success", toast = document.getElementById("toast")) {
+// Show toast message
+function showToast(message, type = "success") {
   toast.querySelector("span").innerText = message;
   toast.style.display = "block";
-  toast.querySelector(".alert").classList = "alert alert-" + type;
+  toast.querySelector(".alert").className = `alert alert-${type}`;
+
   // Hide the toast after 3 seconds
   setTimeout(() => {
     toast.style.display = "none";
@@ -72,8 +96,9 @@ function showToast(message, type = "success", toast = document.getElementById("t
   }, 3000);
 }
 
-// Add event listener for input change.
-document.getElementById("time-input").addEventListener("input", convertTimestamp);
+// Event listeners
+timeInput.addEventListener("input", convertTimestamp);
+copyIcon.addEventListener("click", copyOutputToClipboard);
 
-// Update the time every second.
+// Update the time every second
 setInterval(updateTime, 1000);
