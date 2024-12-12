@@ -1,11 +1,11 @@
-$(document).ready(function () {
+$(document).ready(function() {
   const url = document.location.href + "readme/README.md";
-  $.get(url, function (markdown) {
+  $.get(url, function(markdown) {
     const htmlContent = marked.parse(markdown.replace("[!IMPORTANT]", "<b> IMPORTANT </b>").replace("[!WARNING]", "<b> WARNING </b>"));
     $("#content").html(htmlContent);
     $("#content img:first").attr("src", "./res/Black_full.png");
     generateToc();
-  }).fail(function () {
+  }).fail(function() {
     console.error("Error fetching the README");
   });
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
     const toc = $("#toc ul");
     $("#content")
       .find("h1, h2, h3, h4")
-      .each(function () {
+      .each(function() {
         const header = $(this);
         const id = header.text().replace(/\s+/g, "-").replace(/\./g, "-").toLowerCase();
         header.attr("id", id);
@@ -22,13 +22,13 @@ $(document).ready(function () {
         const link = $("<a></a>")
           .attr("href", "#" + encodeURIComponent(id))
           .text(header.text());
-        link.on("click", function (event) {
+        link.on("click", function(event) {
           event.preventDefault();
           $("html, body").animate(
             {
               scrollTop: $("#" + encodeURIComponent(id)).offset().top,
             },
-            500
+            500,
           );
         });
         li.append(link);

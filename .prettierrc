@@ -31,6 +31,7 @@
       "files": "*.css",
       "options": {
         "singleQuote": true,
+        "tabWidth": 2,
         "printWidth": 500
       }
     }
