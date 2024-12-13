@@ -109,6 +109,17 @@ containing the CSS styles for your custom theme.
 - [Feature] Generic Bug fixes.
 - [BugFix] Will drop support for SAP build apps/ theme designer.
 
+### v2.0.0
+
+- [Feature] Updated in Native UI5.
+- [Improvement] load time was decreased by optimizing the extension runtime.
+- [Improvement] Limited CSS overwrites to ensure a seamless native experience.
+
+### v1.3.7/8
+
+- [Feature] Generic Bug fixes.
+- [BugFix] Will drop support for SAP build apps/ theme designer.
+
 ### v1.3.6
 
 - [Feature] Unix & ISO time stamp converter addedin popup
