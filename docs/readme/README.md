@@ -1,7 +1,7 @@
-<img src="\docs\Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP Apps like CPI, Workzone </h1>
+<img src="\docs\Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP CPI</h1>
 
-Welcome to the Dark CPI Web Extension for SAP CPI and Build-workzone repository! This open-source project provides a
-sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
+Welcome to the Dark CPI Web Extension for SAP CPI repository! This open-source project provides a sleek, dark interface
+for your SAP environment, enhancing visual comfort and overall user experience.
 
 ## Our Vision of this Project
 
@@ -11,14 +11,14 @@ aligning with individual preferences and working conditions.
 
 ## Privacy and data protection
 
-The plugin does not collect personal data. Nevertheless the stores like Chrome Web Store collect some anonymous data
+The plugin does not collect personal data. Nevertheless, the stores like Chrome Web Store collect some anonymous data
 like how many users have the plugin installed. We do not trust 3rd party library & tools so we implemented our own
 solution instead of library to ensure security for logging in browser but nothing is stored or sent to any server by
 this plugin.
 
 We guarantee:
 
-- No personal data / tenant information is collected.
+- No personal data / tenant information is collected.s
 - It is open source so feel free to check the source code or your network console.
 
 ## Blog post
@@ -63,31 +63,15 @@ Addtionally we support SAP BUILD and Theme Designer
 The Dark CPI Extension allows you to customize the theme by specifying a URL parameter. This Feature enables you to
 choose from a variety of predefined themes.
 
-### Using the URL Parameter for only SAP CPI (not for SAP BUILD) (Update: Temporary debug purpose , Replaced with UI)
-
-To select a specific theme, append the `darkcpi` parameter to the URL of your SAP CPI environment, followed by the
-desired theme value. For example:from design page,
-`https://your-sap-cpi-environment.ondamand.com/shell/design?darkcpi=theme-value`
-
-Replace `theme-value` with one of the valid keys from the `themeMap` object.
-
 ### Available Themes
 
 The extension comes with the following predefined themes:
 
-- `0`: Morning Horizon - New Theme By SAP
-- `1`: Evening Horizon - Dark Theme similar to New UI
-- `2`: Quartz Light - Previous UI Theme before Morning Horizon
+- Morning Horizon - New Theme By SAP
+- Evening Horizon - Dark Theme similar to New UI
+- Quartz Light - Previous UI Theme before Morning Horizon
 
 > [!NOTE] any other theme by SAP is not compatible with this extension.
-
-### Custom Themes
-
-If you want to create your own custom theme, you can modify the `themeMap` object in the source code. Add a new
-key-value pair, where the key represents the theme name (to be used in the URL parameter), and the value is an object
-containing the CSS styles for your custom theme.
-
-## Changelogs
 
 ### Versioning Scheme
 
@@ -98,16 +82,7 @@ containing the CSS styles for your custom theme.
     - **Build** (optional): Used for internal purposes such as build numbers or source control revisions. This number
       will not appear in the changelog and is only included in maintenance versions.
 
-### v2.0.0
-
-- [Feature] Updated in Native UI5.
-- [Improvement] load time was decreased by optimizing the extension runtime.
-- [Improvement] Limited CSS overwrites to ensure a seamless native experience.
-
-### v1.3.7/8
-
-- [Feature] Generic Bug fixes.
-- [BugFix] Will drop support for SAP build apps/ theme designer.
+## Changelogs
 
 ### v2.0.0
 
@@ -118,14 +93,15 @@ containing the CSS styles for your custom theme.
 ### v1.3.7/8
 
 - [Feature] Generic Bug fixes.
-- [BugFix] Will drop support for SAP build apps/ theme designer.
+
+> ![Important] Discontinuing support for SAP Build and Theme Designer from v2.0.
 
 ### v1.3.6
 
-- [Feature] Unix & ISO time stamp converter addedin popup
+- [Feature] Unix & ISO time stamp converter added in popup
 - [Improvement] load time was decreased by optimizing the extension runtime.
 - [BugFix] Events includes further minor UI tweaks and consistent bit order
-- [Release] Adding Release on github to quickly get binary via github.
+- [Release] Adding Release on GitHub to quickly get binary via GitHub.
 - [BugFix] Toolbar will not be compromised with Super Easy extension.
 
 ### v1.3.5
@@ -136,16 +112,16 @@ containing the CSS styles for your custom theme.
 
 ### v1.3.4
 
-- [Feature] Added support for addtional **SAP CPI - fka HCI / old Tenents**
-- [BugFix] User prefer schema (Light/dark) will not effect UI with CPI Helper
+- [Feature] Added support for additional **SAP CPI - fka HCI / old Tenants**
+- [BugFix] User prefer schema (Light/dark) will not affect UI with CPI Helper
 - [Bugfix] UI changes fixes.
 
 ### v1.3.3
 
-- [Bugfix] SAP UI theme Horizon dark fix (Trace half screnn non visible)
-- [Bugfix] Mapping fields are invisible in mmap Files.
+- [Bugfix] SAP UI theme Horizon dark fix (Trace half screen non-visible)
+- [Bugfix] Mapping fields are invisible in message map Files.
 - [Bugfix] Simulation error color is not correct.
-- [Feature] Now supports addtional application such as **SAP Builds workzone** and it's theme designer.
+- [Feature] Now supports additional application such as **SAP Builds work-zone** and it's theme designer.
 - [Improvement] UI changes for popup.
 
 ### v1.2.0
