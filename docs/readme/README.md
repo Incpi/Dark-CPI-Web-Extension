@@ -82,6 +82,9 @@ The extension comes with the following predefined themes:
 
 ## Changelogs
 
+### v2.1.0
+- [Feature] FireFox support Has been added.
+
 ### v2.0.0
 
 - [Feature] Updated in Native UI5.
