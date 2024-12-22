@@ -7,10 +7,10 @@ window.askChromeExtensionURL = () => {
   return new Promise((resolve, reject) => {
     window.addEventListener("resposeDataChromeApi", (event) => {
       window.removeEventListener("resposeDataChromeApi", this);
-      resolve(event.detail.url);
+      resolve(event.detail);
     });
     let detail = {};
-    detail.request = "chromeExtensionURL";
+    detail.request = "DARKCPI";
     window.dispatchEvent(new CustomEvent("requestDataChromeApi", { detail }));
     setTimeout(() => reject("Cannot get chrome extension URL"), 200);
   });
@@ -41,7 +41,7 @@ window.startProcess = () => {
         });
     })
     .catch((message) => {
-      console.log(message);
+      console.log("Error:", message);
       window.startProcess();
     });
 };

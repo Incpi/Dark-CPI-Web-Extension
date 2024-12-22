@@ -27,16 +27,14 @@ We guarantee:
 
 ## Installation
 
-> [!WARNING]  
-> No Firefox browser support.
-
 To install the Dark CPI Extension, please follow these steps:
 
 1. **Download the Extension:**
 
     - Visit
       the [Chrome Web Store](https://chromewebstore.google.com/detail/dark-sap-cpi/lmegddleeigeddljmdkonofmppbefneo)
-      or [EDGE store](https://microsoftedge.microsoft.com/addons/detail/gpafgeambljleonppfbeieehlmdiffop) or search
+      or [EDGE store](https://microsoftedge.microsoft.com/addons/detail/gpafgeambljleonppfbeieehlmdiffop)
+      or [FireFox](https://addons.mozilla.org/en-US/firefox/addon/dark-cpi/) or search
       for "Dark CPI" in web-stores.
     - Click "Add to Chrome" to install the extension.
 

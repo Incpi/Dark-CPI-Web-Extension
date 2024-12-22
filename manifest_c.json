@@ -1,20 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Dark CPI",
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "DarkSAPCPI@incpi",
-      "strict_min_version": "109.0"
-    }
-  },
   "version": "2.1.0",
   "description": "Extension provides control to change theme to dark mode for SAP integration suite (CPI)",
   "author": "Omkar Patel",
   "homepage_url": "https://incpi.vercel.app/blog/83efd",
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
   },
   "host_permissions": [
     "https://*.hana.ondemand.com/*",

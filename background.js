@@ -1,26 +1,37 @@
 "use strict";
 
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url) {
-    const regexPatterns = [/^https:\/\/.*\.hana\.ondemand\.com\/itspaces\/shell\/.*/, /^https:\/\/.*\.hana\.ondemand\.com\/shell\/.*/, /^https:\/\/.*\.platform\.sapcloud\.cn\/itspaces\/shell\/.*/, /^https:\/\/.*\.platform\.sapcloud\.cn\/shell\/.*/];
+    const regexPatterns = [
+      /^https:\/\/.*\.hana\.ondemand\.com\/itspaces\/shell\/.*/,
+      /^https:\/\/.*\.hana\.ondemand\.com\/shell\/.*/,
+      /^https:\/\/.*\.platform\.sapcloud\.cn\/itspaces\/shell\/.*/,
+      /^https:\/\/.*\.platform\.sapcloud\.cn\/shell\/.*/,
+    ];
+
     const isMatch = regexPatterns.some((pattern) => pattern.test(tab.url));
+
     if (isMatch) {
       try {
-        await chrome.tabs.sendMessage(tabId, { action: "checkInjected" });
+        // Send a message to check if the script is already injected
+        await browser.tabs.sendMessage(tabId, { action: "checkInjected" });
       } catch (error) {
-        console.log("injecting files...");
+        console.log("Injecting files...");
+
         try {
-          await chrome.scripting.executeScript({
+          // Inject the scripts using browser.scripting (compatible with Firefox)
+          await browser.scripting.executeScript({
             target: { tabId },
             files: ["script/OnInit.js"],
           });
-          await chrome.scripting.executeScript({
+
+          await browser.scripting.executeScript({
             target: { tabId },
             files: ["script/main_script.js"],
-            world: "MAIN",
+            world: "MAIN", // Optional: define the execution world
           });
         } catch (error) {
-          console.log(error);
+          console.log("Error injecting scripts:", error);
         }
       }
     }
