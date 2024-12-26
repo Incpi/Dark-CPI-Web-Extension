@@ -15,7 +15,7 @@ sap.ui.define(["eventHandlers", "autoClose", "constants", "sap/m/Button"], funct
     core.applyTheme(storedTheme);
     autoClose.retryAutocloseNavButton();
   }, 500);
-  setTimeout(() => clearInterval(interval), 5000);
+  setTimeout(() => clearInterval(interval), 7000);
 
   return {
     header: async (id) => {

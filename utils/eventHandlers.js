@@ -2,235 +2,294 @@ sap.ui.loader.config({
   paths: {
     constants: `${$.sap.chromeExtensionURL}utils/constants`,
     timeConvert: `${$.sap.chromeExtensionURL}utils/timeConvert`,
+    apiCall: `${$.sap.chromeExtensionURL}utils/apiCall`,
   },
 });
 
-sap.ui.define(["constants", "timeConvert", "sap/m/BusyDialog", "sap/m/Dialog", "sap/m/Image", "sap/m/Title",
-    "sap/m/Button", "sap/m/VBox", "sap/m/HBox", "sap/m/MenuItem", "sap/m/Menu", "sap/m/Input",
-    "sap/m/StandardListItem", "sap/m/Text", "sap/m/Link", "sap/m/Toolbar", "sap/m/ToolbarSpacer", "sap/m/IconTabBar", "sap/m/IconTabFilter", "sap/m/MessageStrip"],
-  function(constants, timeConvert, BusyDialog, Dialog, Image, Title, Button, VBox, HBox, MenuItem, Menu, Input, StandardListItem, Text, Link, Toolbar, ToolbarSpacer, IconTabBar, IconTabFilter, MessageStrip) {
+function handleInputChange(inputValue) {
+  const unixCopyBtn = sap.ui.getCore().byId("unixCopyBtn");
+  const isoCopyBtn = sap.ui.getCore().byId("isoCopyBtn");
+
+  if (!inputValue) {
+    unixCopyBtn.setText("Unix: ");
+    isoCopyBtn.setText("ISO: ");
+    unixCopyBtn.setVisible(false);
+    isoCopyBtn.setVisible(false);
+    return;
+  }
+
+  try {
+    if (/^\d+$/.test(inputValue)) {
+      // Unix timestamp
+      const timestamp = inputValue.length === 10 ? parseInt(inputValue, 10) * 1000 : parseInt(inputValue, 10);
+      if (isNaN(timestamp)) throw new Error("Invalid Unix timestamp.");
+      unixCopyBtn.setText(`Unix: ${inputValue}`);
+      isoCopyBtn.setText(`ISO: ${new Date(timestamp).toISOString()}`);
+    } else {
+      // ISO timestamp
+      const timestamp = new Date(inputValue).getTime();
+      if (isNaN(timestamp)) throw new Error("Invalid ISO format.");
+      unixCopyBtn.setText(`Unix: ${timestamp}`);
+      isoCopyBtn.setText(`ISO: ${inputValue}`);
+    }
+    unixCopyBtn.setVisible(true);
+    isoCopyBtn.setVisible(true);
+  } catch (error) {
+    unixCopyBtn.setText("");
+    isoCopyBtn.setText("");
+    unixCopyBtn.setVisible(false);
+    isoCopyBtn.setVisible(false);
+  }
+}
+
+function handleDatePickerChange(dateValue) {
+  const unixCopyBtn = sap.ui.getCore().byId("unixCopyBtn");
+  const isoCopyBtn = sap.ui.getCore().byId("isoCopyBtn");
+
+  if (!dateValue) {
+    unixCopyBtn.setText("Unix: ");
+    isoCopyBtn.setText("ISO: ");
+    unixCopyBtn.setVisible(false);
+    isoCopyBtn.setVisible(false);
+    return;
+  }
+
+  const date = new Date(dateValue);
+  const unixTimestamp = date.getTime();
+  const isoString = date.toISOString();
+
+  unixCopyBtn.setText(`Unix: ${unixTimestamp}`);
+  isoCopyBtn.setText(`ISO: ${isoString}`);
+  unixCopyBtn.setVisible(true);
+  isoCopyBtn.setVisible(true);
+}
+
+sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/DateTimePicker", "sap/m/BusyDialog", "sap/m/Dialog", "sap/m/Image", "sap/m/Title", "sap/m/Button", "sap/m/VBox", "sap/m/HBox", "sap/m/MenuItem", "sap/m/Menu", "sap/m/Input", "sap/m/StandardListItem", "sap/m/Text", "sap/m/Link", "sap/m/Toolbar", "sap/m/ToolbarSpacer", "sap/m/IconTabBar", "sap/m/IconTabFilter", "sap/m/MessageStrip"], function(constants, timeConvert, apiCall, Avatar, DateTimePicker, BusyDialog, Dialog, Image, Title, Button, VBox, HBox, MenuItem, Menu, Input, StandardListItem, Text, Link, Toolbar, ToolbarSpacer, IconTabBar, IconTabFilter, MessageStrip) {
     "use strict";
-    const localtheme = () => localStorage.getItem(`${constants.prefixId}Theme`) || "sap_horizon";
-    return {
-      new_theme: (selectedKey = "settings") => {
-        var oGitHubSection = new VBox({
-          items: [// LinkedIn Message
-            new HBox({
-              items: [new Text({
-                text: "For news and interesting blog posts about SAP CI, please follow me on",
-              }), new Link({
-                text: "LinkedIn Page", target: "_blank", href: constants.author.linkdin,
-              }).addStyleClass("sapUiTinyMarginBeginEnd")], alignItems: "Start",
-            }),
+    const localTheme = () => localStorage.getItem(`${constants.prefixId}Theme`) || "sap_horizon";
+    const updateTime = () => {
+      const now = new Date();
+      const utcTime = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+      sap.ui.getCore().byId(`${constants.prefixId}utcTime`).setText(`UTC Time: ${timeConvert.formatDate(utcTime)}`);
+      sap.ui.getCore().byId(`${constants.prefixId}localTime`).setText(`Local Time: ${timeConvert.formatDate(now)}`);
+    };
 
-            // Developer Name as a Hyperlink
-            new HBox({
-              items: [new Text({ text: "This plugin is developed by" }), new Link({
-                text: "Omkar patel", target: "_blank", href: constants.author.github,
-              }).addStyleClass("sapUiTinyMarginBeginEnd"), new Text({ text: "." }), // For punctuation
-              ], alignItems: "Start",
-            }),
+    const copyToClipboard = (text) => {
+      navigator.clipboard
+        .writeText(text)
+        .then(() => sap.m.MessageToast.show("Copied to clipboard!"))
+        .catch(() => sap.m.MessageToast.show("Failed to copy to clipboard."));
+    };
 
-            // GitHub Page as a Hyperlink
-            new HBox({
-              items: [new Text({ text: "Feel free to contribute on our" }), new Link({
-                text: "GitHub Page", target: "_blank", href: constants.author.githubrepo,
-              }).addStyleClass("sapUiTinyMarginBeginEnd"), new Text({ text: "." }), // For punctuation
-              ], alignItems: "Start",
-            })],
-        });
+    const renderDialog = async (selectedKey = "settings") => {
+      const user = String(await apiCall.User()).toUpperCase();
+      const mode = (number) => {
+        const theme = constants.cpithemes[number].name;
+        sap.ui.getCore().applyTheme(theme);
+        const icon = theme !== "sap_horizon_dark" ? "sap-icon://light-mode" : "sap-icon://dark-mode";
+        sap.ui.getCore().byId(`${constants.prefixId}ExtButton`).setIcon(icon);
+        localStorage.setItem(`${constants.prefixId}Theme`, theme);
+        sap.m.MessageToast.show(`${constants.cpithemes[number].buttonlabel} Theme applied`);
+      };
 
-        var oNotice = constants.notice.map((record, index) => {
-          if (record !== undefined && record !== null) {
-            return new MessageStrip(record).addStyleClass("sapUiMediumMarginTop");
-          }
-        });
-
-        function mode(number) {
-          let theme = constants.cpithemes[number].name;
-          sap.ui.getCore().applyTheme(theme);
-          sap.ui
-            .getCore()
-            .byId(`${constants.prefixId}ExtButton`)
-            .setIcon(theme !== "sap_horizon_dark" ? "sap-icon://light-mode" : "sap-icon://dark-mode");
-          localStorage.setItem(`${constants.prefixId}Theme`, theme);
-          sap.m.MessageToast.show(constants.cpithemes[number].buttonlabel + " Theme applied");
+      const help_Links = (links, maxLinksPerRow = 4) => {
+        // Split links into chunks of maxLinksPerRow
+        const linkChunks = [];
+        for (let i = 0; i < links.length; i += maxLinksPerRow) {
+          linkChunks.push(links.slice(i, i + maxLinksPerRow));
         }
+        // Return the VBox containing all the rows
+        return new VBox({
+          width: "100%", justifyContent: "SpaceAround", items: linkChunks.map(chunk => new HBox({
+            items: chunk.map(e => new Link({ text: e.label, target: "_blank", href: e.link })),
+            justifyContent: "SpaceBetween",
+            width: "100%",
+          })),
+        });
+      };
 
-        let dialog = sap.ui.getCore().byId(`${constants.prefixId}Settings`);
+      const oGitHubSection = new VBox({
+        items: [new HBox({
+          items: [new Text({ text: "For news and interesting blog posts about SAP CI, please follow me on" }), new Link({
+            text: "LinkedIn Page", target: "_blank", href: constants.author.linkdin,
+          }).addStyleClass("sapUiTinyMarginBeginEnd")], alignItems: "Start",
+        }), new HBox({
+          items: [new Text({ text: "This plugin is developed by" }), new Link({
+            text: "Omkar Patel", target: "_blank", href: constants.author.github,
+          }).addStyleClass("sapUiTinyMarginBeginEnd")], alignItems: "Start",
+        }), new HBox({
+          items: [new Text({ text: "Feel free to contribute on our" }), new Link({
+            text: "GitHub Page", target: "_blank", href: constants.author.githubrepo,
+          }).addStyleClass("sapUiTinyMarginBeginEnd")], alignItems: "Start",
+        }), new HBox({
+          items: [new Text({ text: "Please share and Visit" }), new Link({
+            text: "Community blog Page", target: "_blank", href: constants.author.sapblog,
+          }).addStyleClass("sapUiTinyMarginBeginEnd")], alignItems: "Start",
+        })],
+      });
 
-        if (!dialog) {
-          const dialog = new Dialog({
-            title: `Dark CPI V.${constants.manifestVersion} Panel`,
-            id: `${constants.prefixId}Settings`,
-            contentWidth: "50%",
-            icon: "sap-icon://dark-mode",
-            verticalScrolling: true,
-            content: [new IconTabBar({
-              selectedKey: selectedKey, items: [new IconTabFilter({
-                key: "whatsNew", text: "What's New", content: [new VBox({
-                  items: [new VBox({
-                    items: Object.entries(constants.data_update_label).map(([sectionKey, sectionTitle]) => {
-                      const items = constants.data_updates[sectionKey] || [];
-                      if (items && items.length > 0) {
-                        return new VBox({
-                          items: [new Title({
-                            text: sectionTitle, level: sap.ui.core.TitleLevel.H3,
-                          }), new sap.m.List({
-                            items: items.map((item) => new StandardListItem({
-                              title: item.description, type: sap.m.ListType.Inactive,
-                            })),
-                          })],
-                        }).addStyleClass("sapUiTinyMarginTop");
-                      }
-                    }),
-                  })],
-                })],
-              }), new IconTabFilter({
-                key: "settings", text: "Settings", content: [new HBox({
-                  items: [
-                    new VBox({
-                      width: "100%",
-                      items: [new Title({
-                        text: "Choose Theme: ", level: sap.ui.core.TitleLevel.H3,
-                      }),
+      const oNotice = constants.notice.map((record) => {
+        if (record) return new MessageStrip(record).addStyleClass("sapUiMediumMarginTop");
+      });
 
-                        new sap.m.SegmentedButton({
-                          selectedItem: `${Object.entries(constants.cpithemes).filter(([key, rec]) => rec.name === localtheme())[0][1].buttonlabel}`,
-                          items: Object.entries(constants.cpithemes).map(([key, theme]) => new sap.m.SegmentedButtonItem({
-                            text: theme.buttonlabel,
-                            tooltip: `Switch to ${theme.label} theme`,
-                            press: () => mode(key),
-                          })),
-                        }).setWidth("90%")
-                          .addStyleClass("sapUiTinyMargin")],
-                    }), new VBox({
-                      width: "100%",
-                      items: [new Title({
-                        text: "Time Information", level: sap.ui.core.TitleLevel.H3,
-                      }),
-                        new Text({
-                          id: "utcTime", text: "Loading UTC Time...",
-                        }),
-                        new Text({
-                          id: "localTime", text: "Loading Local Time...",
-                        }).addStyleClass("sapUiTinyMarginBottom"),
-                        new HBox({
-                          items: [new Title({
-                            text: "Live Time: ",
-                          }), new Button({
-                            type: sap.m.ButtonType.Transparent,
-                            icon: "sap-icon://copy",
-                            text: "ISO (UTC)",
-                            press: () => copyToClipboard(new Date(new Date().getTime()).toISOString()),
-                          }),
-                            new Button({
-                              type: sap.m.ButtonType.Transparent,
-                              icon: "sap-icon://copy",
-                              text: "Unix (UTC)",
-                              press: () => copyToClipboard((Math.floor(new Date().getTime() / 1000) * 1000).toString()),
-                            }),
-                          ],
-                          width: "100%", alignItems: "Center",
-                        }).addStyleClass("sapUiSmallMarginTop"),
-                        new HBox({
-                          items: [
-                            new Input({
-                              id: "timestampInput",
-                              placeholder: "Enter Unix or ISO timestamp...",
-                              width: "100%",
-                            }),
-                            new Button({
-                              width: "100%",
-                              text: "Convert",
-                              press: () => {
-                                const input = sap.ui.getCore().byId("timestampInput").getValue();
-                                let result;
-                                let isUnix = !isNaN(input); // Check if input is numeric
-                                if (isUnix) {
-                                  // Input is a Unix timestamp
-                                  const timestamp = input.length === 10 ? parseInt(input, 10) * 1000 : parseInt(input, 10);
-                                  result = new Date(timestamp).toISOString();
-                                  sap.ui.getCore().byId("resultUnix").setText(`ISO: ${result}`);
-                                  sap.ui.getCore().byId("unixCopyBtn").setVisible(true);
-                                } else {
-                                  // Input is an ISO timestamp
-                                  try {
-                                    result = new Date(input).getTime();
-                                    sap.ui.getCore().byId("resultUnix").setText(`Unix: ${result}`);
-                                    sap.ui.getCore().byId("unixCopyBtn").setVisible(true);
-                                  } catch (e) {
-                                    result = "Invalid input format.";
-                                    sap.ui.getCore().byId("resultUnix").setText(result);
-                                    sap.ui.getCore().byId("unixCopyBtn").setVisible(false);
-                                  }
-                                }
-                              },
-                            }),
-                          ], width: "100%",
-                        }),
-                        new HBox({
-                          items: [
-                            new Text({
-                              id: "resultUnix",
-                              text: "",
-                            }).addStyleClass("sapUiSmallMarginEnd"), // Add margin to separate text and button
-                            new Button({
-                              id: "unixCopyBtn",
-                              icon: "sap-icon://copy",
-                              tooltip: "Copy Converted Unix Timestamp",
-                              visible: false, // Initially hidden
-                              press: () => {
-                                const resultUnix = sap.ui.getCore().byId("resultUnix").getText().replace("Unix: ", "").replace("ISO: ", "");
-                                if (resultUnix) copyToClipboard(resultUnix);
-                              },
-                            }),
-                          ], width: "100%", alignItems: "Center",
-                        })],
-                    })],
-                })],
+      const settingsTab = () => {
+        return [new HBox({
+          items: [
+            new VBox({
+              width: "100%", items: [new Title({
+                text: "Choose Theme:", level: sap.ui.core.TitleLevel.H3,
+              }), new sap.m.SegmentedButton({
+                selectedItem: `${Object.entries(constants.cpithemes).find(([_, rec]) => rec.name === localTheme())[1].buttonlabel}`,
+                items: Object.entries(constants.cpithemes).map(([key, theme]) => new sap.m.SegmentedButtonItem({
+                  text: theme.buttonlabel, tooltip: `Switch to ${theme.label} theme`, press: () => mode(key),
+                })),
+              }).setWidth("90%").addStyleClass("sapUiTinyMargin")],
+            }),
+            new VBox({
+              width: "100%", items: [new Title({
+                text: "Time Information", level: sap.ui.core.TitleLevel.H3,
+              }), new Text({
+                id: `${constants.prefixId}utcTime`, text: "Loading UTC Time...",
+              }), new Text({
+                id: `${constants.prefixId}localTime`, text: "Loading Local Time...",
+              }).addStyleClass("sapUiTinyMarginBottom"), new HBox({
+                items: [new Button({
+                  type: sap.m.ButtonType.Transparent,
+                  icon: "sap-icon://copy",
+                  text: "ISO (UTC)",
+                  press: () => copyToClipboard(new Date().toISOString()),
+                }), new Button({
+                  type: sap.m.ButtonType.Transparent,
+                  icon: "sap-icon://copy",
+                  text: "Unix (UTC)",
+                  press: () => copyToClipboard(Math.floor(new Date().getTime() / 1000).toString()),
+                })], width: "100%", alignItems: "Center",
               })],
-            }), new HBox({
+            })],
+        }),
+          new VBox({
+            items: [new Text({
+              text: "Enter timestamp (Unix, ISO, or select from DateTime Picker):",
+            }),
+              new HBox({
+                width: "100%", alignItems: "Center",
+                items: [// Normal Input Field
+                  new Input({
+                    id: "timestampInput",
+                    placeholder: "Enter Unix or ISO timestamp...",
+                    width: "100%", layoutData: new sap.m.FlexItemData({ growFactor: 1 }),
+                    liveChange: function(oEvent) {
+                      const inputValue = oEvent.getParameter("value").trim();
+                      const datetimePicker = sap.ui.getCore().byId("datetimePicker");
+                      datetimePicker.setValue(""); // Clear DateTimePicker
+                      handleInputChange(inputValue);
+                    },
+                  }),
+                  new Text({ text: "OR" }).addStyleClass("sapUiTinyMarginBeginEnd"),
+                  // DateTimePicker Input
+                  new DateTimePicker({
+                    id: "datetimePicker",
+                    width: "100%",
+                    placeholder: "Select a date and time...", layoutData: new sap.m.FlexItemData({ growFactor: 1 }),
+                    change: function(oEvent) {
+                      const dateValue = oEvent.getParameter("value");
+                      const inputField = sap.ui.getCore().byId("timestampInput");
+                      inputField.setValue(""); // Clear the input field
+                      handleDatePickerChange(dateValue);
+                    },
+                  })],
+              }).addStyleClass("sapUiTinyMarginBottom"),
+
+
+              // Result Box for both Unix and ISO timestamps
+              new HBox({
+                items: [new Button({
+                  width: "100%", layoutData: new sap.m.FlexItemData({ growFactor: 1 }),
+                  id: "unixCopyBtn", icon: "sap-icon://copy", visible: false, press: () => {
+                    const resultUnix = sap.ui.getCore().byId("unixCopyBtn").getText().replace("Unix: ", "");
+                    if (resultUnix) copyToClipboard(resultUnix);
+                  },
+                }).addStyleClass("sapUiTinyMarginEnd"), new Button({
+                  width: "100%", layoutData: new sap.m.FlexItemData({ growFactor: 1 }),
+                  id: "isoCopyBtn", icon: "sap-icon://copy", visible: false, press: () => {
+                    const resultISO = sap.ui.getCore().byId("isoCopyBtn").getText().replace("ISO: ", "");
+                    if (resultISO) copyToClipboard(resultISO);
+                  },
+                }).addStyleClass("sapUiTinyMarginBegin")],
+              })],
+          }),
+        ];
+      };
+      const dialog = new Dialog({
+        title: `Dark CPI V.${constants.manifestVersion} Panel`,
+        id: `${constants.prefixId}Settings`,
+        contentWidth: "50%",
+        icon: "sap-icon://dark-mode",
+        verticalScrolling: true,
+        content: [
+          new HBox({
+            alignItems: "Center", items: [
+              new Title({ text: "User:" }),
+              new Avatar({
+                displaySize: "XS", // backgroundColor: "Transparent",
+                initials: user.substring(0, 2),
+              }).addStyleClass("sapUiTinyMarginBeginEnd"), new Text({
+                text: user,
+              })],
+          }), new VBox({
+            items: [
+              new IconTabBar({
+                selectedKey: selectedKey, items: [
+                  new IconTabFilter({
+                    key: "whatsNew", text: "What's New", content: [new VBox({
+                      items: Object.entries(constants.data_update_label).map(([sectionKey, sectionTitle]) => {
+                        const items = constants.data_updates[sectionKey] || [];
+                        if (items.length > 0) {
+                          return new VBox({
+                            items: [new Title({ text: sectionTitle, level: sap.ui.core.TitleLevel.H3 }), new sap.m.List({
+                              items: items.map((item) => new StandardListItem({
+                                title: item.description, type: sap.m.ListType.Inactive,
+                              })),
+                            })],
+                          }).addStyleClass("sapUiTinyMarginTop");
+                        }
+                      }),
+                    })],
+                  }), new IconTabFilter({
+                    key: "settings", text: "Settings",
+                    content: settingsTab(),
+                  })],
+              }),
+            ],
+          }), new VBox({
+            items: [new Title({ text: "Github Contacts", level: sap.ui.core.TitleLevel.H3 }), new HBox({
               items: [new Image({
                 src: `${$.sap.chromeExtensionURL}images/icon128.png`,
                 height: "100px",
                 decorative: false,
                 alt: "Company Logo",
-              }), new VBox({
-                items: [new Title({
-                  text: "Github Contacts", level: sap.ui.core.TitleLevel.H3,
-                }), oGitHubSection],
-              }).addStyleClass("sapUiSmallMarginBegin")],
-            }).addStyleClass("sapUiMediumMarginTop"), oNotice],
-            endButton: new Button({
-              text: "Close", press: () => {
-                localStorage.setItem(`${constants.prefixId}Version`, constants.manifestVersion);
-                dialog.destroy();
-              },
-            }),
-            beginButton: new Button({
-              text: constants.footer.label, press: () => window.open(constants.footer.Link, "_blank"),
-            }),
-          });
+              }), new VBox({ items: oGitHubSection }).addStyleClass("sapUiSmallMarginBegin")],
+            })],
+          }).addStyleClass("sapUiSmallMarginTop"), new VBox({
+            items: [new Title({
+              text: "Handy Links", level: sap.ui.core.TitleLevel.H3,
+            }), help_Links(constants.neededLinks)],
+          }).addStyleClass("sapUiSmallMarginTop"), oNotice],
 
-          // Function to update time dynamically
-          const updateTime = () => {
-            const now = new Date();
-            const utcTime = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
-            sap.ui.getCore().byId("utcTime").setText(`UTC Time: ${timeConvert.formatDate(utcTime)}`);
-            sap.ui.getCore().byId("localTime").setText(`Local Time: ${timeConvert.formatDate(now)}`);
-          };
-          setInterval(updateTime, 1000);
+        endButton: new Button({
+          text: "Close", press: () => {
+            localStorage.setItem(`${constants.prefixId}Version`, constants.manifestVersion);
+            dialog.destroy();
+          },
+        }),
+        beginButton: new Button({
+          text: constants.footer.label, press: () => window.open(constants.footer.Link, "_blank"),
+        }),
+      });
 
-          const copyToClipboard = (text) => {
-            navigator.clipboard.writeText(text).then(() => {
-              sap.m.MessageToast.show("Copied to clipboard!");
-            }).catch(() => {
-              sap.m.MessageToast.show("Failed to copy to clipboard.");
-            });
-          };
-          dialog.open();
-        }
-      },
+      setInterval(updateTime, 1000);
+      dialog.open();
     };
-  });
+    return { new_theme: renderDialog };
+  },
+);

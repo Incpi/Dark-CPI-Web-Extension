@@ -2,7 +2,9 @@ sap.ui.define([], function() {
   "use strict";
   return {
     prefixId: "DarkCPI_",
-    manifestVersion: "2.0.1",
+    manifestVersion: "2.1.0",
+    allowedCPI: /^https:\/\/.*\.(hana\.ondemand\.com|platform\.sapcloud\.cn)\/.*$/,
+    apiBaseCPI: /^.*integrationsuite.*.cfapps/.test(window.location.origin) ? window.location.origin : window.location.origin + "/itspaces",
     data_update_label: { bugFixes: "Bug Fixes", improvements: "Improvements", features: "Features" },
     data_updates: {
       bugFixes: [], features: [], improvements: [
@@ -11,6 +13,16 @@ sap.ui.define([], function() {
         { description: "Limited CSS overwrites to ensure a seamless native experience." },
       ],
     },
+    neededLinks: [{
+      label: "List of Internal Headers and Properties",
+      link: "https://help.sap.com/docs/cloud-integration/sap-cloud-integration/headers-and-exchange-properties-provided-by-integration-framework?trk=feed-detail_comments-list_comment-text",
+    }, {
+      label: "Groovy IDE", link: "https://groovyide.com/cpi",
+    }, {
+      label: "Convita IDE", link: "https://ide.contiva.com/",
+    }, {
+      label: "SAP CPI Help", link: "https://help.sap.com/viewer/product/CLOUD_INTEGRATION/Cloud/",
+    }],
     footer: {
       label: "Report Issues", Link: "https://github.com/incpi/Dark-CPI-Web-Extension/issues",
     },
@@ -27,22 +39,11 @@ sap.ui.define([], function() {
       linkdin: "https://linkedin.com/in/incpi",
       github: "https://github.com/incpi",
       githubrepo: "https://github.com/incpi/Dark-CPI-Web-Extension",
+      sapblog: "https://community.sap.com/t5/technology-blogs-by-members/introducing-dark-cpi-web-extension-for-sap-applications/bc-p/13860794",
     },
     noticeType: ["Warning", "Error", "Success", "Information", "None"],
     notice: [
-      {
-        text: `All control has been moved from the popup to the webpage header - "DC" icon.`,
-        type: "Warning",
-        showIcon: true,
-        visible: true,
-      }, {
-        text: `Important Notice:\n
-            We will be discontinuing support for SAP Build and Theme Designer.
-            If you'd like to continue using the tool, please refer to version v1.3.7.
-            For any issues or suggestions regarding this change, please report them below.`,
-        type: "Error",
-        showIcon: true,
-        visible: true,
-      }],
+      // {text: `All control has been moved from the popup to the webpage header - "DC" icon.`, type: "Warning | Error", showIcon: true, visible: true,}
+    ],
   };
 });
