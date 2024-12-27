@@ -4,9 +4,9 @@
 name: Generate and Commit Files
 
 on:
-  push: # Trigger on push for any branch
+  push:
     branches:
-      - '**'  # Match all branches
+      - Master
 
 jobs:
   generate_and_commit:
@@ -16,7 +16,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Generate files with the shell script
       - name: Run Shell Script and Commit Generated Files
         run: |
           # Make the shell script executable and run it
