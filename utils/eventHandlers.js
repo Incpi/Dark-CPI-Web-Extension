@@ -46,23 +46,40 @@ function handleDatePickerChange(dateValue) {
   const unixCopyBtn = sap.ui.getCore().byId("unixCopyBtn");
   const isoCopyBtn = sap.ui.getCore().byId("isoCopyBtn");
 
-  if (!dateValue) {
+  // Helper function to reset buttons
+  const resetButtons = () => {
     unixCopyBtn.setText("Unix: ");
     isoCopyBtn.setText("ISO: ");
     unixCopyBtn.setVisible(false);
     isoCopyBtn.setVisible(false);
+  };
+
+  if (!dateValue) {
+    resetButtons();
     return;
   }
 
-  const date = new Date(dateValue);
+  // Parse the dateValue explicitly as UTC
+  const date = new Date(dateValue + " UTC"); // Add 'UTC' to enforce UTC interpretation
+
+  // Validate the date
+  if (isNaN(date.getTime())) {
+    console.error("Invalid UTC date value provided:", dateValue);
+    resetButtons();
+    return;
+  }
+
+  // Convert to Unix timestamp and ISO string
   const unixTimestamp = date.getTime();
   const isoString = date.toISOString();
 
+  // Update button text and visibility
   unixCopyBtn.setText(`Unix: ${unixTimestamp}`);
   isoCopyBtn.setText(`ISO: ${isoString}`);
   unixCopyBtn.setVisible(true);
   isoCopyBtn.setVisible(true);
 }
+
 
 sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/DateTimePicker", "sap/m/BusyDialog", "sap/m/Dialog", "sap/m/Image", "sap/m/Title", "sap/m/Button", "sap/m/VBox", "sap/m/HBox", "sap/m/MenuItem", "sap/m/Menu", "sap/m/Input", "sap/m/StandardListItem", "sap/m/Text", "sap/m/Link", "sap/m/Toolbar", "sap/m/ToolbarSpacer", "sap/m/IconTabBar", "sap/m/IconTabFilter", "sap/m/MessageStrip"], function(constants, timeConvert, apiCall, Avatar, DateTimePicker, BusyDialog, Dialog, Image, Title, Button, VBox, HBox, MenuItem, Menu, Input, StandardListItem, Text, Link, Toolbar, ToolbarSpacer, IconTabBar, IconTabFilter, MessageStrip) {
     "use strict";
@@ -143,7 +160,7 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
                 items: Object.entries(constants.cpithemes).map(([key, theme]) => new sap.m.SegmentedButtonItem({
                   text: theme.buttonlabel, tooltip: `Switch to ${theme.label} theme`, press: () => mode(key),
                 })),
-              }).setWidth("90%").addStyleClass("sapUiTinyMargin")],
+              }).setWidth("90%").addStyleClass("sapUiTinyMargin").addStyleClass("DarkcpiTheme")],
             }),
             new VBox({
               width: "100%", items: [new Title({
@@ -169,7 +186,7 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
         }),
           new VBox({
             items: [new Text({
-              text: "Enter timestamp (Unix, ISO, or select from DateTime Picker):",
+              text: "Enter timestamp in UTC (Unix, ISO, or select from DateTime Picker):",
             }),
               new HBox({
                 width: "100%", alignItems: "Center",
@@ -198,7 +215,7 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
                       handleDatePickerChange(dateValue);
                     },
                   })],
-              }).addStyleClass("sapUiTinyMarginBottom"),
+              }).addStyleClass("sapUiTinyMarginTopBottom"),
 
 
               // Result Box for both Unix and ISO timestamps
@@ -217,7 +234,7 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
                   },
                 }).addStyleClass("sapUiTinyMarginBegin")],
               })],
-          }),
+          }).addStyleClass("sapUiTinyMarginTop"),
         ];
       };
       const dialog = new Dialog({

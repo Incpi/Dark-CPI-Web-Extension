@@ -21,7 +21,7 @@ sap.ui.define([], function() {
     }, {
       label: "Convita IDE", link: "https://ide.contiva.com/",
     }, {
-      label: "SAP CPI Help", link: "https://help.sap.com/viewer/product/CLOUD_INTEGRATION/Cloud/",
+      label: "SAP CPI Help", link: "https://help.sap.com/docs/cloud-integration?locale=en-US",
     }],
     footer: {
       label: "Report Issues", Link: "https://github.com/incpi/Dark-CPI-Web-Extension/issues",
