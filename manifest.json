@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Dark CPI",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Extension provides control to change theme to dark mode for SAP integration suite (CPI)",
   "author": "Omkar Patel",
   "homepage_url": "https://incpi.vercel.app/blog/83efd",
@@ -29,7 +29,8 @@
         "https://*.platform.sapcloud.cn/*"
       ],
       "css": [
-        "utils/styles.css"
+        "style/custom.css",
+        "style/general.css"
       ]
     }
   ],

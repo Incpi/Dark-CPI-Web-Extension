@@ -80,14 +80,6 @@ html:is([class='sapUiTheme-sap_horizon_dark'], [class='sapUiTheme-sap_horizon'])
     white-space-collapse: collapse !important;
 }
 
-.cpides-allFlowStepScrollableContainer {
-    background-color: transparent !important;
-}
-
-.cpides-customMultiInput .sapMMultiInputBorder {
-    width: 100%;
-}
-
 .sapUiTheme-sap_horizon_dark {
     .sapMITH:not(.sapMITBTextOnly) .sapMITBSelected .sapUiIcon:is(.sapMITBFilterNegative, .sapMITBFilterPositive, .sapMITBFilterDefault, .sapMITBFilterNeutral, .sapMITBFilterCritical) {
         color: var(--cpidarkBaseColor) !important;

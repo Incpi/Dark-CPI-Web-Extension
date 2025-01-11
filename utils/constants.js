@@ -2,15 +2,17 @@ sap.ui.define([], function() {
   "use strict";
   return {
     prefixId: "DarkCPI_",
-    manifestVersion: "2.1.0",
+    manifestVersion: "2.1.1",
     allowedCPI: /^https:\/\/.*\.(hana\.ondemand\.com|platform\.sapcloud\.cn)\/.*$/,
     apiBaseCPI: /^.*integrationsuite.*.cfapps/.test(window.location.origin) ? window.location.origin : window.location.origin + "/itspaces",
     data_update_label: { bugFixes: "Bug Fixes", improvements: "Improvements", features: "Features" },
     data_updates: {
-      bugFixes: [], features: [], improvements: [
+      bugFixes: [{ description: "More CSS fixes where the scrollable section in the configuration window is not scrollable." }],
+      features: [],
+      improvements: [
         { description: "Load time was decreased by optimizing the extension runtime." },
         { description: "Decreased extension size and external libraries." },
-        { description: "Limited CSS overwrites to ensure a seamless native experience." },
+        { description: "Limited style overwrites to ensure a seamless native experience." },
       ],
     },
     neededLinks: [{
