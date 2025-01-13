@@ -84,6 +84,12 @@ The extension comes with the following predefined themes:
 
 ## Changelogs
 
+### v2.0.1
+
+- [BugFix] More CSS fixes: where the scrollable section in the configuration window is not scrollable.
+- [BugFix] Panels in trace, logs, design page CSS fixes where in exceptional cases overflow & Clipping text issues in
+  dark mode
+
 ### v2.0.0
 
 - [Feature] Updated in Native UI5.

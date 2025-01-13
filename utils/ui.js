@@ -5,18 +5,19 @@ sap.ui.loader.config({
     autoClose: `${$.sap.chromeExtensionURL}utils/autoClose`,
   },
 });
-sap.ui.define(["eventHandlers", "autoClose", "constants", "sap/m/Button"], function(eventHandlers, autoClose, constants, Button) {
+sap.ui.define(["eventHandlers", "autoClose", "constants", "sap/m/Button", "sap/ui/core/IconPool"], function(eventHandlers, autoClose, constants, Button, IconPool) {
   "use strict";
   console.log("Start ui script");
   const core = sap.ui.getCore();
   const storedTheme = localStorage.getItem(`${constants.prefixId}Theme`) || "sap_horizon";
   const DarkCPIVersion = localStorage.getItem(`${constants.prefixId}Version`) || 0;
+  // Apply the theme and run retry logic
   const interval = setInterval(() => {
     core.applyTheme(storedTheme);
     autoClose.retryAutocloseNavButton();
   }, 500);
   setTimeout(() => clearInterval(interval), 7000);
-
+  sap.ui.core.IconPool.addIcon("logo-icon", "darkcpi", "darkcpi", "e0001");
   return {
     header: async (id) => {
       let idSpacer = "__spacer0";
@@ -25,13 +26,13 @@ sap.ui.define(["eventHandlers", "autoClose", "constants", "sap/m/Button"], funct
       const indexContent = toolHeader.indexOfContent(core.byId(idSpacer));
       if (core.byId(`${constants.prefixId}ExtButton`)) return;
       const ExtensionButton = new Button(`${constants.prefixId}ExtButton`, {
-        icon: storedTheme === "sap_horizon_dark" ? "sap-icon://dark-mode" : "sap-icon://light-mode", // Default icon
-        type: "Transparent", text: "DC", tooltip: "Dark CPI Control Panel", press: () => eventHandlers.new_theme(),
+        icon: "sap-icon://darkcpi/logo-icon", type: "Default", text: "DC", tooltip: "Dark CPI Control Panel",
+        press: () => eventHandlers.new_theme(),
       });
 
       toolHeader.insertContent(ExtensionButton, indexContent + 1);
       if (DarkCPIVersion !== constants.manifestVersion) {
-        setTimeout(() => eventHandlers.new_theme("whatsNew"), 500);
+        setTimeout(() => eventHandlers.new_theme("whatsNew"), 1000);
       }
     },
   };

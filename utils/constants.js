@@ -2,12 +2,15 @@ sap.ui.define([], function() {
   "use strict";
   return {
     prefixId: "DarkCPI_",
-    manifestVersion: "2.1.1",
+    manifestVersion: "2.0.1",
     allowedCPI: /^https:\/\/.*\.(hana\.ondemand\.com|platform\.sapcloud\.cn)\/.*$/,
     apiBaseCPI: /^.*integrationsuite.*.cfapps/.test(window.location.origin) ? window.location.origin : window.location.origin + "/itspaces",
     data_update_label: { bugFixes: "Bug Fixes", improvements: "Improvements", features: "Features" },
     data_updates: {
-      bugFixes: [{ description: "More CSS fixes where the scrollable section in the configuration window is not scrollable." }],
+      bugFixes: [
+        { description: "More CSS fixes: where the scrollable section in the configuration window is not scrollable." },
+        { description: "Panels in trace, logs, design page CSS fixes where in exceptional cases overflow & Clipping text issues in dark mode" },
+      ],
       features: [],
       improvements: [
         { description: "Load time was decreased by optimizing the extension runtime." },

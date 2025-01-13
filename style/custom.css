@@ -36,6 +36,11 @@
     src: url('./SAP-icons-TNT.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'darkcpi';
+    src: url(chrome-extension://__MSG_@@extension_id__/images/DarkCpi.woff) format('woff')
+}
+
 .event {
     stroke-width: 1;
 }
