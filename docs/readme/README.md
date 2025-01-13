@@ -100,7 +100,8 @@ The extension comes with the following predefined themes:
 
 - [Feature] Generic Bug fixes.
 
-> ![Important] Discontinuing support for SAP Build and Theme Designer from v2.0.
+> [!IMPORTANT]  
+> Discontinuing support for SAP Build and Theme Designer from v2.0.
 
 ### v1.3.6
 
