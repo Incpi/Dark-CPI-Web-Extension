@@ -17,7 +17,9 @@ sap.ui.define(["eventHandlers", "autoClose", "constants", "sap/m/Button", "sap/u
     autoClose.retryAutocloseNavButton();
   }, 500);
   setTimeout(() => clearInterval(interval), 7000);
-  sap.ui.core.IconPool.addIcon("logo-icon", "darkcpi", "darkcpi", "e0001");
+  IconPool.addIcon("logo-icon", "darkcpi", "darkcpi", "e0001");
+  // IconPool.addIcon("logo-icon-1", "darkcpi", "darkcpi", "e0002");
+  IconPool.addIcon("logo-icon-2", "darkcpi", "darkcpi", "e0003");
   return {
     header: async (id) => {
       let idSpacer = "__spacer0";

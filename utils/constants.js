@@ -2,7 +2,7 @@ sap.ui.define([], function() {
   "use strict";
   return {
     prefixId: "DarkCPI_",
-    manifestVersion: "2.1.2",
+    manifestVersion: "2.1.2.1",
     allowedCPI: /^https:\/\/.*\.(hana\.ondemand\.com|platform\.sapcloud\.cn)\/.*$/,
     apiBaseCPI: /^.*integrationsuite.*.cfapps/.test(window.location.origin) ? window.location.origin : window.location.origin + "/itspaces",
     data_update_label: { bugFixes: "Bug Fixes", improvements: "Improvements", features: "Features" },

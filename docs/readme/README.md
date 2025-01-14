@@ -18,7 +18,7 @@ this plugin.
 
 We guarantee:
 
-- No personal data / tenant information is collected.s
+- No personal data / tenant information is collected.
 - It is open source so feel free to check the source code or your network console.
 
 ## Blog post
@@ -71,7 +71,8 @@ The extension comes with the following predefined themes:
 - Evening Horizon - Dark Theme similar to New UI
 - Quartz Light - Previous UI Theme before Morning Horizon
 
-> [!NOTE] any other theme by SAP is not compatible with this extension.
+> [!NOTE] 
+> Any other theme by SAP is not compatible with this extension.
 
 ### Versioning Scheme
 

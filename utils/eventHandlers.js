@@ -87,8 +87,12 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
   const updateTime = () => {
     const now = new Date();
     const utcTime = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
-    sap.ui.getCore().byId(`${constants.prefixId}utcTime`).setText(`UTC Time: ${timeConvert.formatDate(utcTime)}`);
-    sap.ui.getCore().byId(`${constants.prefixId}localTime`).setText(`Local Time: ${timeConvert.formatDate(now)}`);
+    const utcButton = sap.ui.getCore().byId(`${constants.prefixId}utcTime`);
+    const localButton = sap.ui.getCore().byId(`${constants.prefixId}localTime`);
+    if (utcButton && localButton) {
+      utcButton.setText(`UTC Time: ${timeConvert.formatDate(utcTime)}`);
+      localButton.setText(`Local Time: ${timeConvert.formatDate(now)}`);
+    }
   };
 
   const copyToClipboard = (text) => {
@@ -238,25 +242,21 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
           })],
       }).addStyleClass("sapUiTinyMarginTop")];
     };
+
     const dialog = new Dialog({
-      title: `Dark CPI Panel`,//v
+      title: `Dark CPI Panel`,
       id: `${constants.prefixId}Settings`,
       contentWidth: "50%",
       icon: "sap-icon://darkcpi/logo-icon",
       verticalScrolling: true,
       content: [new HBox({
-        alignItems: "Center",
-        items: [
-          new sap.tnt.InfoLabel({
-            text: `Version: ${constants.manifestVersion}`,
-            icon: "sap-icon://pushpin-on", displayOnly: false, colorScheme: 8,
-          }).addStyleClass("sapUiMediumMarginEnd"),
-          new Title({ text: "User:" }), new Avatar({
-            displaySize: "XS", // backgroundColor: "Transparent",
-            initials: user.substring(0, 2),
-          }).addStyleClass("sapUiTinyMarginBeginEnd"), new Text({
-            text: user,
-          })],
+        alignItems: "Center", items: [new sap.tnt.InfoLabel({
+          text: `Version: ${constants.manifestVersion}`,
+          icon: "sap-icon://pushpin-on", displayOnly: false, colorScheme: 8,
+        }).addStyleClass("sapUiMediumMarginEnd"), new Title({ text: "User:" }), new Avatar({
+          displaySize: "XS", // backgroundColor: "Transparent",
+          initials: user.substring(0, 2),
+        }).addStyleClass("sapUiTinyMarginBeginEnd"), new Text({ text: user })],
       }), new VBox({
         items: [new IconTabBar({
           selectedKey: selectedKey, items: [new IconTabFilter({
@@ -284,7 +284,7 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
       }), new VBox({
         items: [new Title({ text: "Github Contacts", level: sap.ui.core.TitleLevel.H3 }), new HBox({
           items: [new Avatar({
-            displaySize: "XL", backgroundColor: "Transparent", fallbackIcon: "sap-icon://darkcpi/logo-icon",
+            displaySize: "L", backgroundColor: "Transparent", fallbackIcon: "sap-icon://darkcpi/logo-icon-2",
           }), new VBox({ items: oGitHubSection }).addStyleClass("sapUiSmallMarginBegin")],
         })],
       }).addStyleClass("sapUiSmallMarginTop"), new VBox({
