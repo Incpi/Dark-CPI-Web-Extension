@@ -1,14 +1,20 @@
 "use strict";
-console.log("Start initial script");
 
-window.addEventListener("requestDataChromeApi", (event) => {
-  if (event.detail.request == "chromeExtensionURL") {
-    let detail = {};
-    try {
-      detail.url = chrome.runtime.getURL("/");
-      window.dispatchEvent(new CustomEvent("resposeDataChromeApi", { detail }));
-    } catch (error) {
-      console.log(error);
+console.log("Initializing OnInit.js...");
+
+// Set up a listener for custom events
+function setupChromeApiListener() {
+  window.addEventListener("requestDataChromeApi", (event) => {
+    if (event.detail?.request === "chromeExtensionURL") {
+      try {
+        const detail = { url: chrome.runtime.getURL("/") };
+        window.dispatchEvent(new CustomEvent("responseDataChromeApi", { detail }));
+      } catch (error) {
+        console.error("Error fetching Chrome extension URL:", error);
+      }
     }
-  }
-});
+  });
+}
+
+// Initialize the listener
+setupChromeApiListener();

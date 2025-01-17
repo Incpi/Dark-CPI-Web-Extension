@@ -1,53 +1,67 @@
 "use strict";
-window.sapui5Check = () => {
-  return this.sap;
-};
 
+// Check if SAPUI5 is available
+window.sapui5Check = () => !!window.sap;
+
+// Fetch the Chrome extension URL
 window.askChromeExtensionURL = () => {
   return new Promise((resolve, reject) => {
-    window.addEventListener("resposeDataChromeApi", (event) => {
-      window.removeEventListener("resposeDataChromeApi", this);
+    const listener = (event) => {
+      window.removeEventListener("responseDataChromeApi", listener);
       resolve(event.detail.url);
-    });
-    let detail = {};
-    detail.request = "chromeExtensionURL";
+    };
+    window.addEventListener("responseDataChromeApi", listener);
+
+    const detail = { request: "chromeExtensionURL" };
     window.dispatchEvent(new CustomEvent("requestDataChromeApi", { detail }));
-    setTimeout(() => reject("Cannot get chrome extension URL"), 200);
+
+    setTimeout(() => reject("Cannot get Chrome extension URL"), 200);
   });
 };
 
-window.startProcess = () => {
-  askChromeExtensionURL()
-    .then((chromeExtensionURL) => {
-      sap.ui
-        .getCore()
-        .ready()
-        .then(() => {
-          $.sap.chromeExtensionURL = chromeExtensionURL;
-          sap.ui.loader.config({
-            paths: {
-              ui: `${$.sap.chromeExtensionURL}utils/ui`,
-            },
-          });
-          sap.ui.require(["ui"], function(ui) {
-            const process = () => {
-              if (sap.ui.getCore().byId("shell--toolHeader")) {
-                ui.header("shell--toolHeader");
-              }
-              setTimeout(() => process(), 250);
-            };
-            setTimeout(() => process(), 500);
-          });
-        });
-    })
-    .catch((message) => {
-      console.log(message);
-      window.startProcess();
+// Start the main process
+window.startProcess = async () => {
+  try {
+    console.log("Starting the SAPUI5 initialization process...");
+
+    // Get the Chrome extension URL
+    const chromeExtensionURL = await window.askChromeExtensionURL();
+
+    // Wait for SAPUI5 to be ready
+    await sap.ui.getCore().ready();
+
+    // Configure SAPUI5 loader paths
+    $.sap.chromeExtensionURL = chromeExtensionURL;
+    sap.ui.loader.config({
+      paths: {
+        ui: `${chromeExtensionURL}utils/ui`,
+      },
     });
+
+    // Load and execute the "ui" module
+    sap.ui.require(["ui"], (ui) => {
+      const process = () => {
+        const header = sap.ui.getCore().byId("shell--toolHeader");
+        if (header) {
+          ui.header("shell--toolHeader");
+        } else {
+          setTimeout(process, 250);
+        }
+      };
+      process();
+    });
+  } catch (error) {
+    console.error("Error in startProcess:", error);
+    setTimeout(window.startProcess, 1000); // Retry with exponential backoff
+  }
 };
 
-//this is the start execute script
+// Start execution
 setTimeout(() => {
-  console.log("Start check sapui5");
-  if (window.sapui5Check() == undefined) setTimeout(() => window.sapui5Check(), 200); else window.startProcess();
+  console.log("Checking SAPUI5...");
+  if (window.sapui5Check()) {
+    window.startProcess();
+  } else {
+    setTimeout(() => window.startProcess(), 200);
+  }
 }, 200);
