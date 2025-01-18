@@ -185,7 +185,9 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
           })],
         })],
       }), new VBox({
-        items: [new Text({
+        items: [new Title({
+          text: "Time Converter", level: sap.ui.core.TitleLevel.H3,
+        }), new Text({
           text: "Enter timestamp in UTC (Unix, ISO, or select from DateTime Picker):",
         }), new HBox({
           width: "100%", alignItems: "Center", items: [// Normal Input Field
@@ -240,7 +242,7 @@ sap.ui.define(["constants", "timeConvert", "apiCall", "sap/m/Avatar", "sap/m/Dat
               },
             }).addStyleClass("sapUiTinyMarginBegin")],
           })],
-      }).addStyleClass("sapUiTinyMarginTop")];
+      }).addStyleClass("sapUiMediumMarginTop")];
     };
 
     const dialog = new Dialog({
