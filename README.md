@@ -84,6 +84,10 @@ The extension comes with the following predefined themes:
       will not appear in the changelog and is only included in maintenance versions.
 
 ## Changelogs
+### v2.1.3
+
+- [BugFix] More secure.
+- [BugFix] More features.
 
 ### v2.1.1
 

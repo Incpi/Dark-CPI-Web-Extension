@@ -1,4 +1,4 @@
-sap.ui.loader.config({ paths: { constants: `${$.sap.chromeExtensionURL}utils/js/constants` } });
+sap.ui.loader.config({ paths: { constants: `${$.sap.chromeExtensionURL}utils/constants` } });
 
 sap.ui.define(["constants"], function(constants) {
   "use strict";

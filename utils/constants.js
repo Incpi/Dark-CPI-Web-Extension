@@ -1,22 +1,15 @@
 sap.ui.define([], function() {
   "use strict";
   return {
-    prefixId: "_DarkCPI_",
+    prefixId: "__DarkCPI",
     manifestVersion: "2.1.3",
     allowedCPI: /^https:\/\/.*\.(hana\.ondemand\.com|platform\.sapcloud\.cn)\/.*$/,
     apiBaseCPI: /^.*integrationsuite.*.cfapps/.test(window.location.origin) ? window.location.origin : window.location.origin + "/itspaces",
     data_update_label: { bugFixes: "Bug Fixes", improvements: "Improvements", features: "Features" },
     data_updates: {
-      bugFixes: [
-        { description: "More CSS fixes: where the scrollable section in the configuration window is not scrollable." },
-        { description: "Panels in trace, logs, design page CSS fixes where in exceptional cases overflow & Clipping text issues in dark mode" },
-      ],
+      bugFixes: [{ description: "More CSS fixes: where the scrollable section in the configuration window is not scrollable." }, { description: "Panels in trace, logs, design page CSS fixes where in exceptional cases overflow & Clipping text issues in dark mode" }],
       features: [],
-      improvements: [
-        { description: "Load time was decreased by optimizing the extension runtime." },
-        { description: "Decreased extension size and external libraries." },
-        { description: "Limited style overwrites to ensure a seamless native experience." },
-      ],
+      improvements: [{ description: "Load time was decreased by optimizing the extension runtime." }, { description: "Decreased extension size and external libraries." }, { description: "Limited style overwrites to ensure a seamless native experience." }],
     },
     neededLinks: [{
       label: "List of Internal Headers and Properties",
@@ -47,8 +40,7 @@ sap.ui.define([], function() {
       sapblog: "https://community.sap.com/t5/technology-blogs-by-members/introducing-dark-cpi-web-extension-for-sap-applications/bc-p/13860794",
     },
     noticeType: ["Warning", "Error", "Success", "Information", "None"],
-    notice: [
-      // {text: `All control has been moved from the popup to the webpage header - "DC" icon.`, type: "Warning | Error", showIcon: true, visible: true,}
+    notice: [// {text: `All control has been moved from the popup to the webpage header - "DC" icon.`, type: "Warning | Error", showIcon: true, visible: true,}
     ],
   };
 });
