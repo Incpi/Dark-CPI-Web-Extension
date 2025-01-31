@@ -1,597 +1,620 @@
 .cpides-allFlowStepScrollableContainer {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .cpides-customMultiInput .sapMMultiInputBorder {
-    width: 100%;
+  width: 100%;
 }
 
 .cpides-propertySheetScrollContainer {
-    overflow: hidden auto !important;
-    background-color: var(--sapBackgroundColor)
+  overflow: hidden auto !important;
+  background-color: var(--sapBackgroundColor);
 }
 
 .cpides-iflowPropertyViewerToolbar {
-    float: right;
-    margin-right: 4.25rem;
-    background-color: transparent;
-    border: none !important
+  float: right;
+  margin-right: 4.25rem;
+  background-color: transparent;
+  border: none !important;
 }
 
-div[id$=iflowPropNavigationBar] .sapMITBContainerContent {
-    height: 0
+div[id$='iflowPropNavigationBar'] .sapMITBContainerContent {
+  height: 0;
 }
 
-.cpides-iflowPropMain .cpides-iflowPropSheetHeader, .cpides-propertySheetHeader, .cpides-iflowIconTabBarLayout {
-    width: 100%
+.cpides-iflowPropMain .cpides-iflowPropSheetHeader,
+.cpides-propertySheetHeader,
+.cpides-iflowIconTabBarLayout {
+  width: 100%;
 }
 
 .cpides-iflowPropMain .cpides-iflowIconTabBarLayout .sapUiHLayoutChildWrapper {
-    width: 100%
+  width: 100%;
 }
 
-.cpides-iflowPropDisplayArea, .cpides-extDialogDisplayArea {
-    padding-top: 1%
+.cpides-iflowPropDisplayArea,
+.cpides-extDialogDisplayArea {
+  padding-top: 1%;
 }
 
 .cpides-extDialogIconTabBar .sapMITBContainerContent {
-    height: 0;
-    overflow: hidden
+  height: 0;
+  overflow: hidden;
 }
 
-.cpides-iflowObjecPageLayout .sapUxAPObjectPageContainer, .cpides-iflowObjecPageLayout .sapUxAPObjectPageSection, .cpides-iflowObjecPageLayout .sapUxAPObjectPageSectionContainer, .cpides-iflowObjecPageLayout .sapUxAPObjectPageSubSection, .cpides-iflowObjecPageLayout .sapUxAPBlockContainer, .cpides-iflowObjecPageLayout .sapUiRespGrid, .cpides-iflowObjecPageLayout .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer > .sapUiRespGrid > .sapUiRespGridSpanL12.sapUiRespGridSpanM12.sapUiRespGridSpanS12.sapUiRespGridSpanXL12 {
-    height: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    padding-top: 0 !important
+.cpides-iflowObjecPageLayout .sapUxAPObjectPageContainer,
+.cpides-iflowObjecPageLayout .sapUxAPObjectPageSection,
+.cpides-iflowObjecPageLayout .sapUxAPObjectPageSectionContainer,
+.cpides-iflowObjecPageLayout .sapUxAPObjectPageSubSection,
+.cpides-iflowObjecPageLayout .sapUxAPBlockContainer,
+.cpides-iflowObjecPageLayout .sapUiRespGrid,
+.cpides-iflowObjecPageLayout .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer > .sapUiRespGrid > .sapUiRespGridSpanL12.sapUiRespGridSpanM12.sapUiRespGridSpanS12.sapUiRespGridSpanXL12 {
+  height: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding-top: 0 !important;
 }
 
 .cpides-iflowObjecPageLayout .sapUxAPBlockContainer > div:first-child > div:first-child {
-    height: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important
+  height: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
 }
 
 .cpides-problemsViewUiOuterLeftMargin {
-    margin-left: 30px
+  margin-left: 30px;
 }
 
 .cpides-propertySheetHeader .sapUiHLayoutChildWrapper:nth-child(2) {
-    float: right;
-    width: 50%
+  float: right;
+  width: 50%;
 }
 
-.cpides-iflowPropertyViewerUiLabelPropHeaderLayout, .cpides-extDialogHeaderLabel {
-    font-size: 1rem;
-    margin-left: 1rem;
-    margin-top: .5rem
+.cpides-iflowPropertyViewerUiLabelPropHeaderLayout,
+.cpides-extDialogHeaderLabel {
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
 }
 
 .cpides-iflowPropertyViewerUiLabelPropHeaderLayout {
-    font-weight: bold
+  font-weight: bold;
 }
 
 .cpides-iflowCpiSplitter .cpiUiSplitterBarButtons {
-    margin-top: 2.4rem !important
+  margin-top: 2.4rem !important;
 }
 
 .cpides-iflowCpiSplitter .cpiUiSplitterBarButton {
-    padding-right: .35rem !important
+  padding-right: 0.35rem !important;
 }
 
 .cpides-iflowCpiSplitter .cpiUiSplitterBarButton .sapMBtnInner {
-    background-color: inherit !important;
-    border: none !important;
-    padding: 0
+  background-color: inherit !important;
+  border: none !important;
+  padding: 0;
 }
 
 .cpides-iflowPropertyViewerUiOuter .cpides-header-text-type2-Unified {
-    margin-top: 16px
+  margin-top: 16px;
 }
 
 .cpides-iflowPropertyViewerUiOuter .sapUiRespGrid > div {
-    margin-top: 5px
+  margin-top: 5px;
 }
 
 .cpides-editConfigContent .sapUiRespGrid {
-    padding: 0 !important
+  padding: 0 !important;
 }
 
 .cpides-iflowModelerLayout {
-    height: 100%;
-    width: 100%;
-    overflow: hidden !important
+  height: 100%;
+  width: 100%;
+  overflow: hidden !important;
 }
 
 .cpides-iflowModelerLayout > .sapUiHLayoutChildWrapper:last-child {
-    width: 100%;
-    height: 100%;
-    overflow: hidden !important
+  width: 100%;
+  height: 100%;
+  overflow: hidden !important;
 }
 
-.cpides-iflowObjecPageLayout .sapUxAPObjectPageScroll, .cpides-iflowPropMain {
-    height: 100%;
-    overflow: hidden !important
+.cpides-iflowObjecPageLayout .sapUxAPObjectPageScroll,
+.cpides-iflowPropMain {
+  height: 100%;
+  overflow: hidden !important;
 }
 
 .cpides-iflowPropertyViewerUiOuterLeftMargin {
-    margin-left: 1%
+  margin-left: 1%;
 }
 
 .cpides-AdapterListViewSelectionDialog .sapMDialogScrollCont {
-    padding: 0 !important;
-    height: 100% !important
+  padding: 0 !important;
+  height: 100% !important;
 }
 
 .cpides-iflowObjecPageLayout .sapUxAPObjectPageHeaderTitle {
-    border-bottom: 1px;
-    padding-right: 0 !important
+  border-bottom: 1px;
+  padding-right: 0 !important;
 }
 
 .cpides-iflowObjecPageLayout .sapUxAPObjectPageHeaderContent {
-    padding: 0rem !important;
-    text-align: center
+  padding: 0rem !important;
+  text-align: center;
 }
 
 .cpides-searchStepToolBar {
-    padding-top: .5rem !important
+  padding-top: 0.5rem !important;
 }
 
 .cpides-iflowObjecPageLayout .sapUxAPObjectPageHeaderIdentifierDescription {
-    display: inline-block !important
+  display: inline-block !important;
 }
 
 .cpides-toolbarButton {
-    padding-top: .5rem !important;
-    padding-right: 1rem !important
+  padding-top: 0.5rem !important;
+  padding-right: 1rem !important;
 }
 
 .cpides-toolbarButton span {
-    border: 0;
+  border: 0;
 }
 
 .iflowDiagramLayout {
-    height: 100%;
-    width: 100%
+  height: 100%;
+  width: 100%;
 }
 
 .cpides-validationErrorMarker {
-    position: absolute;
-    z-index: 2;
-    padding: 10px
+  position: absolute;
+  z-index: 2;
+  padding: 10px;
 }
 
 .iflowDiagramLayout .sapUiXMLView {
-    overflow: hidden !important
+  overflow: hidden !important;
 }
 
 .iflowDiagramLayout > .sapUiVltCell:last-child {
-    height: 100%;
-    width: 100%
+  height: 100%;
+  width: 100%;
 }
 
 .cpides-referenceSelectDialog .localResourcesMessage {
-    margin-bottom: 15px
+  margin-bottom: 15px;
 }
 
 .cpides-referenceSelectDialog .localResourcesSearchField {
-    margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .cpides-referenceSelectDialog .referenceResourceMessage {
-    margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .cpides-referenceResourcesHLayoutLabelSearch .sapUiHLayoutChildWrapper:nth-child(1) {
-    margin-top: 10px
+  margin-top: 10px;
 }
 
 .cpides-referenceResourcesHLayoutLabelSearch .sapUiHLayoutChildWrapper:nth-child(2) {
-    width: calc(100% - 250px);
-    margin-left: 162px;
-    margin-bottom: 10px
+  width: calc(100% - 250px);
+  margin-left: 162px;
+  margin-bottom: 10px;
 }
 
-.cpides-referenceSelectDialog .cpides-referenceResourcesHLayoutLabelSelect, .cpides-referenceSelectDialog .sapUiVltCell, .cpides-referenceSelectDialog .sapuiVltCell .cpides-referenceResourcesHLayoutLabelSearch {
-    width: 100%
+.cpides-referenceSelectDialog .cpides-referenceResourcesHLayoutLabelSelect,
+.cpides-referenceSelectDialog .sapUiVltCell,
+.cpides-referenceSelectDialog .sapuiVltCell .cpides-referenceResourcesHLayoutLabelSearch {
+  width: 100%;
 }
 
 @media screen and (max-width: 1400px) {
-    .cpides-referenceResourcesHLayoutLabelSearch .sapUiHLayoutChildWrapper:nth-child(2) {
-        margin-left: 75px
-    }
+  .cpides-referenceResourcesHLayoutLabelSearch .sapUiHLayoutChildWrapper:nth-child(2) {
+    margin-left: 75px;
+  }
 }
 
 .cpides-contentHLayout .sapUiHLayoutChildWrapper:last-child {
-    width: 100%
+  width: 100%;
 }
 
 .cpides-contentHLayout {
-    width: 100%
+  width: 100%;
 }
 
 .cpides-contentHLayout .sapUiXMLView {
-    overflow-y: hidden !important
+  overflow-y: hidden !important;
 }
 
 .cpides-referenceSelectDialog .referenceResourceLabel {
-    margin-right: 10px;
-    margin-top: 12px
+  margin-right: 10px;
+  margin-top: 12px;
 }
 
 .cpides-referenceSelectDialog .referenceResourceSelectBox {
-    margin-bottom: 50px;
-    margin-top: 10px;
-    width: 100% !important
+  margin-bottom: 50px;
+  margin-top: 10px;
+  width: 100% !important;
 }
 
 .cpides-referenceResourcesHLayoutLabelSelect .sapUiHLayoutChildWrapper:nth-child(2) {
-    width: calc(100% - 110px)
+  width: calc(100% - 110px);
 }
 
 .cpides-iflowResourceObjecPageLayout .sapUxAPBlockContainer > div:first-child > div:first-child {
-    height: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important
+  height: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
 }
 
-.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection .sapUxAPBlockContainer, .cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection .sapUiRespGrid {
-    padding: 0 !important
+.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection .sapUxAPBlockContainer,
+.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection .sapUiRespGrid {
+  padding: 0 !important;
 }
 
 .cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageScroll {
-    height: 100%;
-    overflow: hidden
+  height: 100%;
+  overflow: hidden;
 }
 
 .cpides-iflowObjecPageLayout .sapUiRespGrid .sapUiRespGridHSpace1 {
-    padding: 0
+  padding: 0;
 }
 
-.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageContainer, .cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection, .cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSectionContainer, .cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSubSection, .cpides-iflowResourceObjecPageLayout .sapUxAPBlockContainer, .cpides-iflowResourceObjecPageLayout .sapUiRespGrid, .cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer > .sapUiRespGrid > .sapUiRespGridSpanL12.sapUiRespGridSpanM12.sapUiRespGridSpanS12.sapUiRespGridSpanXL12 {
-    height: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    padding: 0 !important
+.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageContainer,
+.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection,
+.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSectionContainer,
+.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSubSection,
+.cpides-iflowResourceObjecPageLayout .sapUxAPBlockContainer,
+.cpides-iflowResourceObjecPageLayout .sapUiRespGrid,
+.cpides-iflowResourceObjecPageLayout .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer > .sapUiRespGrid > .sapUiRespGridSpanL12.sapUiRespGridSpanM12.sapUiRespGridSpanS12.sapUiRespGridSpanXL12 {
+  height: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
 }
 
-.cpides-properties_view_toolbar_container, .cpides-properties_view_toolbar_container > .sapUiHLayoutChildWrapper {
-    width: 100%
+.cpides-properties_view_toolbar_container,
+.cpides-properties_view_toolbar_container > .sapUiHLayoutChildWrapper {
+  width: 100%;
 }
 
 .cpides-payload_properties_container {
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    padding-top: 8px
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding-top: 8px;
 }
 
 .cpides-payloadDialog_content_container .cpides-toolbar {
-    padding-bottom: 5px;
-    padding-left: 0;
-    padding-right: 0
+  padding-bottom: 5px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .cpides-payloadDialog_body_container {
-    padding-top: 10px;
-    width: 100%
+  padding-top: 10px;
+  width: 100%;
 }
 
 .cpides-marginForContainer {
-    margin-top: 15px !important
+  margin-top: 15px !important;
 }
 
 .cpides-simulationTextAreaContainer .sapUiHLayoutChildWrapper:last-child {
-    width: 100%
+  width: 100%;
 }
 
 .cpides-simulationTextAreaContainer {
-    width: 87.5%;
-    margin-top: 1rem
+  width: 87.5%;
+  margin-top: 1rem;
 }
 
 .cpides-simulation_file_label {
-    margin-right: 15px;
-    margin-left: 40px;
-    padding-top: .5rem !important
+  margin-right: 15px;
+  margin-left: 40px;
+  padding-top: 0.5rem !important;
 }
 
 .cpides-simulation_content_label {
-    margin-right: 15px;
-    margin-left: 15px;
-    padding-top: .5rem !important
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top: 0.5rem !important;
 }
 
 .cpides-traceDialog_body_container {
-    width: 95%;
-    padding: 0 2% 2% 1%
+  width: 95%;
+  padding: 0 2% 2% 1%;
 }
 
-
 .cpides-galileiEditorPage > section {
-    padding-bottom: 0rem !important
+  padding-bottom: 0rem !important;
 }
 
 .cpides-galileiEditorPage > section:after {
-    margin-bottom: 0rem !important
+  margin-bottom: 0rem !important;
 }
 
 .cpides-galeliEditorViewStyle {
-    overflow: hidden
+  overflow: hidden;
 }
 
 .cpides-iflowCpiSplitter .sapUiLoSplitterContent {
-    overflow: hidden
+  overflow: hidden;
 }
 
 .cpides-schedulerContainer {
-    display: block;
-    width: 50rem
+  display: block;
+  width: 50rem;
 }
 
 .cpides-scheduler-label {
-    padding-top: 8px
+  padding-top: 8px;
 }
 
 .cpides-schedulerVerticalSplit > .sapUiHLayoutChildWrapper:first-child {
-    width: 200px !important
+  width: 200px !important;
 }
 
-.cpides-iflowPropertyViewerUiContentMLayout .sapUiBlockCellContent, .cpides-editConfigContent .sapUiBlockCellContent {
-    padding: 0 !important
+.cpides-iflowPropertyViewerUiContentMLayout .sapUiBlockCellContent,
+.cpides-editConfigContent .sapUiBlockCellContent {
+  padding: 0 !important;
 }
 
 .cpides-schedulerLabelClass {
-    margin-top: 6px;
-    text-align: center !important
+  margin-top: 6px;
+  text-align: center !important;
 }
 
 .cpides-iflowPropertyViewerUiOuter {
-    width: calc(100% - 34px)
+  width: calc(100% - 34px);
 }
 
 .cpides-defaultSchedulerParent > .sapUiHLayoutChildWrapper:first-child {
-    width: 150px;
-    height: 100%
+  width: 150px;
+  height: 100%;
 }
 
 .cpides-defaultSchedulerParent > .sapUiHLayoutChildWrapper:nth-child(2) {
-    width: 200px;
-    height: 100%
+  width: 200px;
+  height: 100%;
 }
 
-.cpides-iflowPropertyViewerUiOuter .sapMFocus .sapMInputBaseContentWrapper::before, .cpides-editConfigContent .sapMFocus .sapMInputBaseContentWrapper::before {
-    border: 0 !important
+.cpides-iflowPropertyViewerUiOuter .sapMFocus .sapMInputBaseContentWrapper::before,
+.cpides-editConfigContent .sapMFocus .sapMInputBaseContentWrapper::before {
+  border: 0 !important;
 }
 
 .cpides-searchToolbar {
-    position: relative;
-    left: calc(50% - 200px)
+  position: relative;
+  left: calc(50% - 200px);
 }
 
 .cpides-searchFlowStepTreeItem .sapMTreeItemBaseExpander {
-    display: none
+  display: none;
 }
 
 .cpides-searchFlowStepTreeItem .cpides-searchFlowStepTreeItemIcon {
-    vertical-align: middle;
-    margin-right: .5rem
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 
 .cpides-searchFlowStepTreeItem .sapMLIBContent {
-    display: block
+  display: block;
 }
 
 .cpides-allFlowStepScrollableContainer {
-    height: 19vh;
-    width: 300px;
+  height: 19vh;
+  width: 300px;
 }
 
 html.sap-desktop .cpides-allFlowStepScrollableContainer.sapMScrollContV::-webkit-scrollbar {
-    width: 0rem;
-    height: 100%
+  width: 0rem;
+  height: 100%;
 }
 
 .cpides-onePredictedFlowStepScrollableContainer {
-    height: 33px
+  height: 33px;
 }
 
 .cpides-twoPredictedFlowStepScrollableContainer {
-    height: 66px
+  height: 66px;
 }
 
 .cpides-threePredictedFlowStepScrollableContainer {
-    height: 99px
+  height: 99px;
 }
 
 .cpides-flowStepContributionHeaderLayoutLabel {
-    margin-top: 1rem;
-    font-weight: bold
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 .cpides-allFlowStepLabel {
-    margin-left: 1rem;
-    margin-bottom: .3rem
+  margin-left: 1rem;
+  margin-bottom: 0.3rem;
 }
 
 .cpides-allFlowStepToolBar.sapMTB {
-    margin-bottom: 0 !important;
-    padding-top: 1.25rem !important;
-    padding-bottom: 1.25rem !important
+  margin-bottom: 0 !important;
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
 }
 
 .cpides-closeMarkBtn {
-    margin: .25rem .25rem 0 .5rem;
-    font-size: 14px
+  margin: 0.25rem 0.25rem 0 0.5rem;
+  font-size: 14px;
 }
 
 .cpides-toolbarContentLayout {
-    display: inline-flex !important;
-    height: 2.5rem !important;
-    margin-bottom: 0rem !important
+  display: inline-flex !important;
+  height: 2.5rem !important;
+  margin-bottom: 0rem !important;
 }
 
 .cpides-scheduler-smallPadding {
-    padding-left: .5rem;
-    padding-right: .5rem
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .cpides-scheduler-labelBetween {
-    padding-right: 1.5rem;
-    padding-left: .5rem
+  padding-right: 1.5rem;
+  padding-left: 0.5rem;
 }
 
 .cpides-scheduler-labelAnd {
-    padding-left: .3rem;
-    padding-right: .8rem
+  padding-left: 0.3rem;
+  padding-right: 0.8rem;
 }
 
 .cpides-scheduler-labelRangeEnd {
-    padding-left: .3rem
+  padding-left: 0.3rem;
 }
 
 .cpides-scheduler-labelRangeStart {
-    padding-left: .3rem;
-    padding-right: .5rem
+  padding-left: 0.3rem;
+  padding-right: 0.5rem;
 }
 
 .cpides-scheduler-between {
-    padding-right: 2rem;
-    padding-left: 2rem
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 .cpides-iflowPropertyViewerUiOuterRightMargin {
-    margin-right: 1%
+  margin-right: 1%;
 }
 
 .cpides-iflowPropertyViewerUiOuterRightMargin {
-    margin-right: 1%
+  margin-right: 1%;
 }
 
 .cpides-infoGridLayout > div {
-    margin-top: .5rem !important
+  margin-top: 0.5rem !important;
 }
 
 .cpides-flowElementRTPropertyIconTabBar {
-    width: 100% !important
+  width: 100% !important;
 }
 
 .cpides-flowElementRTPropertyContent {
-    top: 50px !important;
-    width: 100% !important
+  top: 50px !important;
+  width: 100% !important;
 }
 
-.cpides-flowElementRTPropertyIconTabBar .sapUiHLayoutChildWrapper, .cpides-flowElementRTPropertyContent .sapUiHLayoutChildWrapper {
-    width: 100% !important
+.cpides-flowElementRTPropertyIconTabBar .sapUiHLayoutChildWrapper,
+.cpides-flowElementRTPropertyContent .sapUiHLayoutChildWrapper {
+  width: 100% !important;
 }
 
 .cpides-flowElementRTPropertyContent .cpides-schedulerContainer .sapUiHLayoutChildWrapper {
-    width: auto !important
+  width: auto !important;
 }
 
 .cpides-tracingPropertySheetPosition {
-    position: absolute !important
+  position: absolute !important;
 }
 
 .cpides-inheritHeightPropertyForVerticalLayout {
-    display: contents !important
+  display: contents !important;
 }
 
 .cpides-deploymentStatus .manageIntegrationContentLink {
-    margin-top: 0 !important
+  margin-top: 0 !important;
 }
 
 .cpides-deploymentStatus .sapUiRespGrid > div:nth-child(5) {
-    width: auto
+  width: auto;
 }
 
 .cpides-deploymentStatus .runtimeStatusBusyIndicator .sapMBusyIndicatorBusyArea {
-    min-height: 2em
+  min-height: 2em;
 }
 
 .cpides-externalizedParameterViewUiOuterLeftMargin {
-    margin-left: 1rem
+  margin-left: 1rem;
 }
 
 .cpides-externalizedParameterViewUiOuterRightMargin {
-    margin-right: 1rem
+  margin-right: 1rem;
 }
 
 .cpides-iflowPropDisplayArea {
-    margin-bottom: .5rem
+  margin-bottom: 0.5rem;
 }
 
 .cpides-propertySheetScrollContainer {
-    overflow: hidden auto !important;
-    background-color: var(--sapBackgroundColor)
+  overflow: hidden auto !important;
+  background-color: var(--sapBackgroundColor);
 }
 
 .cpides-scriptTextArea .ace_tooltip {
-    transform: translate(-270px, -70px)
+  transform: translate(-270px, -70px);
 }
 
 .sapTntToolPageAsideCollapsed .cpides-scriptTextArea .ace_tooltip {
-    transform: translate(-70px, -70px)
+  transform: translate(-70px, -70px);
 }
 
 .cpides-scriptEditorSplitter .cpiUiSplitterBarButtons {
-    margin-top: 2.4rem !important;
-    margin-right: .35rem !important
+  margin-top: 2.4rem !important;
+  margin-right: 0.35rem !important;
 }
 
 .cpides-scriptEditorSplitter .sapUiLoSplitterContent {
-    overflow: hidden
+  overflow: hidden;
 }
 
 .cpides-schedulerBoldLabelClass {
-    margin-top: 6px;
-    font-weight: bold;
-    text-align: center !important
+  margin-top: 6px;
+  font-weight: bold;
+  text-align: center !important;
 }
 
 .cpides-UiContentBLayout .sapUiBlockCellContent {
-    padding: 0 !important;
-    padding-right: 5px !important;
-    padding-top: 5px !important;
-    align-self: center;
-    padding-left: 5px !important
+  padding: 0 !important;
+  padding-right: 5px !important;
+  padding-top: 5px !important;
+  align-self: center;
+  padding-left: 5px !important;
 }
 
 .cpides-UiContentBLayout .sapUiBlockLayoutCell {
-    flex-basis: 0 !important
+  flex-basis: 0 !important;
 }
 
-.cpides-UiContentBLayout .sapMInputBaseContentWrapper, .cpides-UiContentBLayout textarea {
-    outline: none !important
+.cpides-UiContentBLayout .sapMInputBaseContentWrapper,
+.cpides-UiContentBLayout textarea {
+  outline: none !important;
 }
 
 .cpides-UiContentBLayout .sapMInputBaseInner {
-    padding: 0 !important;
-    padding-left: 3px !important
+  padding: 0 !important;
+  padding-left: 3px !important;
 }
 
-
 .cpides-querybuilderLayout .sapUiBlockLayoutCell {
-    flex-basis: 0 !important
+  flex-basis: 0 !important;
 }
 
 .cpides-blockLayoutCellLabel {
-    text-align: right;
-    padding-right: 20px;
-    padding-top: 5px
+  text-align: right;
+  padding-right: 20px;
+  padding-top: 5px;
 }
 
 .cpides-querybuilderLayout .sapUiBlockCellContent {
-    padding: 2px 0 !important
+  padding: 2px 0 !important;
 }
 
 .cpides-primaryKeyIcon {
-    padding: 0 10px
+  padding: 0 10px;
 }
 
 .cpides-queryBlock {
-    border: 1px solid hsl(0deg 0% 25%);
-    word-break: break-all;
-    font-size: .875rem
+  border: 1px solid hsl(0deg 0% 25%);
+  word-break: break-all;
+  font-size: 0.875rem;
 }

@@ -10,233 +10,233 @@
 
 /* "No color declaration outside of root" */
 :root {
-    --cpidarkErrorColor: #ff5656;
-    --cpidarkWarningColor: #ff882d;
-    --cpidarkSuccessColor: #30b856;
-    --cpidarkContent_Illustrative: #2a4259;
-    --cpidarkContent_stroke_models: #427cac;
-    --cpidarkTextColor: #fff;
-    --cpidarkBaseColor: #1d2d3e;
-    --cpidarkMessage_InformationBorderColor: #6bb3ff;
-    --cpidarkList_SelectionBackgroundColor: #1d2d3e;
-    --cpidarkdashboard_BackgroundColor: #1d232a;
+  --DarkCpiErrorColor: var(--sapNegativeColor, #ff5656);
+  --DarkCpiWarningColor: var(--sapCriticalColor, #ff882d);
+  --DarkCpiSuccessColor: var(--sapPositiveColor, #30b856);
+  --DarkCpiContent_Illustrative: #2a4259;
+  --DarkCpiContent_stroke_models: #427cac;
+  --DarkCpiTextColor: #fff;
+  --DarkCpiBaseColor: #1d2d3e;
+  --DarkCpiMessage_InformationBorderColor: #6bb3ff;
+  --DarkCpiList_SelectionBackgroundColor: #1d2d3e;
+  --DarkCpidashboard_BackgroundColor: #1d232a;
 }
 
 @font-face {
-    font-family: 'SAPBPMN';
-    src: url('./SAPBPMNRegular.eot');
-    src: url(chrome-extension://__MSG_@@extension_id__/images/SAPBPMNRegular.woff) format('woff'), url('./SAPBPMNRegular.svg#SAPBPMNRegular') format('svg');
-    font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
+  font-family: 'SAPBPMN';
+  src: url('./SAPBPMNRegular.eot');
+  src: url(chrome-extension://__MSG_@@extension_id__/images/SAPBPMNRegular.woff) format('woff'), url('./SAPBPMNRegular.svg#SAPBPMNRegular') format('svg');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
 }
 
 @font-face {
-    font-family: 'SAP-icons-TNT';
-    src: url('./SAP-icons-TNT.ttf') format('truetype');
+  font-family: 'SAP-icons-TNT';
+  src: url('./SAP-icons-TNT.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'darkcpi';
-    src: url(chrome-extension://__MSG_@@extension_id__/images/DarkCpi.woff) format('woff')
+  font-family: 'darkcpi';
+  src: url(chrome-extension://__MSG_@@extension_id__/images/DarkCpi.woff) format('woff');
 }
 
 .event {
-    stroke-width: 1;
+  stroke-width: 1;
 }
 
 .sapUiLocalBusyIndicatorAnimation {
-    min-width: 3em !important;
+  min-width: 3em !important;
 }
 
 html:is([class='sapUiTheme-sap_horizon_dark'], [class='sapUiTheme-sap_horizon']) .sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer .sapUxAPObjectPageSubSection .sapUxAPBlockContainer {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .modToolbar > ul > li {
-    margin-right: 0.75rem;
-    margin-left: 0.75rem;
-    padding-top: 0.5rem;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  padding-top: 0.5rem;
 }
 
 .cpiBadgeIndicator {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: var(--cpidarkErrorColor);
-    color: white;
-    border-radius: 50%;
-    width: 1em;
-    height: 1em;
-    text-align: center;
-    line-height: 1em;
-    font-size: 0.75em;
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--DarkCpiErrorColor);
+  color: white;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  line-height: 1em;
+  font-size: 0.75em;
+  z-index: 10;
 }
 
 .iflowDiagramLayout > .sapUiVltCell:last-child,
 .iflowDiagramLayout:has(.sapUiVltCell:last-child) {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .itopweb-MessageDetailsTextArea {
-    white-space-collapse: collapse !important;
+  white-space-collapse: collapse !important;
 }
 
 .sapUiTheme-sap_horizon_dark {
-    .sapMITH:not(.sapMITBTextOnly) .sapMITBSelected .sapUiIcon:is(.sapMITBFilterNegative, .sapMITBFilterPositive, .sapMITBFilterDefault, .sapMITBFilterNeutral, .sapMITBFilterCritical) {
-        color: var(--cpidarkBaseColor) !important;
+  .sapMITH:not(.sapMITBTextOnly) .sapMITBSelected .sapUiIcon:is(.sapMITBFilterNegative, .sapMITBFilterPositive, .sapMITBFilterDefault, .sapMITBFilterNeutral, .sapMITBFilterCritical) {
+    color: var(--DarkCpiBaseColor) !important;
+  }
+
+  .cpides-traced {
+    fill: var(--DarkCpiMessage_InformationBorderColor);
+  }
+
+  .cpides-toolbarButton span {
+    border: 0;
+    color: var(--DarkCpiTextColor);
+  }
+
+  div[id$='iflowPropNavigationBar'] .sapMITBContainerContent,
+  div[id$='iflowPropNavigationBar'] .sapMITBContainerContent > * {
+    padding-block: 0;
+  }
+
+  .cpides-tracedWithError,
+  .cpides-failure {
+    fill: var(--DarkCpiErrorColor);
+  }
+
+  .cpides-success {
+    fill: var(--DarkCpiSuccessColor);
+  }
+
+  text {
+    fill: var(--DarkCpiTextColor);
+  }
+
+  rect[fill-opacity='0.01'],
+  path[opacity='0.01'] {
+    fill-opacity: 0;
+    opacity: 0;
+  }
+
+  .sapGalileiSelected:focus {
+    outline: none;
+  }
+
+  .participant {
+    stroke: var(--DarkCpiContent_Illustrative);
+    fill: var(--DarkCpiBaseColor);
+  }
+
+  .participantHeaderText {
+    fill: var(--DarkCpiTextColor);
+  }
+
+  .participantHeader {
+    stroke: var(--DarkCpiContent_Illustrative);
+    fill: var(--DarkCpiBaseColor);
+  }
+
+  .subProcess {
+    stroke: var(--DarkCpiContent_Illustrative);
+    fill: var(--DarkCpiBaseColor);
+    stroke-width: 1;
+  }
+
+  .sequenceFlow {
+    stroke-width: 1;
+    fill: transparent;
+  }
+
+  .messageFlow {
+    stroke-width: 2;
+    fill: transparent;
+  }
+
+  .event {
+    stroke: var(--DarkCpiContent_stroke_models);
+    fill: var(--DarkCpiBaseColor);
+  }
+
+  .endMessage {
+    fill: var(--DarkCpiTextColor);
+  }
+
+  .startEvent {
+    stroke: var(--DarkCpiTextColor);
+    fill: var(--DarkCpiTextColor);
+  }
+
+  .endEvent {
+    stroke: var(--DarkCpiTextColor);
+    fill: var(--DarkCpiTextColor);
+  }
+
+  .activity {
+    stroke: var(--DarkCpiMessage_InformationBorderColor);
+    fill: var(--DarkCpiList_SelectionBackgroundColor);
+    stroke-width: 1;
+  }
+
+  .activityMarker {
+    stroke: var(--DarkCpiTextColor);
+  }
+
+  .gateway {
+    stroke: var(--DarkCpiContent_stroke_models);
+    fill: var(--DarkCpiBaseColor);
+    stroke-width: 1;
+    width: 48px;
+    height: 48px;
+  }
+
+  .parallelGateway {
+    stroke: var(--DarkCpiTextColor);
+  }
+
+  .error {
+    fill: var(--DarkCpiErrorColor);
+  }
+
+  .warning {
+    fill: var(--DarkCpiWarningColor);
+  }
+
+  .shapeText {
+    font: 12px Arial, Helvetica, sans-serif;
+    fill: var(--DarkCpiTextColor);
+  }
+
+  .cpides-iflowPropMain .cpides-iflowPropSheetHeader,
+  .sapUiLoSplitterContent .sapMPageHeader > div {
+    background-color: var(--DarkCpiBaseColor) !important;
+  }
+
+  .itopweb-background-white,
+  .itopweb-MessageDetailsTextArea,
+  .itopweb-HTMLControlInScrollableContainer {
+    background-color: var(--DarkCpidashboard_BackgroundColor);
+  }
+
+  .cpiUiSplitterBarButton > .sapMBtnInner > .sapUiIcon {
+    color: rgb(77, 177, 255) !important;
+  }
+
+  .sapUiLoSplitterContent .cpides-webuiEECanvasWrapper svg {
+    rect:not([fill='#9fcdeb'], [fill='#009de0']),
+    circle,
+    path:not([fill='#f5c346'], [stroke='#9fcdeb'], [fill='#9fcdeb'], [class], [stroke-linejoin='round'], :not([fill='#ffffff'][stroke='#f0ab00'])) {
+      fill: var(--DarkCpiContent_stroke_models) !important;
     }
 
-    .cpides-traced {
-        fill: var(--cpidarkMessage_InformationBorderColor);
+    path[stroke-linejoin='round'] {
+      stroke: var(--DarkCpiTextColor);
     }
-
-    .cpides-toolbarButton span {
-        border: 0;
-        color: var(--cpidarkTextColor);
-    }
-
-    div[id$='iflowPropNavigationBar'] .sapMITBContainerContent,
-    div[id$='iflowPropNavigationBar'] .sapMITBContainerContent > * {
-        padding-block: 0;
-    }
-
-    .cpides-tracedWithError,
-    .cpides-failure {
-        fill: var(--cpidarkErrorColor);
-    }
-
-    .cpides-success {
-        fill: var(--cpidarkSuccessColor);
-    }
-
-    text {
-        fill: var(--cpidarkTextColor);
-    }
-
-    rect[fill-opacity='0.01'],
-    path[opacity='0.01'] {
-        fill-opacity: 0;
-        opacity: 0;
-    }
-
-    .sapGalileiSelected:focus {
-        outline: none;
-    }
-
-    .participant {
-        stroke: var(--cpidarkContent_Illustrative);
-        fill: var(--cpidarkBaseColor);
-    }
-
-    .participantHeaderText {
-        fill: var(--cpidarkTextColor);
-    }
-
-    .participantHeader {
-        stroke: var(--cpidarkContent_Illustrative);
-        fill: var(--cpidarkBaseColor);
-    }
-
-    .subProcess {
-        stroke: var(--cpidarkContent_Illustrative);
-        fill: var(--cpidarkBaseColor);
-        stroke-width: 1;
-    }
-
-    .sequenceFlow {
-        stroke-width: 1;
-        fill: transparent;
-    }
-
-    .messageFlow {
-        stroke-width: 2;
-        fill: transparent;
-    }
-
-    .event {
-        stroke: var(--cpidarkContent_stroke_models);
-        fill: var(--cpidarkBaseColor);
-    }
-
-    .endMessage {
-        fill: var(--cpidarkTextColor);
-    }
-
-    .startEvent {
-        stroke: var(--cpidarkTextColor);
-        fill: var(--cpidarkTextColor);
-    }
-
-    .endEvent {
-        stroke: var(--cpidarkTextColor);
-        fill: var(--cpidarkTextColor);
-    }
-
-    .activity {
-        stroke: var(--cpidarkMessage_InformationBorderColor);
-        fill: var(--cpidarkList_SelectionBackgroundColor);
-        stroke-width: 1;
-    }
-
-    .activityMarker {
-        stroke: var(--cpidarkTextColor);
-    }
-
-    .gateway {
-        stroke: var(--cpidarkContent_stroke_models);
-        fill: var(--cpidarkBaseColor);
-        stroke-width: 1;
-        width: 48px;
-        height: 48px;
-    }
-
-    .parallelGateway {
-        stroke: var(--cpidarkTextColor);
-    }
-
-    .error {
-        fill: var(--cpidarkErrorColor);
-    }
-
-    .warning {
-        fill: var(--cpidarkWarningColor);
-    }
-
-    .shapeText {
-        font: 12px Arial, Helvetica, sans-serif;
-        fill: var(--cpidarkTextColor);
-    }
-
-    .cpides-iflowPropMain .cpides-iflowPropSheetHeader,
-    .sapUiLoSplitterContent .sapMPageHeader > div {
-        background-color: var(--cpidarkBaseColor) !important;
-    }
-
-    .itopweb-background-white,
-    .itopweb-MessageDetailsTextArea,
-    .itopweb-HTMLControlInScrollableContainer {
-        background-color: var(--cpidarkdashboard_BackgroundColor);
-    }
-
-    .cpiUiSplitterBarButton > .sapMBtnInner > .sapUiIcon {
-        color: rgb(77, 177, 255) !important;
-    }
-
-    .sapUiLoSplitterContent .cpides-webuiEECanvasWrapper svg {
-        rect:not([fill='#9fcdeb'], [fill='#009de0']),
-        circle,
-        path:not([fill='#f5c346'], [stroke='#9fcdeb'], [fill='#9fcdeb'], [class], [stroke-linejoin='round'], :not([fill='#ffffff'][stroke='#f0ab00'])) {
-            fill: var(--cpidarkContent_stroke_models) !important;
-        }
-
-        path[stroke-linejoin='round'] {
-            stroke: var(--cpidarkTextColor);
-        }
-    }
+  }
 }
 
 /* ///////////////////////////////////////////////////////////////////////////////
@@ -244,21 +244,113 @@ html:is([class='sapUiTheme-sap_horizon_dark'], [class='sapUiTheme-sap_horizon'])
 /////////////////////////////////////////////////////////////////////////////// */
 /*sapMSegBBtnSel - Class*/
 html.sapUiTheme-sap_horizon .DarkcpiTheme > li:first-child * {
-    background: #edf5ff;
-    color: #0064d9;
-    border-color: #0064d9;
-    border-radius: 0.5rem
+  background: #edf5ff;
+  color: #0064d9;
+  border-color: #0064d9;
+  border-radius: 0.5rem;
 }
 
 html.sapUiTheme-sap_horizon_dark .DarkcpiTheme > li:nth-child(2) * {
-    background: #002643;
-    color: #4db1ff;
-    border-color: #4db1ff;
-    border-radius: 0.5rem
+  background: #002643;
+  color: #4db1ff;
+  border-color: #4db1ff;
+  border-radius: 0.5rem;
 }
 
 html.sapUiTheme-sap_fiori_3 .DarkcpiTheme > li:last-child * {
-    background: #0854a0;
-    color: #fff;
-    border-color: #085caf
+  background: #0854a0;
+  color: #fff;
+  border-color: #085caf;
+}
+
+[id^='__DarkCPI'] {
+  [role='tabpanel'] {
+    padding-inline: 0;
+  }
+}
+
+/* Log-level panel */
+.__DarkCPI_Attention {
+  span,
+  span:hover,
+  bdi,
+  .__DarkCPI_Text_Attention {
+    fill: var(--sapCriticalColor);
+    color: var(--sapCriticalColor) !important;
+  }
+}
+
+.__DarkCPI_Reject {
+  span,
+  span:hover,
+  bdi,
+  .sapMSLIInfo {
+    fill: var(--sapButton_Reject_TextColor);
+    color: var(--sapButton_Reject_TextColor) !important;
+  }
+}
+
+.__DarkCPI_Accept {
+  span,
+  span:hover,
+  bdi,
+  .sapMSLIInfo {
+    fill: var(--sapButton_Accept_TextColor);
+    color: var(--sapButton_Accept_TextColor) !important;
+  }
+}
+
+.__DarkCPI_Neutral {
+  span,
+  span:hover,
+  bdi,
+  .sapMSLIInfo {
+    fill: var(--sapNeutralColor);
+    color: var(--sapNeutralColor) !important;
+  }
+}
+
+.__DarkCPI_Default {
+  span,
+  span:hover,
+  bdi,
+  .sapMSLIInfo {
+    fill: var(--sapBrandColor);
+    color: var(--sapBrandColor) !important;
+  }
+}
+
+.__DarkCPI_Attention_bg {
+  background-color: var(--sapWarningBackground) !important;
+}
+
+.__DarkCPI_Reject_bg {
+  background-color: var(--sapErrorBackground) !important;
+}
+
+.__DarkCPI_Accept_bg {
+  background-color: var(--sapSuccessBackground) !important;
+}
+
+.__DarkCPI_Neutral_bg {
+  background-color: var(--sapInformationBackground) !important;
+}
+
+.__DarkCPI_Default_bg {
+  background-color: var(--sapNeutralBackground) !important;
+}
+
+.DC_PT {
+  fill: color-mix(in srgb, var(--sapButton_Accept_TextColor), #ff000000 75%) !important;
+  stroke: var(--sapButton_Accept_TextColor) !important;
+}
+
+.DC_PT.DC_error {
+  fill: color-mix(in srgb, var(--sapButton_Reject_TextColor), #ff000000 75%) !important;
+  stroke: var(--sapButton_Reject_TextColor) !important;
+}
+
+.DC_PT.DC_active {
+  fill: color-mix(in srgb, var(--sapInformationBackground), #ff000000 75%) !important;
+  stroke: var(--sapInformationBackground) !important;
 }

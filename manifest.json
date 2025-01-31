@@ -1,16 +1,22 @@
 {
   "manifest_version": 3,
   "name": "Dark CPI",
-  "version": "2.1.2",
+  "version": "2.5.0",
+  "version_name": "2.5.0",
   "description": "Extension provides control to change theme to dark mode for SAP integration suite (CPI)",
   "author": "Omkar Patel",
   "homepage_url": "https://incpi.vercel.app/blog/83efd",
   "background": {
     "service_worker": "background.js"
   },
+  "cross_origin_opener_policy": {
+    "value": "same-origin"
+  },
   "host_permissions": [
-    "https://*.hana.ondemand.com/*",
-    "https://*.platform.sapcloud.cn/*"
+    "https://*.hana.ondemand.com/itspaces/*",
+    "https://*.platform.sapcloud.cn/itspaces/*",
+    "https://*.hana.ondemand.com/shell/*",
+    "https://*.platform.sapcloud.cn/shell/*"
   ],
   "icons": {
     "128": "/images/icon128.png",
@@ -18,15 +24,32 @@
     "32": "/images/icon32.png",
     "16": "/images/icon16.png"
   },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'"
+  },
   "permissions": [
     "scripting",
+    "storage",
     "tabs"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://*.hana.ondemand.com/*",
-        "https://*.platform.sapcloud.cn/*"
+        "https://*.hana.ondemand.com/itspaces/*",
+        "https://*.platform.sapcloud.cn/itspaces/*",
+        "https://*.hana.ondemand.com/shell/*",
+        "https://*.platform.sapcloud.cn/shell/*"
+      ],
+      "include_globs": [
+        "https://*.hana.ondemand.com/itspaces/*",
+        "https://*.platform.sapcloud.cn/itspaces/*",
+        "https://*.hana.ondemand.com/shell/*",
+        "https://*.platform.sapcloud.cn/shell/*",
+        "https://*.integrationsuite.cfapps.*.hana.ondemand.com/*",
+        "https://?????-tmn.hci.*.hana.ondemand.com/*"
+      ],
+      "js": [
+        "script/OnInit.js"
       ],
       "css": [
         "style/custom.css",
@@ -41,8 +64,8 @@
         "https://*.platform.sapcloud.cn/*"
       ],
       "resources": [
-        "utils/*.js",
-        "images/*"
+        "script/*.js",
+        "images/*.woff"
       ]
     }
   ]

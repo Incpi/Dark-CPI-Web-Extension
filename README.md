@@ -1,24 +1,18 @@
 <img src="\docs\Black_full.png" class="center" alt="icon"><h1>Web Extension for SAP CPI</h1>
 
-Welcome to the Dark CPI Web Extension for SAP CPI repository! This open-source project provides a sleek, dark interface
-for your SAP environment, enhancing visual comfort and overall user experience.
+Welcome to the Dark CPI Web Extension for SAP CPI repository! This open-source project provides a sleek, dark interface for your SAP environment, enhancing visual comfort and overall user experience.
 
 ## Our Vision of this Project
 
-It addresses the common need for a cohesive and comfortable visual interface by extending the dark theme across various
-UI elements.Moreover, the ability to personalize and extend SAP applications allows for a more tailored user experience,
-aligning with individual preferences and working conditions.
+It addresses the common need for a cohesive and comfortable visual interface by extending the dark theme across various UI elements.Moreover, the ability to personalize and extend SAP applications allows for a more tailored user experience, aligning with individual preferences and working conditions.
 
 ## Privacy and data protection
 
-The plugin does not collect personal data. Nevertheless, the stores like Chrome Web Store collect some anonymous data
-like how many users have the plugin installed. We do not trust 3rd party library & tools so we implemented our own
-solution instead of library to ensure security for logging in browser but nothing is stored or sent to any server by
-this plugin.
+The plugin does not collect personal data. Nevertheless, the stores like Chrome Web Store collect some anonymous data like how many users have the plugin installed. We do not trust 3rd party library & tools so we implemented our own solution instead of library to ensure security for logging in browser but nothing is stored or sent to any server by this plugin.
 
 We guarantee:
 
-- No personal data / tenant information is collected.s
+- No personal data / tenant information is collected.
 - It is open source so feel free to check the source code or your network console.
 
 ## Blog post
@@ -34,34 +28,28 @@ To install the Dark CPI Extension, please follow these steps:
 
 1. **Download the Extension:**
 
-    - Visit
-      the [Chrome Web Store](https://chromewebstore.google.com/detail/dark-sap-cpi/lmegddleeigeddljmdkonofmppbefneo)
-      or [EDGE store](https://microsoftedge.microsoft.com/addons/detail/gpafgeambljleonppfbeieehlmdiffop) or search
-      for "Dark CPI" in web-stores.
-    - Click "Add to Chrome" to install the extension.
+   - Visit the [Chrome Web Store](https://chromewebstore.google.com/detail/dark-sap-cpi/lmegddleeigeddljmdkonofmppbefneo) or [EDGE store](https://microsoftedge.microsoft.com/addons/detail/gpafgeambljleonppfbeieehlmdiffop) or search for "Dark CPI" in web-stores.
+   - Click "Add to Chrome" to install the extension.
 
 2. **Manual Installation:**
-    - Download the latest release from our [GitHub repository](https://github.com/incpi/Dark-CPI-Web-Extension) then go
-      to bin folder.
-    - Extract the downloaded archive.
-    - Open Google Chrome and navigate to `chrome://extensions/`.
-    - Enable "Developer mode" by toggling the switch in the top-right corner.
-    - Click "Load unpacked" and select the extracted folder.
+   - Download the latest release from our [GitHub repository](https://github.com/incpi/Dark-CPI-Web-Extension) then go to bin folder.
+   - Extract the downloaded archive.
+   - Open Google Chrome and navigate to `chrome://extensions/`.
+   - Enable "Developer mode" by toggling the switch in the top-right corner.
+   - Click "Load unpacked" and select the extracted folder.
 
 ## Usage
 
 Using the Dark CPI Extension is straightforward:
 
 1. Open your SAP CPI environment.
-2. The extension will automatically apply the dark theme to your interface or select from extension icon on top in
-   browser besides URL if pin it.
+2. The extension will automatically apply the dark theme to your interface or select from extension icon on top in browser besides URL if pin it.
 
 Addtionally we support SAP BUILD and Theme Designer
 
 ## Theme Customization
 
-The Dark CPI Extension allows you to customize the theme by specifying a URL parameter. This Feature enables you to
-choose from a variety of predefined themes.
+The Dark CPI Extension allows you to customize the theme by specifying a URL parameter. This Feature enables you to choose from a variety of predefined themes.
 
 ### Available Themes
 
@@ -71,24 +59,36 @@ The extension comes with the following predefined themes:
 - Evening Horizon - Dark Theme similar to New UI
 - Quartz Light - Previous UI Theme before Morning Horizon
 
-> [!NOTE] any other theme by SAP is not compatible with this extension.
+> [!NOTE] Any other theme by SAP is not compatible with this extension.
 
 ### Versioning Scheme
 
 - **Format**: `Major.Minor.Maintenance.Build`
-    - **Major**: Significant changes or new features.
-    - **Minor**: Small features or improvements.
-    - **Maintenance**: Bug fixes or minor updates.
-    - **Build** (optional): Used for internal purposes such as build numbers or source control revisions. This number
-      will not appear in the changelog and is only included in maintenance versions.
+  - **Major**: Significant changes or new features.
+  - **Minor**: Small features or improvements.
+  - **Maintenance**: Bug fixes or minor updates.
+  - **Build** (optional): Used for internal purposes such as build numbers or source control revisions. This number will not appear in the changelog and is only included in maintenance versions.
 
 ## Changelogs
+
+### v2.5.0
+
+- [BugFix] **CSS Issue in Configuration Window**: Resolved an issue preventing the scrollable section in the configuration window from functioning correctly.
+- [BugFix] **Overflow and Clipping in Dark Mode**: Fixed overflow and text clipping issues in the trace, logs, and design pages, especially in dark mode, ensuring a seamless user experience.
+- [Feature] **Quick Message Popup**: Introduced a quick message popup feature, similar to the CPI helper popup, for enhanced user communication.
+- [Feature] **Auto Trace Activation in Power Trace**: Added an automatic trace activation on expiry in Power Trace for more efficient monitoring.
+- [Feature] **Inline Payload Formatting**: Inline payload formatting is now available in the trace view for clearer data presentation.
+- [Feature] **Quick Links to Trace and Log Monitoring Pages**: Implemented quick links to the trace page and log monitoring page for easier navigation.
+- [Feature] **Table Sorting and Filtering**: Table sorting and filtering are now standard UI features, improving data accessibility and usability.
+- [Improvement] **Optimized Load Time**: Optimized the extension runtime, significantly reducing load times for better performance.
+- [Improvement] **Reduced Extension Size**: Reduced the extension size by minimizing dependencies and optimizing external libraries.
+- [Improvement] **Limited Style Overwrites**: Limited style overrides to ensure a more consistent and native user experience.
+- [Security] **Content Security Policy (CSP)**: Added and enforced a Content Security Policy to enhance security by restricting resource loading and minimizing attack vectors.
 
 ### v2.1.1
 
 - [BugFix] More CSS fixes: where the scrollable section in the configuration window is not scrollable.
-- [BugFix] Panels in trace, logs, design page CSS fixes where in exceptional cases overflow & Clipping text issues in
-  dark mode
+- [BugFix] Panels in trace, logs, design page CSS fixes where in exceptional cases overflow & Clipping text issues in dark mode
 
 ### v2.0.0
 
@@ -149,9 +149,7 @@ The extension comes with the following predefined themes:
 
 ## Code of Conduct
 
-We are committed to fostering an open and welcoming environment for all contributors and users. Please adhere to
-our [Code of Conduct](/CODE_OF_CONDUCT.md), which outlines the expected behavior and guidelines for participation in
-this project.
+We are committed to fostering an open and welcoming environment for all contributors and users. Please adhere to our [Code of Conduct](/CODE_OF_CONDUCT.md), which outlines the expected behavior and guidelines for participation in this project.
 
 ## Contributing
 
@@ -165,15 +163,13 @@ We welcome contributions from the community! To contribute, please follow these 
 6. **Create a Pull Request:** Submit a pull request to our repository.
 
 > [!IMPORTANT]  
-> No 3rd party lib is allowed in minified version. If you want to include then it should be uncompressed version So that
-> we can review / set other environment as `ISOLATED` for security reasons.
+> No 3rd party lib is allowed in minified version. If you want to include then it should be uncompressed version So that we can review / set other environment as `ISOLATED` for security reasons.
 
 Please refer to our [Contribution Guidelines](/CONTRIBUTING.md) for more detailed information.
 
 ## Code Review Guidelines
 
-To ensure the highest quality of code and maintain the project's integrity, we have established strict guidelines for
-code reviews:
+To ensure the highest quality of code and maintain the project's integrity, we have established strict guidelines for code reviews:
 
 - **Security:** Verify that your code does not introduce security vulnerabilities.
 
@@ -183,7 +179,6 @@ We appreciate your patience and cooperation during the review process.
 
 ## Support
 
-If you have any questions, issues, or suggestions, please feel free
-to [open an issue](https://github.com/incpi/Dark-CPI-Web-Extension/issues) on GitHub.
+If you have any questions, issues, or suggestions, please feel free to [open an issue](https://github.com/incpi/Dark-CPI-Web-Extension/issues) on GitHub.
 
 Thank you for using the Dark CPI Extension! We hope it enhances your SAP experience.
