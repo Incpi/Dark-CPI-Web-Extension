@@ -71,19 +71,19 @@ The extension comes with the following predefined themes:
 
 ## Changelogs
 
-### v2.2.0
+### v2.5.0
 
-- [Feature] Quick message popup, Similar to CPI helper popup.
-- [Feature] power trace , auto set trace on expiry.
-- [Feature] Payload are directly formatted in inline trace.
-- [Feature] Quick links to trace page and log monitoring page.
-- [Feature] More Table sort & filter as a standard UI feature.
-- [Improvement] More Css Bug Fixes.
-
-### v2.1.3
-
-- [BugFix] More secure.
-- [BugFix] More features.
+- [BugFix] **CSS Issue in Configuration Window**: Resolved an issue preventing the scrollable section in the configuration window from functioning correctly.
+- [BugFix] **Overflow and Clipping in Dark Mode**: Fixed overflow and text clipping issues in the trace, logs, and design pages, especially in dark mode, ensuring a seamless user experience.
+- [Feature] **Quick Message Popup**: Introduced a quick message popup feature, similar to the CPI helper popup, for enhanced user communication.
+- [Feature] **Auto Trace Activation in Power Trace**: Added an automatic trace activation on expiry in Power Trace for more efficient monitoring.
+- [Feature] **Inline Payload Formatting**: Inline payload formatting is now available in the trace view for clearer data presentation.
+- [Feature] **Quick Links to Trace and Log Monitoring Pages**: Implemented quick links to the trace page and log monitoring page for easier navigation.
+- [Feature] **Table Sorting and Filtering**: Table sorting and filtering are now standard UI features, improving data accessibility and usability.
+- [Improvement] **Optimized Load Time**: Optimized the extension runtime, significantly reducing load times for better performance.
+- [Improvement] **Reduced Extension Size**: Reduced the extension size by minimizing dependencies and optimizing external libraries.
+- [Improvement] **Limited Style Overwrites**: Limited style overrides to ensure a more consistent and native user experience.
+- [Security] **Content Security Policy (CSP)**: Added and enforced a Content Security Policy to enhance security by restricting resource loading and minimizing attack vectors.
 
 ### v2.1.1
 
