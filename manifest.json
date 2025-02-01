@@ -1,8 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Dark CPI",
-  "version": "2.5.0",
-  "version_name": "2.5.0",
+  "version": "2.5.0.1",
   "description": "Extension provides control to change theme to dark mode for SAP integration suite (CPI)",
   "author": "Omkar Patel",
   "homepage_url": "https://incpi.vercel.app/blog/83efd",
@@ -27,11 +26,7 @@
   "content_security_policy": {
     "extension_pages": "default-src 'self'"
   },
-  "permissions": [
-    "scripting",
-    "storage",
-    "tabs"
-  ],
+  "permissions": ["scripting", "storage", "tabs"],
   "content_scripts": [
     {
       "matches": [
@@ -48,25 +43,14 @@
         "https://*.integrationsuite.cfapps.*.hana.ondemand.com/*",
         "https://?????-tmn.hci.*.hana.ondemand.com/*"
       ],
-      "js": [
-        "script/OnInit.js"
-      ],
-      "css": [
-        "style/custom.css",
-        "style/general.css"
-      ]
+      "js": ["script/OnInit.js"],
+      "css": ["style/custom.css", "style/general.css"]
     }
   ],
   "web_accessible_resources": [
     {
-      "matches": [
-        "https://*.hana.ondemand.com/*",
-        "https://*.platform.sapcloud.cn/*"
-      ],
-      "resources": [
-        "script/*.js",
-        "images/*.woff"
-      ]
+      "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"],
+      "resources": ["script/*.js", "images/*.woff"]
     }
   ]
 }

@@ -1,16 +1,12 @@
 # Contributing to Dark CPI Web Extension
 
-First off, thank you for considering contributing to Dark CPI Web Extension! It's people like you that make this project
-possible. Following these guidelines helps to communicate that you respect the time of the developers managing and
-developing this open-source project. In return, they should reciprocate that respect in addressing your issue, assessing
-changes, and helping you finalize your pull requests.
+First off, thank you for considering contributing to Dark CPI Web Extension! It's people like you that make this project possible. Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open-source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
 
 ## How Can I Contribute?
 
 ### Reporting Bugs
 
-If you find a bug, please report it by opening an issue in our GitHub repository. Before doing so, please make sure
-there isn't an existing issue that describes the same problem. When reporting a bug, please provide:
+If you find a bug, please report it by opening an issue in our GitHub repository. Before doing so, please make sure there isn't an existing issue that describes the same problem. When reporting a bug, please provide:
 
 - A clear and descriptive title.
 - A step-by-step description of how to reproduce the issue.
@@ -19,8 +15,7 @@ there isn't an existing issue that describes the same problem. When reporting a 
 
 ### Suggesting Enhancements
 
-We welcome suggestions for new features and enhancements! If you have an idea, please open an issue to discuss it before
-starting any work. When suggesting an enhancement, please include:
+We welcome suggestions for new features and enhancements! If you have an idea, please open an issue to discuss it before starting any work. When suggesting an enhancement, please include:
 
 - A clear and descriptive title.
 - A detailed description of the proposed feature and why it would be beneficial.
@@ -40,28 +35,23 @@ If you're ready to start working on a fix or feature, follow these steps:
 
 ### Code Style
 
-Please follow the project's coding standards and style guides. Consistency helps maintain readability and makes it
-easier for others to understand your contributions. Ensure your code adheres to these requirements.
+Please follow the project's coding standards and style guides. Consistency helps maintain readability and makes it easier for others to understand your contributions. Ensure your code adheres to these requirements.
 
 ### Testing
 
-If the project includes tests, please ensure that your changes pass all existing tests and add new tests for any new
-functionality. Run the tests locally and make sure they pass before submitting your pull request.
+If the project includes tests, please ensure that your changes pass all existing tests and add new tests for any new functionality. Run the tests locally and make sure they pass before submitting your pull request.
 
 ### Documentation
 
-For any changes or additions to the code, please update the documentation accordingly. This includes updating README
-files, code comments, and any other relevant documentation.
+For any changes or additions to the code, please update the documentation accordingly. This includes updating README files, code comments, and any other relevant documentation.
 
 ### Community
 
-Be respectful and considerate of others when participating in discussions or code reviews. Remember that everyone
-contributes with the best intentions, and constructive feedback is always appreciated.
+Be respectful and considerate of others when participating in discussions or code reviews. Remember that everyone contributes with the best intentions, and constructive feedback is always appreciated.
 
 ## Getting Help
 
-If you need help or have any questions, feel free to reach out by opening an issue or joining
-our [communication channel/community forum] (if applicable). We are here to help and support you!
+If you need help or have any questions, feel free to reach out by opening an issue or joining our [communication channel/community forum] (if applicable). We are here to help and support you!
 
 Thank you for contributing!
 
