@@ -14,7 +14,7 @@ sap.ui.define(["eventHandlers", "RequestQueue", "autoClose", "newPopupEvent", "c
   const storedTheme = localStorage.getItem(`${constants.prefixId}Theme`) || "sap_horizon";
   const DarkCPIVersion = localStorage.getItem(`${constants.prefixId}Version`) || 0;
   // let intervalId = null;
-  const onetime = () => {
+  const init = () => {
     core.applyTheme(storedTheme);
     autoClose.retryAutocloseNavButton();
     IconPool.addIcon("logo-icon", "darkcpi", "darkcpi", "e0001");
@@ -75,38 +75,39 @@ sap.ui.define(["eventHandlers", "RequestQueue", "autoClose", "newPopupEvent", "c
           tooltip: "Enable auto Trace",
         },
       ];
-      buttonConfigs.forEach((config) => {
+      buttonConfigs.forEach((config, index) => {
         const Id = `${constants.prefixId}_${config.id}_Button`;
-        if (!core.byId(Id)) {
-          try {
-            if (config.buttonType === 0) {
-              const button = new sap.m.ToggleButton(Id, {
+        setTimeout(() => {
+          if (!core.byId(Id)) {
+            try {
+              const btnConfig = {
                 icon: config.icon,
                 text: config.text,
                 type: config.type,
                 press: config.pressHandler,
                 tooltip: config.tooltip,
-              });
-              pageHeader.insertAction(button);
-            }
+              };
 
-            const button = new Button(Id, {
-              icon: config.icon,
-              text: config.text,
-              type: config.type,
-              press: config.pressHandler,
-              tooltip: config.tooltip,
-            });
-            pageHeader.insertAction(button);
-          } catch (e) {
-            console.error(e);
+              let button;
+              if (config.buttonType === 0) {
+                // For buttonType 0, create a ToggleButton
+                button = new sap.m.ToggleButton(Id, btnConfig);
+              } else {
+                // For other types, create a normal Button
+                button = new sap.m.Button(Id, btnConfig);
+              }
+
+              pageHeader.insertAction(button);
+            } catch (e) {
+              console.error(e);
+            }
           }
-        }
+        }, 100);
       });
     }
   };
   return {
-    onetime,
+    init,
     header,
     addButtonsIflowDesigner,
   };

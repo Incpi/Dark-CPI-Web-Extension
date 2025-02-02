@@ -1,16 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Dark CPI",
-  "version": "2.5.0.1",
+  "version": "2.5.0.2",
   "description": "Extension provides control to change theme to dark mode for SAP integration suite (CPI)",
   "author": "Omkar Patel",
   "homepage_url": "https://incpi.vercel.app/blog/83efd",
-  "background": {
-    "service_worker": "background.js"
-  },
-  "cross_origin_opener_policy": {
-    "value": "same-origin"
-  },
   "host_permissions": [
     "https://*.hana.ondemand.com/itspaces/*",
     "https://*.platform.sapcloud.cn/itspaces/*",
@@ -23,10 +17,18 @@
     "32": "/images/icon32.png",
     "16": "/images/icon16.png"
   },
-  "content_security_policy": {
-    "extension_pages": "default-src 'self'"
+  "cross_origin_opener_policy": {
+    "value": "same-origin"
   },
-  "permissions": ["scripting", "storage", "tabs"],
+  "cross_origin_embedder_policy": {
+    "value": "require-corp"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'self'"
+  },
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
       "matches": [
@@ -43,14 +45,45 @@
         "https://*.integrationsuite.cfapps.*.hana.ondemand.com/*",
         "https://?????-tmn.hci.*.hana.ondemand.com/*"
       ],
-      "js": ["script/OnInit.js"],
-      "css": ["style/custom.css", "style/general.css"]
+      "js": [
+        "script/OnInit.js"
+      ],
+      "css": [
+        "style/custom.css",
+        "style/general.css"
+      ]
+    },
+    {
+      "matches": [
+        "https://*.hana.ondemand.com/itspaces/*",
+        "https://*.platform.sapcloud.cn/itspaces/*",
+        "https://*.hana.ondemand.com/shell/*",
+        "https://*.platform.sapcloud.cn/shell/*"
+      ],
+      "include_globs": [
+        "https://*.hana.ondemand.com/itspaces/*",
+        "https://*.platform.sapcloud.cn/itspaces/*",
+        "https://*.hana.ondemand.com/shell/*",
+        "https://*.platform.sapcloud.cn/shell/*",
+        "https://*.integrationsuite.cfapps.*.hana.ondemand.com/*",
+        "https://?????-tmn.hci.*.hana.ondemand.com/*"
+      ],
+      "js": [
+        "script/main_script.js"
+      ],
+      "world": "MAIN"
     }
   ],
   "web_accessible_resources": [
     {
-      "matches": ["https://*.hana.ondemand.com/*", "https://*.platform.sapcloud.cn/*"],
-      "resources": ["script/*.js", "images/*.woff"]
+      "matches": [
+        "https://*.hana.ondemand.com/*",
+        "https://*.platform.sapcloud.cn/*"
+      ],
+      "resources": [
+        "script/*.js",
+        "images/*.woff"
+      ]
     }
   ]
 }

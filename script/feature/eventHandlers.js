@@ -230,15 +230,22 @@ sap.ui.define(["powerTraceHandler", "constants", "codeEditor", "common", "link",
       const expirationTime = Date.now() + 10 * 60000; //10min
       const success = await setTrace("TRACE", idFlow);
       if (success) {
-        localStorage.setItem(idFlow, expirationTime);
+        localStorage.setItem("__idFlow", `{"${idFlow}": "${expirationTime}"}`);
         ExToast.show(`Log level set to TRACE.`, "success");
         if (sessionTimeouts[idFlow]) clearInterval(sessionTimeouts[idFlow]);
         sessionTimeouts[idFlow] = setInterval(() => {
-          const storedExpiration = parseInt(localStorage.getItem(idFlow), 10);
-          if (Date.now() > storedExpiration) {
-            localStorage.setItem(idFlow, Date.now() + (10 * 60 * 1000 - 5000));
-            ExToast.show("TRACE session renewed.");
-            setTrace("TRACE", idFlow);
+          try {
+            const storedExpiration = parseInt(JSON.parse(localStorage.getItem("__idFlow"))[idFlow], 10);
+            if (Date.now() > storedExpiration) {
+              localStorage.setItem("__idFlow", `{"${idFlow}": "${Date.now() + (10 * 60 * 1000 - 5000)}"}`);
+              ExToast.show("TRACE session renewed.");
+              setTrace("TRACE", idFlow);
+            }
+          } catch (e) {
+            console.warn("Error fetching log table data:", e);
+            ExToast.show("Trace activation Failed", "error");
+            button.setPressed(false);
+            clearInterval(sessionTimeouts[idFlow]);
           }
         }, 5000);
       }

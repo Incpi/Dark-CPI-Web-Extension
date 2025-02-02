@@ -1,5 +1,5 @@
 "use strict";
-
+let refUI;
 if (!window.DarkCPIApp) {
   const DarkCPIApp = {
     urlDetectType: (url) => {
@@ -46,25 +46,24 @@ if (!window.DarkCPIApp) {
         window.addEventListener("responseDataChromeApi", listener);
         window.dispatchEvent(new CustomEvent("requestDataChromeApi", { detail: { request: "chromeExtensionURL" } }));
       }),
-
     // Handle URL change logic
-    handleURLChange: ({ newURL = window.location.href, ui = null }) => {
+    handleURLChange: (newURL = window.location.href) => {
       // Call the function to get the DarkCPIData based on the new URL
       let DarkCPIData = DarkCPIApp.urlDetectType(newURL);
-      if (ui) {
-        ui.onetime();
+      if (refUI) {
+        refUI.init();
         const functionRegistry = {
-          IFlow: (ui) => ui.addButtonsIflowDesigner(),
-          ODATA_API: (ui) => ui.addButtonsIflowDesigner(),
-          REST_API: (ui) => ui.addButtonsIflowDesigner(),
-          SOAP_API: (ui) => ui.addButtonsIflowDesigner(), // Value_Mapping: (ui) => console.log("Handling Value Mapping"),
-          // Script_Collection: (ui) => console.log("Handling Script Collection"),
-          // Message_Mapping: (ui) => console.log("Handling Message Mapping"),
-          // M_Mapping: (ui) => console.log("Handling M Mapping"),
-          // Operation_Mapping: (ui) => console.log("Handling Operation Mapping"),
-          // Script: (ui) => console.log("Handling Script"),
-          // XSLT: (ui) => console.log("Handling XSLT"),
-          // Package: (ui) => console.log("Handling Package"),
+          IFlow: () => refUI.addButtonsIflowDesigner(),
+          ODATA_API: () => refUI.addButtonsIflowDesigner(),
+          REST_API: () => refUI.addButtonsIflowDesigner(),
+          SOAP_API: () => refUI.addButtonsIflowDesigner(), // Value_Mapping: (refUI) => console.log("Handling Value Mapping"),
+          // Script_Collection: () => console.log("Handling Script Collection"),
+          // Message_Mapping: () => console.log("Handling Message Mapping"),
+          // M_Mapping: () => console.log("Handling M Mapping"),
+          // Operation_Mapping: () => console.log("Handling Operation Mapping"),
+          // Script: () => console.log("Handling Script"),
+          // XSLT: () => console.log("Handling XSLT"),
+          // Package: () => console.log("Handling Package"),
         };
         // Check if DarkCPIData has the artifactType and it exists in the function registry
         const artifactType = DarkCPIData?.artifactType;
@@ -72,7 +71,7 @@ if (!window.DarkCPIApp) {
         if (artifactType && functionRegistry[artifactType]) {
           const interval = setInterval(() => {
             try {
-              functionRegistry[artifactType](ui);
+              functionRegistry[artifactType]();
             } catch (error) {
               console.error("Error during retry: handleURLChange:", error);
             }
@@ -93,9 +92,9 @@ if (!window.DarkCPIApp) {
         if (newURL !== currentURL) {
           currentURL = newURL;
           try {
-            DarkCPIApp.handleURLChange({ newURL: newURL });
+            DarkCPIApp.handleURLChange(newURL);
           } catch (error) {
-            DarkCPIApp.handleURLChange({ newURL: newURL });
+            console.error("Event Handler Failed"); //DarkCPIApp.handleURLChange(newURL);
           }
         }
       }).observe(document.body, { childList: true, subtree: true });
@@ -116,12 +115,12 @@ if (!window.DarkCPIApp) {
               };
               sap.ui.loader.config({ paths: { ui: `${$.sap.DarkCPI.url}script/utils/ui` } });
               sap.ui.require(["ui"], async (ui) => {
-                // await ui.init();
+                refUI = ui;
                 const setupProcess = () => {
                   const header = sap.ui.getCore().byId("shell--toolHeader");
                   if (header) {
                     ui.header("shell--toolHeader");
-                    DarkCPIApp.handleURLChange({ ui });
+                    DarkCPIApp.handleURLChange();
                   } else {
                     requestAnimationFrame(setupProcess);
                   }
@@ -152,6 +151,5 @@ if (!window.DarkCPIApp) {
       requestAnimationFrame(checkAvailability);
     },
   };
-
   DarkCPIApp.init();
 }
