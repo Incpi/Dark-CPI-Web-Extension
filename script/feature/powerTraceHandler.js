@@ -193,7 +193,6 @@ sap.ui.define(["constants", "codeEditor", "common", "apiCall", "model", "ExToast
       }
       const traceId = trace.TraceId;
       panel.setHeaderText(`Trace Tab Content - ${object.label}`);
-      console.info(object);
       if (object.traceType === "error" && run.Error) {
         const editor = new CustomCodeEditor({});
         panel.addContent(editor);
@@ -202,19 +201,19 @@ sap.ui.define(["constants", "codeEditor", "common", "apiCall", "model", "ExToast
       }
       if (object.url) {
         try {
+          panel.addContent(new sap.m.Text({ text: "Please Wait while we prepare your request..." }));
           const data = await apiCall.httpReq("GET", `${constants.apiBaseCPI}${constants.serviceURL.apiv1}/TraceMessages(${traceId})${object.url}`);
           // If no data received, show a message saying no data is available
           if (!data) {
             panel.addContent(new sap.m.Text({ text: "No information associated with this trace." }));
             return;
           }
-          // If the URL is for $value (custom editor)
+          panel.removeAllContent();
           if (object.url === "/$value") {
             const editor = new CustomCodeEditor({});
             panel.addContent(editor);
             editor.setValue(data);
           } else {
-            // If there are results, create a table from the data
             const apiResponse = JSON.parse(data).d.results.reduce((acc, e) => {
               acc[e.Name] = e.Value;
               return acc;

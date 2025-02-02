@@ -323,28 +323,29 @@ html.sapUiTheme-sap_fiori_3 .DarkcpiTheme > li:last-child * {
 	}
 }
 
+/* reverted color in toast as not readable under low brightness*/
 .__DarkCPI_Attention_bg {
-	background-color: var(--sapButton_Attention_Hover_Background) !important;
-	border-color: var(--sapButton_Attention_Hover_BorderColor) !important;
-	color: var(--sapButton_Attention_Hover_TextColor) !important;
+	background-color: var(--sapButton_Attention_Background) !important;
+	border-color: var(--sapButton_Attention_BorderColor) !important;
+	/*color: var(--sapButton_Attention_TextColor) !important;*/
 }
 
 .__DarkCPI_Reject_bg {
-	background-color: var(--sapButton_Reject_Hover_Background) !important;
-	border-color: var(--sapButton_Reject_Hover_BorderColor) !important;
-	color: var(--sapButton_Reject_Hover_TextColor) !important;
+	background-color: var(--sapButton_Reject_Background) !important;
+	border-color: var(--sapButton_Reject_BorderColor) !important;
+	/*color: var(--sapButton_Reject_TextColor) !important;*/
 }
 
 .__DarkCPI_Accept_bg {
-	background-color: var(--sapButton_Accept_Hover_Background) !important;
-	border-color: var(--sapButton_Accept_Hover_BorderColor) !important;
-	color: var(--sapButton_Accept_Hover_TextColor) !important;
+	background-color: var(--sapButton_Accept_Background) !important;
+	border-color: var(--sapButton_Accept_BorderColor) !important;
+	/*color: var(--sapButton_Accept_TextColor) !important;*/
 }
 
 .__DarkCPI_Neutral_bg {
-	background-color: var(--sapButton_Neutral_Hover_Background) !important;
-	border-color: var(--sapButton_Neutral_Hover_BorderColor) !important;
-	color: var(--sapButton_Neutral_Hover_TextColor) !important;
+	background-color: var(--sapButton_Neutral_Background) !important;
+	border-color: var(--sapButton_Neutral_BorderColor) !important;
+	/*color: var(--sapButton_Neutral_TextColor) !important;*/
 }
 
 .DC_PT {

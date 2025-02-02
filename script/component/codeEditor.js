@@ -53,7 +53,6 @@ sap.ui.define(["formatCode", "sap/ui/codeeditor/CodeEditor", "sap/m/Button", "sa
 
     setValue(value) {
       const data = formatCode.prettify(String(value));
-      console.log(data);
       this.editor.setType(data.type);
       this.editor.setValue(data.code);
     }
